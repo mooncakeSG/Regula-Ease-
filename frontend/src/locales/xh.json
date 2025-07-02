@@ -2,13 +2,104 @@
   "header": {
     "title": "RegulaEase",
     "subtitle": "Umncedi Weeshishini Ezincinane",
-    "description": "Khangela uthobelo lwemigaqo, uphuhlise izakhono, futhi ufumane isikhokelo seshishini esiqhutshwa yi-AI - konke kwenziwe oosomashishini baseMzantsi Afrika."
+    "description": "Khangela uthobelo lwemigaqo, uphuhlise izakhono, futhi ufumane isikhokelo seshishini esiqhutshwa yi-AI - konke kwenziwe oosomashishini baseMzantsi Afrika.",
+    "tagline": "Iqabane Lakho Lempumelelo Yeshishini"
+  },
+  "nav": {
+    "home": "Ikhaya",
+    "about": "Ngathi",
+    "projects": "Iimpawu",
+    "contact": "Qhagamshelana Nathi"
   },
   "navigation": {
     "checklist": "Uluhlu Lokuthobela Imigaqo",
     "skills": "Uphuhliso Lwezakhono", 
     "chatbot": "Umncedi we-AI",
     "theme": "Tshintsha Umxholo"
+  },
+  "hero": {
+    "badge": "Koosomashishini BaseMzantsi Afrika",
+    "title": {
+      "line1": "Xhobisa",
+      "line2": "Uhambo Lwakho Lweshishini",
+      "line3": "Ngokuthobela Imigaqo Ngobuchule"
+    },
+    "description": "Khangela imigaqo yeshishini yaseMzantsi Afrika ngokuzithemba. Fumana uluhlu lokuthobela imigaqo olwenziwe wena, izixhobo zokuphuhlisa izakhono, nesikhokelo esiqhutshwa yi-AI - konke ngolwimi lwakho.",
+    "features": {
+      "compliance": "Ukuthobela Imigaqo Yeshishini",
+      "skills": "Ukuphuhlisa Izakhono",
+      "ai": "Umncedi we-AI",
+      "multilingual": "Iilwimi ezi-4"
+    },
+    "cta": {
+      "primary": "Qala Ngoku",
+      "secondary": "Funda Ngakumbi"
+    },
+    "stats": {
+      "entrepreneurs": "Oosomashishini Abancedisiweyo",
+      "languages": "Iilwimi Ezixhaswayo",
+      "support": "Inkxaso ye-AI"
+    },
+    "floating": {
+      "growth": "Ukukhula Kweshishini",
+      "compliant": "Kuthobela Imigaqo Ngokupheleleyo"
+    }
+  },
+  "about": {
+    "badge": "Injongo Yethu",
+    "title": "Ukuxhobisa Oosomashishini BaseMzantsi Afrika",
+    "subtitle": "Sikholelwa ukuba lonke ishishini lifanele ukuphumelela. Iqonga lethu libonelela ngezixhobo, ulwazi, nenkxaso efunekayo ukuze kuzulazulwe imigaqo entsonkothileyo kwaye kwakhiwe amashishini aphumeleleyo.",
+    "mission": {
+      "title": "Injongo Yethu",
+      "description": "Ukwenza impumelelo yeshishini ifikelele kuwo wonke umntu ngokwenza ukuthobela imigaqo kufikeleleke, kuqondakale, kwaye kwenziwe kuwo wonke umntu osebenza eshishinini laseMzantsi Afrika.",
+      "points": {
+        "empowerment": "Xhobisa oosomashishini ngolwazi nezixhobo",
+        "compliance": "Yenza lula iimfuno ezintsonkothileyo zokugcina imigaqo",
+        "growth": "Xhasa ukukhula kweshishini okuzinzileyo",
+        "accessibility": "Bonelela ngokufikelela ngeelwimi ezininzi"
+      }
+    },
+    "vision": {
+      "title": "Ukwakha Uqoqosho Lwexesha Elizayo",
+      "description": "Ukudala indawo ekhuphisanayo apho lonke ishishini linokuphumelela khona."
+    },
+    "features": {
+      "mission": {
+        "title": "Injongo Ecacileyo",
+        "description": "Izinikele empumelelweni yoosomashishini"
+      },
+      "impact": {
+        "title": "Impembelelo Yokwenene",
+        "description": "Iziphumo zeshishini ezilinganisekayo"
+      },
+      "innovation": {
+        "title": "Ukusungula",
+        "description": "Ubuchwepheshe be-AI obukhokelayo"
+      },
+      "community": {
+        "title": "Uluntu",
+        "description": "Ukuxhasa amashishini asekuhlaleni"
+      }
+    },
+    "visual": {
+      "title": "Ngokuziqhenya OkwaseMzantsi Afrika",
+      "subtitle": "Ukuxhasa Ishishini Lasekuhlaleni"
+    },
+    "impact": {
+      "title": "Impembelelo Yethu KuLo Lonke UMzantsi Afrika"
+    },
+    "stats": {
+      "businesses": "Amashishini Axhaswayo",
+      "compliance": "Izinga Lokuthobela Imigaqo",
+      "provinces": "Amaphondo Agqityiweyo",
+      "availability": "Kuyafumaneka"
+    }
+  },
+  "projects": {
+    "badge": "Esikunikezelayo",
+    "title": "Izisombululo Zeshishini Ezipheleleyo",
+    "subtitle": "Konke okufunekayo ukuqala, ukukhulisa, kwaye ugcine ishishini elithobela imigaqo eMzantsi Afrika.",
+    "explore": "Hlola Impawu"
   },
   "cta": {
     "title": "Ukulungele Ukuqala?",
@@ -135,8 +226,9 @@
     "you": "Wena",
     "assistant": "Umncedi we-AI",
     "error": "Impazamo",
-    "clearChat": "Cima Incoko",
-    "cleared": "Kucinyiwe!",
+    "clearChat": "Buyisela Incoko",
+    "cleared": "Incoko Ibuyisiwe!",
+    "confirmClear": "Uqinisekile ukuba ufuna ukubuyisela incoko? Oku kuza kucima lonke imbali yencoko.",
     "settings": "Iisetingi",
     "tryAsking": "Zama ukubuza:",
     "messageCount": "{{count}} umyalezo",
@@ -215,6 +307,33 @@
     "notFound": "Isibonelelo esicelweyo asifumaneki."
   },
   "footer": {
-    "copyright": "© 2025 RegulaEase. Ukutyebisa ii-SMME zaseMzantsi Afrika ngokutsha kwedijitali."
+    "copyright": "© 2025 RegulaEase. Ukutyebisa ii-SMME zaseMzantsi Afrika ngokutsha kwedijitali.",
+    "tagline": "Iqabane Lakho Lempumelelo Yeshishini",
+    "description": "Ukuxhobisa oosomashishini baseMzantsi Afrika ngezixhobo, ulwazi, nenkxaso efunekayo ukwakha amashishini aphumeleleyo athobela imigaqo. Impumelelo yakho yinjongo yethu.",
+    "quickLinks": "Izixhumanisi Ezikhawulezayo",
+    "contact": {
+      "email": "Fumana Inkxaso",
+      "phone": "Sifownele",
+      "website": "Tyelela Isayithi"
+    },
+    "resources": {
+      "title": "Izibonelelo",
+      "compliance": "Isikhokelo Sokuthobela Imigaqo",
+      "skills": "Uqeqesho Lwezakhono",
+      "support": "Inkxaso Yeshishini",
+      "community": "Uluntu"
+    },
+    "features": {
+      "compliance": "Izixhobo Zokuthobela Imigaqo",
+      "complianceDesc": "Iimfuno ezintsonkothileyo zokugcina imigaqo zenziwe lula",
+      "skills": "Ukuphuhlisa Izakhono",
+      "skillsDesc": "Izibonelelo zokukhula kwezobuchule",
+      "ai": "Umncedi we-AI",
+      "aiDesc": "Inkxaso yeshishini ekrelekrele 24/7",
+      "multilingual": "Ngeelwimi Ezininzi",
+      "multilingualDesc": "Inkxaso ngeelwimi ezine zaseMzantsi Afrika"
+    },
+    "madeIn": "Kwenziwe eMzantsi Afrika",
+    "backToTop": "Buyela Phezulu"
   }
 } 

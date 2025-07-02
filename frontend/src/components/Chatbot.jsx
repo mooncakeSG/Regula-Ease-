@@ -151,19 +151,23 @@ const Chatbot = () => {
     setMessage(question);
   };
 
+  const [isClearing, setIsClearing] = useState(false);
+
   const clearConversation = () => {
+    // Show confirmation dialog
+    const confirmed = window.confirm(t('chatbot.confirmClear'));
+    if (!confirmed) return;
+
+    setIsClearing(true);
     setConversation([]);
     setError('');
+    setShowSettings(false); // Close settings panel
     localStorage.removeItem('regulaease-chat-history');
     
-    // Add visual feedback
-    const button = document.querySelector('.clear-button');
-    if (button) {
-      button.textContent = '✅ ' + t('chatbot.cleared');
-      setTimeout(() => {
-        button.textContent = t('chatbot.clearChat');
-      }, 2000);
-    }
+    // Visual feedback with state management
+    setTimeout(() => {
+      setIsClearing(false);
+    }, 2000);
   };
 
   const updateAiSettings = (newSettings) => {
@@ -226,11 +230,16 @@ const Chatbot = () => {
           </button>
           <button 
             onClick={clearConversation} 
-            className="clear-button" 
-            disabled={conversation.length === 0}
+            className={`clear-button ${isClearing ? 'success-feedback' : ''}`}
+            disabled={conversation.length === 0 || isClearing}
+            title={t('chatbot.confirmClear')}
           >
-            {t('chatbot.clearChat')}
-          </button>
+            {isClearing ? (
+              <>✅ {t('chatbot.cleared')}</>
+            ) : (
+              <>🔄 {t('chatbot.clearChat')}</>
+            )}
+        </button>
         </div>
       </div>
 

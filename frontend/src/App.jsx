@@ -1,10 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Checklist from './components/Checklist';
-import Skills from './components/Skills';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
 import ChatbotWidget from './components/ChatbotWidget';
-import ThemeToggle from './components/ThemeToggle';
-import LanguageSwitcher from './components/LanguageSwitcher';
 import './App.css';
 
 function App() {
@@ -12,82 +13,21 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <header className="app-header">
-          <div className="header-content">
-            <div className="header-main">
-              <h1>{t('header.title')} 🇿🇦</h1>
-              <p>{t('header.description')}</p>
-            </div>
-            <div className="header-controls">
-              <LanguageSwitcher />
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
+      <div className="App font-inter">
+        {/* Sticky Header */}
+        <Header />
 
-        <main className="app-main">
-          <div className="app-grid">
-            {/* Business Checklist Section */}
-            <section className="app-section">
-              <div className="section-header">
-                <h2>📋 {t('checklist.title')}</h2>
-                <p>{t('checklist.description')}</p>
-              </div>
-              <Checklist />
-            </section>
+        {/* Hero Section */}
+        <Hero />
 
-            {/* Skills Resources Section */}
-            <section className="app-section">
-              <div className="section-header">
-                <h2>📚 {t('skills.title')}</h2>
-                <p>{t('skills.description')}</p>
-              </div>
-              <Skills />
-            </section>
+        {/* About/Mission Section */}
+        <About />
 
-            {/* AI Assistant Call-to-Action */}
-            <section className="app-section full-width ai-cta">
-              <div className="section-header">
-                <h2>🤖 {t('chatbot.title')}</h2>
-                <p>{t('chatbot.description')}</p>
-              </div>
-              <div className="cta-content">
-                <div className="cta-features">
-                  <div className="feature-item">
-                    <span className="feature-icon">💡</span>
-                    <span>{t('cta.features.guidance')}</span>
-                  </div>
-                  <div className="feature-item">
-                    <span className="feature-icon">📋</span>
-                    <span>{t('cta.features.compliance')}</span>
-                  </div>
-                  <div className="feature-item">
-                    <span className="feature-icon">💰</span>
-                    <span>{t('cta.features.support')}</span>
-                  </div>
-                  <div className="feature-item">
-                    <span className="feature-icon">🏛️</span>
-                    <span>{t('cta.features.growth')}</span>
-                  </div>
-                </div>
-                <div className="cta-action">
-                  <p className="cta-text">
-                    <strong>{t('cta.action')}</strong>
-                  </p>
-                  <div className="cta-arrow">
-                    <span>💬</span>
-                    <span className="arrow">↘️</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
+        {/* Projects/Features Section */}
+        <Projects />
 
-        <footer className="app-footer">
-          <p>{t('footer.copyright')}</p>
-        </footer>
+        {/* Footer */}
+        <Footer />
       </div>
       
       {/* Floating Chat Widget */}

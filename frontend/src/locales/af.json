@@ -2,13 +2,104 @@
   "header": {
     "title": "RegulaEase",
     "subtitle": "Klein Besigheid Ondersteuning Assistent",
-    "description": "Navigeer nakoming, ontwikkel vaardighede, en verkry KI-aangedrewe besigheidsleiding - alles ontwerp vir Suid-Afrikaanse entrepreneurs."
+    "description": "Navigeer nakoming, ontwikkel vaardighede, en verkry KI-aangedrewe besigheidsleiding - alles ontwerp vir Suid-Afrikaanse entrepreneurs.",
+    "tagline": "Jou Besigheidsukses Vennoot"
+  },
+  "nav": {
+    "home": "Tuis",
+    "about": "Oor Ons",
+    "projects": "Kenmerke",
+    "contact": "Kontak"
   },
   "navigation": {
     "checklist": "Nakoming Kontrolelys",
     "skills": "Vaardigheidsontwikkeling", 
     "chatbot": "KI Assistent",
     "theme": "Wissel Tema"
+  },
+  "hero": {
+    "badge": "Vir Suid-Afrikaanse Entrepreneurs",
+    "title": {
+      "line1": "Bemagtig Jou",
+      "line2": "Besigheidsreis",
+      "line3": "Met Slim Nakoming"
+    },
+    "description": "Navigeer Suid-Afrikaanse besigheidsregulasies met vertroue. Kry gepersonaliseerde nakomingskontrolelys, vaardigheidsontwikkelingshulpbronne, en KI-aangedrewe leiding - alles in jou voorkeur taal.",
+    "features": {
+      "compliance": "Besigheidsnakoming",
+      "skills": "Vaardigheidsontwikkeling",
+      "ai": "KI Assistent",
+      "multilingual": "4 Tale"
+    },
+    "cta": {
+      "primary": "Begin Nou",
+      "secondary": "Leer Meer"
+    },
+    "stats": {
+      "entrepreneurs": "Entrepreneurs Gehelp",
+      "languages": "Tale Ondersteun",
+      "support": "KI Ondersteuning"
+    },
+    "floating": {
+      "growth": "Besigheidsgroei",
+      "compliant": "Volledig Nakomend"
+    }
+  },
+  "about": {
+    "badge": "Ons Missie",
+    "title": "Bemagtiging van Suid-Afrikaanse Entrepreneurs",
+    "subtitle": "Ons glo elke besigheid verdien om te floreer. Ons platform bied die gereedskap, kennis, en ondersteuning wat nodig is om komplekse regulasies te navigeer en suksesvolle ondernemings te bou.",
+    "mission": {
+      "title": "Ons Missie",
+      "description": "Om besigheidsukses te demokratiseer deur regulatoriese nakoming toeganklik, verstaanbaar, en uitvoerbaar te maak vir elke Suid-Afrikaanse entrepreneur.",
+      "points": {
+        "empowerment": "Bemagtig entrepreneurs met kennis en gereedskap",
+        "compliance": "Vereenvoudig komplekse regulatoriese vereistes",
+        "growth": "Ondersteun volhoubare besigheidsgroei",
+        "accessibility": "Verskaf meertalige toeganklikheid"
+      }
+    },
+    "vision": {
+      "title": "Bou Môre se Ekonomie",
+      "description": "Skep 'n florerende ekosisteem waar elke besigheid kan slaag."
+    },
+    "features": {
+      "mission": {
+        "title": "Duidelike Missie",
+        "description": "Toegewyd aan entrepreneur sukses"
+      },
+      "impact": {
+        "title": "Werklike Impak",
+        "description": "Meetbare besigheidsuitkomste"
+      },
+      "innovation": {
+        "title": "Innovasie",
+        "description": "Voorpunt KI tegnologie"
+      },
+      "community": {
+        "title": "Gemeenskap",
+        "description": "Ondersteun plaaslike besighede"
+      }
+    },
+    "visual": {
+      "title": "Trots Suid-Afrikaans",
+      "subtitle": "Ondersteun Plaaslike Besigheid"
+    },
+    "impact": {
+      "title": "Ons Impak Regoor Suid-Afrika"
+    },
+    "stats": {
+      "businesses": "Besighede Ondersteun",
+      "compliance": "Nakomingskoers",
+      "provinces": "Provinsies Gedek",
+      "availability": "Beskikbaar"
+    }
+  },
+  "projects": {
+    "badge": "Wat Ons Bied",
+    "title": "Omvattende Besigheidsoplossings",
+    "subtitle": "Alles wat jy nodig het om 'n nakomende besigheid in Suid-Afrika te begin, groei, en onderhou.",
+    "explore": "Verken Kenmerk"
   },
   "cta": {
     "title": "Gereed om te Begin?",
@@ -135,8 +226,9 @@
     "you": "Jy",
     "assistant": "KI Assistent",
     "error": "Fout",
-    "clearChat": "Maak Klets Skoon",
-    "cleared": "Skoongemaak!",
+    "clearChat": "Herstel Klets",
+    "cleared": "Klets Herstel!",
+    "confirmClear": "Is jy seker jy wil die klets herstel? Dit sal alle gespreksgeskiedenis uitvee.",
     "settings": "Instellings",
     "tryAsking": "Probeer vra:",
     "messageCount": "{{count}} boodskap",
@@ -215,6 +307,33 @@
     "notFound": "Die aangevraagde hulpbron is nie gevind nie."
   },
   "footer": {
-    "copyright": "© 2025 RegulaEase. Bemagtig Suid-Afrikaanse KMMO's deur digitale innovasie."
+    "copyright": "© 2025 RegulaEase. Bemagtig Suid-Afrikaanse KMMO's deur digitale innovasie.",
+    "tagline": "Jou Besigheidsukses Vennoot",
+    "description": "Bemagtig Suid-Afrikaanse entrepreneurs met die gereedskap, kennis, en ondersteuning wat nodig is om suksesvolle, nakomende besighede te bou. Jou sukses is ons missie.",
+    "quickLinks": "Vinnige Skakels",
+    "contact": {
+      "email": "Kry Ondersteuning",
+      "phone": "Bel Ons",
+      "website": "Besoek Werf"
+    },
+    "resources": {
+      "title": "Hulpbronne",
+      "compliance": "Nakomingsgids",
+      "skills": "Vaardigheidsopleiding",
+      "support": "Besigheidsondersteuning",
+      "community": "Gemeenskap"
+    },
+    "features": {
+      "compliance": "Nakomingsgereedskap",
+      "complianceDesc": "Vereenvoudigde regulatoriese vereistes",
+      "skills": "Vaardigheidsontwikkeling",
+      "skillsDesc": "Professionele groeihulpbronne",
+      "ai": "KI Assistent",
+      "aiDesc": "24/7 intelligente besigheidsondersteuning",
+      "multilingual": "Meertalig",
+      "multilingualDesc": "Ondersteuning in 4 Suid-Afrikaanse tale"
+    },
+    "madeIn": "Gemaak in Suid-Afrika",
+    "backToTop": "Terug na Bo"
   }
 } 
