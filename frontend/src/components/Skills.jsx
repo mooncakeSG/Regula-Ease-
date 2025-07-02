@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Skills = () => {
@@ -6,6 +6,11 @@ const Skills = () => {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [bookmarkedResources, setBookmarkedResources] = useState(new Set());
+  const [searchTerm, setSearchTerm] = useState('');
+  const [levelFilter, setLevelFilter] = useState('all');
+  const [typeFilter, setTypeFilter] = useState('all');
+  const [showBookmarksOnly, setShowBookmarksOnly] = useState(false);
 
   const categories = [
     { value: 'finance', label: 'Finance & Accounting' },
@@ -13,6 +18,93 @@ const Skills = () => {
     { value: 'management', label: 'Management & Leadership' },
     { value: 'legal', label: 'Legal & Compliance' }
   ];
+
+  // Load bookmarked resources from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('regulaease-bookmarked-resources');
+    if (saved) {
+      try {
+        setBookmarkedResources(new Set(JSON.parse(saved)));
+      } catch (error) {
+        console.error('Failed to load bookmarked resources:', error);
+      }
+    }
+  }, []);
+
+  // Save bookmarked resources to localStorage
+  useEffect(() => {
+    if (bookmarkedResources.size > 0) {
+      localStorage.setItem('regulaease-bookmarked-resources', JSON.stringify([...bookmarkedResources]));
+    }
+  }, [bookmarkedResources]);
+
+  // Toggle bookmark for a resource
+  const toggleBookmark = (resourceId) => {
+    setBookmarkedResources(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(resourceId)) {
+        newSet.delete(resourceId);
+      } else {
+        newSet.add(resourceId);
+      }
+      return newSet;
+    });
+  };
+
+  // Filter resources based on search and filters
+  const filteredResources = resources.filter(resource => {
+    const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         resource.provider.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesLevel = levelFilter === 'all' || resource.level === levelFilter;
+    const matchesType = typeFilter === 'all' || resource.type === typeFilter;
+    const matchesBookmark = !showBookmarksOnly || bookmarkedResources.has(resource.id);
+    
+    return matchesSearch && matchesLevel && matchesType && matchesBookmark;
+  });
+
+  // Export resources as CSV
+  const exportToCSV = () => {
+    const headers = ['Title', 'Provider', 'Level', 'Type', 'Duration', 'Cost', 'Skills Covered', 'URL', 'Bookmarked'];
+    const csvData = filteredResources.map(resource => [
+      resource.title,
+      resource.provider,
+      resource.level,
+      resource.type,
+      resource.duration,
+      resource.cost,
+      resource.skills_covered ? resource.skills_covered.join('; ') : '',
+      resource.url || '',
+      bookmarkedResources.has(resource.id) ? 'Yes' : 'No'
+    ]);
+
+    const csvContent = [headers, ...csvData]
+      .map(row => row.map(field => `"${field}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${category}-skills-resources.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Clear all bookmarks
+  const clearBookmarks = () => {
+    setBookmarkedResources(new Set());
+    localStorage.removeItem('regulaease-bookmarked-resources');
+  };
+
+  // Get unique resource types for filter
+  const getResourceTypes = () => {
+    const types = new Set(resources.map(resource => resource.type));
+    return Array.from(types).map(type => ({
+      value: type,
+      label: type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+    }));
+  };
 
   const fetchSkills = async () => {
     setLoading(true);
@@ -80,6 +172,88 @@ const Skills = () => {
         </button>
       </div>
 
+      {/* Advanced Filters and Search */}
+      {resources.length > 0 && (
+        <div className="advanced-controls">
+          <div className="search-filter-row">
+            <div className="input-group">
+              <label htmlFor="searchTerm">🔍 Search Resources:</label>
+              <input
+                id="searchTerm"
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by title, description, or provider..."
+                className="search-input"
+              />
+            </div>
+            
+            <div className="input-group">
+              <label htmlFor="levelFilter">📊 Level:</label>
+              <select
+                id="levelFilter"
+                value={levelFilter}
+                onChange={(e) => setLevelFilter(e.target.value)}
+                className="select-input"
+              >
+                <option value="all">All Levels</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="typeFilter">🎯 Type:</label>
+              <select
+                id="typeFilter"
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
+                className="select-input"
+              >
+                <option value="all">All Types</option>
+                {getResourceTypes().map(type => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="action-buttons">
+            <button 
+              onClick={() => setShowBookmarksOnly(!showBookmarksOnly)}
+              className={`bookmark-filter-btn ${showBookmarksOnly ? 'active' : ''}`}
+              title={showBookmarksOnly ? 'Show all resources' : 'Show bookmarked only'}
+            >
+              {showBookmarksOnly ? '⭐ Showing Bookmarks' : '⭐ Show Bookmarks'}
+              {bookmarkedResources.size > 0 && (
+                <span className="bookmark-count">({bookmarkedResources.size})</span>
+              )}
+            </button>
+
+            <button 
+              onClick={exportToCSV}
+              disabled={filteredResources.length === 0}
+              className="export-button"
+              title="Export resources to CSV"
+            >
+              📥 Export CSV
+            </button>
+            
+            <button 
+              onClick={clearBookmarks}
+              disabled={bookmarkedResources.size === 0}
+              className="clear-button"
+              title="Clear all bookmarks"
+            >
+              🗑️ Clear Bookmarks
+            </button>
+          </div>
+        </div>
+      )}
+
       {error && (
         <div className="error-message">
           <strong>Error:</strong> {error}
@@ -88,21 +262,71 @@ const Skills = () => {
 
       {resources.length > 0 && (
         <div className="skills-results">
-          <h3>Learning Resources for {categories.find(c => c.value === category)?.label}</h3>
+          <div className="results-header">
+            <h3>Learning Resources for {categories.find(c => c.value === category)?.label}</h3>
+            
+            {/* Bookmark Statistics */}
+            {bookmarkedResources.size > 0 && (
+              <div className="bookmark-stats">
+                <span className="stat-badge bookmarked">
+                  ⭐ {bookmarkedResources.size} Bookmarked
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Filter Results Info */}
+          {(searchTerm || levelFilter !== 'all' || typeFilter !== 'all' || showBookmarksOnly) && (
+            <div className="filter-info">
+              <span>
+                {filteredResources.length === resources.length 
+                  ? `Showing all ${resources.length} resources`
+                  : `Showing ${filteredResources.length} of ${resources.length} resources`
+                }
+                {searchTerm && ` matching "${searchTerm}"`}
+                {levelFilter !== 'all' && ` at ${levelFilter} level`}
+                {typeFilter !== 'all' && ` of type ${typeFilter.replace('_', ' ')}`}
+                {showBookmarksOnly && ` (bookmarked only)`}
+              </span>
+              {(searchTerm || levelFilter !== 'all' || typeFilter !== 'all' || showBookmarksOnly) && (
+                <button 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setLevelFilter('all');
+                    setTypeFilter('all');
+                    setShowBookmarksOnly(false);
+                  }}
+                  className="clear-filters-btn"
+                >
+                  Clear All Filters
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="resources-grid">
-            {resources.map((resource) => (
-              <div key={resource.id} className="resource-card">
+            {filteredResources.map((resource) => (
+              <div key={resource.id} className={`resource-card ${bookmarkedResources.has(resource.id) ? 'bookmarked' : ''}`}>
                 <div className="resource-header">
                   <div className="resource-title">
                     <span className="type-icon">{getTypeIcon(resource.type)}</span>
                     <h4>{resource.title}</h4>
                   </div>
-                  <span 
-                    className="level-badge"
-                    style={{ backgroundColor: getLevelColor(resource.level) }}
-                  >
-                    {resource.level}
-                  </span>
+                  <div className="resource-badges">
+                    <span 
+                      className="level-badge"
+                      style={{ backgroundColor: getLevelColor(resource.level) }}
+                    >
+                      {resource.level}
+                    </span>
+                    <button
+                      onClick={() => toggleBookmark(resource.id)}
+                      className={`bookmark-btn ${bookmarkedResources.has(resource.id) ? 'bookmarked' : ''}`}
+                      title={bookmarkedResources.has(resource.id) ? 'Remove from bookmarks' : 'Add to bookmarks'}
+                    >
+                      {bookmarkedResources.has(resource.id) ? '⭐' : '☆'}
+                    </button>
+                  </div>
                 </div>
                 
                 <p className="resource-description">{resource.description}</p>
@@ -147,6 +371,23 @@ const Skills = () => {
               </div>
             ))}
           </div>
+
+          {filteredResources.length === 0 && (
+            <div className="no-results">
+              <p>No resources match your current filters.</p>
+              <button 
+                onClick={() => {
+                  setSearchTerm('');
+                  setLevelFilter('all');
+                  setTypeFilter('all');
+                  setShowBookmarksOnly(false);
+                }}
+                className="clear-filters-btn"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          )}
         </div>
       )}
 

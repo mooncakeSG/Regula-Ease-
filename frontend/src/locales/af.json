@@ -1,0 +1,189 @@
+{
+  "header": {
+    "title": "RegulaEase",
+    "subtitle": "Klein Besigheid Ondersteuning Assistent",
+    "description": "Navigeer nakoming, ontwikkel vaardighede, en verkry KI-aangedrewe besigheidsleiding - alles ontwerp vir Suid-Afrikaanse entrepreneurs."
+  },
+  "navigation": {
+    "checklist": "Nakoming Kontrolelys",
+    "skills": "Vaardigheidsontwikkeling", 
+    "chatbot": "KI Assistent",
+    "theme": "Wissel Tema"
+  },
+  "cta": {
+    "title": "Gereed om te Begin?",
+    "description": "Kry gepersonaliseerde besigheidsleiding van ons KI assistent",
+    "features": {
+      "guidance": "Gepersonaliseerde besigheidsleiding",
+      "support": "24/7 KI ondersteuning beskikbaar",
+      "compliance": "SA nakomings-kundigheid",
+      "growth": "Skaalbare groeistrategieë"
+    },
+    "action": "Klik die klets ikoon hieronder om te begin!",
+    "arrow": "Jou KI Assistent wag hieronder"
+  },
+  "checklist": {
+    "title": "Besigheid Nakoming Kontrolelys",
+    "description": "Kry jou aangepaste nakoming vereistes gebaseer op jou besigheid tipe.",
+    "businessType": "Kies Besigheid Tipe:",
+    "getChecklist": "Kry Kontrolelys",
+    "loading": "Laai...",
+    "search": "Soek Take:",
+    "searchPlaceholder": "Soek volgens titel of beskrywing...",
+    "filterPriority": "Filter volgens Prioriteit:",
+    "priorities": {
+      "all": "Alle Prioriteite",
+      "high": "Hoë Prioriteit", 
+      "medium": "Medium Prioriteit",
+      "low": "Lae Prioriteit"
+    },
+    "exportCSV": "Voer CSV Uit",
+    "clearProgress": "Maak Vordering Skoon", 
+    "businessTypes": {
+      "retail": "Kleinhandel Besigheid",
+      "services": "Dienste Besigheid", 
+      "manufacturing": "Vervaardiging",
+      "technology": "Tegnologie/Sagteware"
+    },
+    "progress": {
+      "completed": "voltooi",
+      "of": "van",
+      "percentage": "{{completed}} van {{total}} voltooi ({{percentage}}%)",
+      "done": "Klaar",
+      "left": "Oor"
+    },
+    "results": {
+      "title": "Nakoming Stappe vir {{businessType}}",
+      "showing": "Wys {{count}} van {{total}} take",
+      "showingAll": "Wys alle {{total}} take",
+      "matching": "wat pas \"{{searchTerm}}\"",
+      "withPriority": "met {{priority}} prioriteit",
+      "clearFilters": "Maak Filters Skoon",
+      "noResults": "Geen take pas jou huidige filters nie."
+    },
+    "item": {
+      "timeRequired": "Tyd Benodig:",
+      "costEstimate": "Koste Skatting:", 
+      "requiredDocuments": "Benodigde Dokumente:",
+      "priority": "prioriteit"
+    },
+    "empty": "Kies 'n besigheid tipe en klik \"Kry Kontrolelys\" om nakoming vereistes te sien."
+  },
+  "skills": {
+    "title": "Vaardigheidsontwikkeling Hulpbronne",
+    "description": "Verkry toegang tot leer hulpbronne om noodsaaklike besigheidsvaardighede te ontwikkel.",
+    "category": "Kies Vaardighede Kategorie:",
+    "getResources": "Kry Hulpbronne",
+    "search": "Soek Hulpbronne:",
+    "searchPlaceholder": "Soek volgens titel, beskrywing, of verskaffer...",
+    "filterLevel": "Vlak:",
+    "filterType": "Tipe:",
+    "levels": {
+      "all": "Alle Vlakke",
+      "beginner": "Beginner", 
+      "intermediate": "Intermediêr",
+      "advanced": "Gevorderd"
+    },
+    "types": {
+      "all": "Alle Tipes",
+      "online_course": "Aanlyn Kursus",
+      "workshop": "Werkswinkel",
+      "certification": "Sertifisering", 
+      "webinar": "Webinar"
+    },
+    "bookmarks": {
+      "show": "Wys Boekmerke",
+      "showing": "Wys Boekmerke",
+      "add": "Voeg by boekmerke",
+      "remove": "Verwyder van boekmerke",
+      "bookmarked": "Geboekmerk",
+      "clear": "Maak Boekmerke Skoon"
+    },
+    "exportCSV": "Voer CSV Uit",
+    "categories": {
+      "finance": "Finansies & Rekeningkunde",
+      "digital": "Digitaal & Bemarking", 
+      "management": "Bestuur & Leierskap",
+      "legal": "Wetlik & Nakoming"
+    },
+    "results": {
+      "title": "Leer Hulpbronne vir {{category}}",
+      "showing": "Wys {{count}} van {{total}} hulpbronne",
+      "showingAll": "Wys alle {{total}} hulpbronne", 
+      "matching": "wat pas \"{{searchTerm}}\"",
+      "atLevel": "op {{level}} vlak",
+      "ofType": "van tipe {{type}}",
+      "bookmarkedOnly": "(slegs geboekmerk)",
+      "clearAllFilters": "Maak Alle Filters Skoon",
+      "noResults": "Geen hulpbronne pas jou huidige filters nie."
+    },
+    "resource": {
+      "provider": "Verskaffer:",
+      "duration": "Duur:",
+      "cost": "Koste:",
+      "skillsCovered": "Vaardighede Gedek:",
+      "visitWebsite": "Besoek Verskaffer Webwerf →"
+    },
+    "empty": "Kies 'n vaardighede kategorie en klik \"Kry Hulpbronne\" om leer geleenthede te sien."
+  },
+  "chatbot": {
+    "title": "KI Besigheid Assistent",
+    "description": "Kry onmiddellike antwoorde op jou besigheidsvrae van ons KI-aangedrewe assistent.",
+    "placeholder": "Tik jou besigheidsvraag hier...",
+    "send": "Stuur",
+    "clear": "Maak Klets Skoon",
+    "messageCount": "{{count}} boodskappe",
+    "sampleQuestions": {
+      "title": "Voorbeeld Vrae",
+      "questions": [
+        "Hoe registreer ek my besigheid in Suid-Afrika?",
+        "Wat is die belasting vereistes vir klein besighede?", 
+        "Hoe kan ek befondsing kry vir my opstart?",
+        "Watter lisensies benodig ek vir 'n kleinhandel besigheid?"
+      ]
+    },
+    "widget": {
+      "toggle": "Wissel Klets",
+      "minimize": "Minimeer Klets",
+      "status": "Aanlyn"
+    },
+    "messages": {
+      "you": "Jy",
+      "assistant": "Assistent",
+      "error": "Fout",
+      "thinking": "Dink...",
+      "hint": "Druk Enter om te stuur, Shift+Enter vir nuwe lyn"
+    }
+  },
+  "common": {
+    "loading": "Laai...",
+    "error": "Fout:",
+    "success": "Sukses!",
+    "cancel": "Kanselleer",
+    "save": "Stoor",
+    "delete": "Verwyder",
+    "edit": "Redigeer",
+    "close": "Sluit",
+    "back": "Terug",
+    "next": "Volgende",
+    "previous": "Vorige",
+    "search": "Soek",
+    "filter": "Filter",
+    "clear": "Maak Skoon",
+    "export": "Voer Uit",
+    "download": "Aflaai",
+    "upload": "Oplaai",
+    "refresh": "Verfris",
+    "settings": "Instellings"
+  },
+  "errors": {
+    "networkError": "Kan nie aan die bediener koppel nie. Maak seker die Flask agtergrond loop.",
+    "fetchError": "Kon nie data kry nie. Probeer asseblief weer.",
+    "invalidInput": "Verskaf asseblief geldige invoer.",
+    "serverError": "Bediener fout het voorgekom. Probeer asseblief later weer.",
+    "notFound": "Die aangevraagde hulpbron is nie gevind nie."
+  },
+  "footer": {
+    "copyright": "© 2025 RegulaEase. Bemagtig Suid-Afrikaanse KMMO's deur digitale innovasie."
+  }
+} 

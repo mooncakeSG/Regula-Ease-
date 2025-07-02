@@ -8,6 +8,30 @@ const Chatbot = () => {
   const [error, setError] = useState('');
   const chatEndRef = useRef(null);
 
+  // Load conversation from localStorage on component mount
+  useEffect(() => {
+    const savedConversation = localStorage.getItem('regulaease-chat-history');
+    if (savedConversation) {
+      try {
+        const parsedConversation = JSON.parse(savedConversation).map(msg => ({
+          ...msg,
+          timestamp: new Date(msg.timestamp)
+        }));
+        setConversation(parsedConversation);
+      } catch (error) {
+        console.error('Failed to load chat history:', error);
+        localStorage.removeItem('regulaease-chat-history');
+      }
+    }
+  }, []);
+
+  // Save conversation to localStorage whenever it changes
+  useEffect(() => {
+    if (conversation.length > 0) {
+      localStorage.setItem('regulaease-chat-history', JSON.stringify(conversation));
+    }
+  }, [conversation]);
+
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -35,6 +59,7 @@ const Chatbot = () => {
 
     // Add user message to conversation
     const userMessage = {
+      id: Date.now() + Math.random(), // Unique ID for animations
       type: 'user',
       content: message,
       timestamp: new Date()
@@ -51,6 +76,7 @@ const Chatbot = () => {
 
       // Add AI response to conversation
       const aiMessage = {
+        id: Date.now() + Math.random(), // Unique ID for animations
         type: 'ai',
         content: response.data.bot_response,
         timestamp: new Date()
@@ -68,6 +94,7 @@ const Chatbot = () => {
 
       // Add error message to conversation
       const errorResponse = {
+        id: Date.now() + Math.random(), // Unique ID for animations
         type: 'error',
         content: errorMessage,
         timestamp: new Date()
@@ -86,13 +113,23 @@ const Chatbot = () => {
     }
   };
 
-  const useSampleQuestion = (question) => {
+  const handleSampleQuestion = (question) => {
     setMessage(question);
   };
 
   const clearConversation = () => {
     setConversation([]);
     setError('');
+    localStorage.removeItem('regulaease-chat-history');
+    
+    // Add visual feedback
+    const button = document.querySelector('.clear-button');
+    if (button) {
+      button.textContent = '✅ Cleared!';
+      setTimeout(() => {
+        button.textContent = 'Clear Chat';
+      }, 2000);
+    }
   };
 
   const formatTimestamp = (timestamp) => {
@@ -102,8 +139,15 @@ const Chatbot = () => {
   return (
     <div className="chatbot-container">
       <div className="chat-header">
-        <h3>💬 Ask Your Business Questions</h3>
-        <button onClick={clearConversation} className="clear-button">
+        <div className="chat-title">
+          <h3>💬 Ask Your Business Questions</h3>
+          {conversation.length > 0 && (
+            <span className="message-count">
+              {conversation.length} message{conversation.length !== 1 ? 's' : ''}
+            </span>
+          )}
+        </div>
+        <button onClick={clearConversation} className="clear-button" disabled={conversation.length === 0}>
           Clear Chat
         </button>
       </div>
@@ -115,7 +159,7 @@ const Chatbot = () => {
             {sampleQuestions.map((question, index) => (
               <button
                 key={index}
-                onClick={() => useSampleQuestion(question)}
+                onClick={() => handleSampleQuestion(question)}
                 className="sample-question"
               >
                 {question}
@@ -127,7 +171,7 @@ const Chatbot = () => {
 
       <div className="chat-messages">
         {conversation.map((msg, index) => (
-          <div key={index} className={`message ${msg.type}`}>
+          <div key={msg.id || index} className={`message ${msg.type} message-animate`}>
             <div className="message-header">
               <span className="message-sender">
                 {msg.type === 'user' ? '👤 You' : msg.type === 'ai' ? '🤖 AI Assistant' : '⚠️ Error'}

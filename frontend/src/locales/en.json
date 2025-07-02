@@ -1,0 +1,189 @@
+{
+  "header": {
+    "title": "RegulaEase",
+    "subtitle": "Small Business Support Assistant",
+    "description": "Navigate compliance, develop skills, and access AI-powered business guidance - all designed for South African entrepreneurs."
+  },
+  "navigation": {
+    "checklist": "Compliance Checklist",
+    "skills": "Skills Development", 
+    "chatbot": "AI Assistant",
+    "theme": "Toggle Theme"
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "description": "Get personalized business guidance from our AI assistant",
+    "features": {
+      "guidance": "Personalized business guidance",
+      "support": "24/7 AI support available",
+      "compliance": "SA compliance expertise",
+      "growth": "Scalable growth strategies"
+    },
+    "action": "Click the chat icon below to begin!",
+    "arrow": "Your AI Assistant is waiting below"
+  },
+  "checklist": {
+    "title": "Business Compliance Checklist",
+    "description": "Get your customized compliance requirements based on your business type.",
+    "businessType": "Select Business Type:",
+    "getChecklist": "Get Checklist",
+    "loading": "Loading...",
+    "search": "Search Tasks:",
+    "searchPlaceholder": "Search by title or description...",
+    "filterPriority": "Filter by Priority:",
+    "priorities": {
+      "all": "All Priorities",
+      "high": "High Priority", 
+      "medium": "Medium Priority",
+      "low": "Low Priority"
+    },
+    "exportCSV": "Export CSV",
+    "clearProgress": "Clear Progress", 
+    "businessTypes": {
+      "retail": "Retail Business",
+      "services": "Service Business", 
+      "manufacturing": "Manufacturing",
+      "technology": "Technology/Software"
+    },
+    "progress": {
+      "completed": "completed",
+      "of": "of",
+      "percentage": "{{completed}} of {{total}} completed ({{percentage}}%)",
+      "done": "Done",
+      "left": "Left"
+    },
+    "results": {
+      "title": "Compliance Steps for {{businessType}}",
+      "showing": "Showing {{count}} of {{total}} tasks",
+      "showingAll": "Showing all {{total}} tasks",
+      "matching": "matching \"{{searchTerm}}\"",
+      "withPriority": "with {{priority}} priority",
+      "clearFilters": "Clear Filters",
+      "noResults": "No tasks match your current filters."
+    },
+    "item": {
+      "timeRequired": "Time Required:",
+      "costEstimate": "Cost Estimate:", 
+      "requiredDocuments": "Required Documents:",
+      "priority": "priority"
+    },
+    "empty": "Select a business type and click \"Get Checklist\" to see compliance requirements."
+  },
+  "skills": {
+    "title": "Skills Development Resources",
+    "description": "Access learning resources to develop essential business skills.",
+    "category": "Select Skills Category:",
+    "getResources": "Get Resources",
+    "search": "Search Resources:",
+    "searchPlaceholder": "Search by title, description, or provider...",
+    "filterLevel": "Level:",
+    "filterType": "Type:",
+    "levels": {
+      "all": "All Levels",
+      "beginner": "Beginner", 
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "types": {
+      "all": "All Types",
+      "online_course": "Online Course",
+      "workshop": "Workshop",
+      "certification": "Certification", 
+      "webinar": "Webinar"
+    },
+    "bookmarks": {
+      "show": "Show Bookmarks",
+      "showing": "Showing Bookmarks",
+      "add": "Add to bookmarks",
+      "remove": "Remove from bookmarks",
+      "bookmarked": "Bookmarked",
+      "clear": "Clear Bookmarks"
+    },
+    "exportCSV": "Export CSV",
+    "categories": {
+      "finance": "Finance & Accounting",
+      "digital": "Digital & Marketing", 
+      "management": "Management & Leadership",
+      "legal": "Legal & Compliance"
+    },
+    "results": {
+      "title": "Learning Resources for {{category}}",
+      "showing": "Showing {{count}} of {{total}} resources",
+      "showingAll": "Showing all {{total}} resources", 
+      "matching": "matching \"{{searchTerm}}\"",
+      "atLevel": "at {{level}} level",
+      "ofType": "of type {{type}}",
+      "bookmarkedOnly": "(bookmarked only)",
+      "clearAllFilters": "Clear All Filters",
+      "noResults": "No resources match your current filters."
+    },
+    "resource": {
+      "provider": "Provider:",
+      "duration": "Duration:",
+      "cost": "Cost:",
+      "skillsCovered": "Skills Covered:",
+      "visitWebsite": "Visit Provider Website →"
+    },
+    "empty": "Select a skills category and click \"Get Resources\" to see learning opportunities."
+  },
+  "chatbot": {
+    "title": "AI Business Assistant",
+    "description": "Get instant answers to your business questions from our AI-powered assistant.",
+    "placeholder": "Type your business question here...",
+    "send": "Send",
+    "clear": "Clear Chat",
+    "messageCount": "{{count}} messages",
+    "sampleQuestions": {
+      "title": "Sample Questions",
+      "questions": [
+        "How do I register my business in South Africa?",
+        "What are the tax requirements for small businesses?", 
+        "How can I get funding for my startup?",
+        "What licenses do I need for a retail business?"
+      ]
+    },
+    "widget": {
+      "toggle": "Toggle Chat",
+      "minimize": "Minimize Chat",
+      "status": "Online"
+    },
+    "messages": {
+      "you": "You",
+      "assistant": "Assistant",
+      "error": "Error",
+      "thinking": "Thinking...",
+      "hint": "Press Enter to send, Shift+Enter for new line"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error:",
+    "success": "Success!",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "export": "Export",
+    "download": "Download",
+    "upload": "Upload",
+    "refresh": "Refresh",
+    "settings": "Settings"
+  },
+  "errors": {
+    "networkError": "Unable to connect to the server. Make sure the Flask backend is running.",
+    "fetchError": "Failed to fetch data. Please try again.",
+    "invalidInput": "Please provide valid input.",
+    "serverError": "Server error occurred. Please try again later.",
+    "notFound": "The requested resource was not found."
+  },
+  "footer": {
+    "copyright": "© 2025 RegulaEase. Empowering South African SMMEs through digital innovation."
+  }
+} 

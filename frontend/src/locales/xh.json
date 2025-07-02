@@ -1,0 +1,189 @@
+{
+  "header": {
+    "title": "RegulaEase",
+    "subtitle": "Umncedi Weeshishini Ezincinane",
+    "description": "Khangela uthobelo lwemigaqo, uphuhlise izakhono, futhi ufumane isikhokelo seshishini esiqhutshwa yi-AI - konke kwenziwe oosomashishini baseMzantsi Afrika."
+  },
+  "navigation": {
+    "checklist": "Uluhlu Lokuthobela Imigaqo",
+    "skills": "Uphuhliso Lwezakhono", 
+    "chatbot": "Umncedi we-AI",
+    "theme": "Tshintsha Umxholo"
+  },
+  "cta": {
+    "title": "Ukulungele Ukuqala?",
+    "description": "Fumana isikhokelo seshishini esenziwe ngokukodwa kumncedi wethu we-AI",
+    "features": {
+      "guidance": "Isikhokelo seshishini esenziwa ngokukodwa",
+      "support": "Inkxaso ye-AI 24/7 iyafumaneka",
+      "compliance": "Ubuchule bothobelo lwemigaqo yaseMzantsi Afrika",
+      "growth": "Izicwangciso zokukhula ezinokulinganiswa"
+    },
+    "action": "Cofa isithonjana sencoko apha ngezantsi ukuqala!",
+    "arrow": "Umncedi wakho we-AI ulindile apha ngezantsi"
+  },
+  "checklist": {
+    "title": "Uluhlu Lokuthobela Imigaqo Yeshishini",
+    "description": "Fumana iimfuno zakho zokuthobela imigaqo ezilungiselelwe uhlobo lweshishini lakho.",
+    "businessType": "Khetha Uhlobo Lweshishini:",
+    "getChecklist": "Fumana Uluhlu",
+    "loading": "Kuyaloda...",
+    "search": "Khangela Imisebenzi:",
+    "searchPlaceholder": "Khangela ngesihloko okanye inkcazo...",
+    "filterPriority": "Coba Ngokubaluleka:",
+    "priorities": {
+      "all": "Konke Okubalulekileyo",
+      "high": "Okubaluleke Kakhulu", 
+      "medium": "Okubaluleke Okuphakathi",
+      "low": "Okungabaluleki Kangako"
+    },
+    "exportCSV": "Khupha i-CSV",
+    "clearProgress": "Cima Inkqubela", 
+    "businessTypes": {
+      "retail": "Ishishini Lokuthengisa",
+      "services": "Ishishini Leenkonzo", 
+      "manufacturing": "Ukuvelisa",
+      "technology": "Iteknoloji/Isoftware"
+    },
+    "progress": {
+      "completed": "kugqityiwe",
+      "of": "kwe",
+      "percentage": "{{completed}} kwe {{total}} kugqityiwe ({{percentage}}%)",
+      "done": "Kugqityiwe",
+      "left": "Kushiyekile"
+    },
+    "results": {
+      "title": "Amanyathelo Okuthobela Imigaqo ye {{businessType}}",
+      "showing": "Kubonisa {{count}} kwe {{total}} imisebenzi",
+      "showingAll": "Kubonisa yonke imisebenzi ye {{total}}",
+      "matching": "ehambelana ne \"{{searchTerm}}\"",
+      "withPriority": "ene {{priority}} priority",
+      "clearFilters": "Cima Izicoci",
+      "noResults": "Akukho misebenzi ihambelana nezicoci zakho zangoku."
+    },
+    "item": {
+      "timeRequired": "Ixesha Elifunekayo:",
+      "costEstimate": "Uqikelelo Lweendleko:", 
+      "requiredDocuments": "Amaxwebhu Afunekayo:",
+      "priority": "okubalulekileyo"
+    },
+    "empty": "Khetha uhlobo lweshishini uze ucofe \"Fumana Uluhlu\" ukubona iimfuno zokuthobela imigaqo."
+  },
+  "skills": {
+    "title": "Izibonelelo Zophuhliso Lwezakhono",
+    "description": "Fikelela kwizibonelelo zokufunda ukuphuhlisa izakhono ezibalulekileyo eshishinini.",
+    "category": "Khetha Udidi Lwezakhono:",
+    "getResources": "Fumana Izibonelelo",
+    "search": "Khangela Izibonelelo:",
+    "searchPlaceholder": "Khangela ngesihloko, inkcazo, okanye umnikezeli...",
+    "filterLevel": "Inqanaba:",
+    "filterType": "Uhlobo:",
+    "levels": {
+      "all": "Onke Amanqanaba",
+      "beginner": "Isiqaleli", 
+      "intermediate": "Ephakathi",
+      "advanced": "Ekwiinqanaba Eziphezulu"
+    },
+    "types": {
+      "all": "Zonke Iintlobo",
+      "online_course": "Isifundo Se-intanethi",
+      "workshop": "Iworkshop",
+      "certification": "Isatifikethi", 
+      "webinar": "I-webinar"
+    },
+    "bookmarks": {
+      "show": "Bonisa Iibhukmaki",
+      "showing": "Kubonisa Iibhukmaki",
+      "add": "Yongeza kwiibhukmaki",
+      "remove": "Susa kwiibhukmaki",
+      "bookmarked": "Kubhukimakiwe",
+      "clear": "Cima Iibhukmaki"
+    },
+    "exportCSV": "Khupha i-CSV",
+    "categories": {
+      "finance": "Ezemali & Ubalo-mali",
+      "digital": "Ezedijitali & Ukuthengisa", 
+      "management": "Ulawulo & Ubunkokeli",
+      "legal": "Ezomthetho & Ukuthobela Imigaqo"
+    },
+    "results": {
+      "title": "Izibonelelo Zokufunda ze {{category}}",
+      "showing": "Kubonisa {{count}} kwe {{total}} izibonelelo",
+      "showingAll": "Kubonisa zonke izibonelelo ezingu {{total}}", 
+      "matching": "ezihambelana ne \"{{searchTerm}}\"",
+      "atLevel": "kwinqanaba le {{level}}",
+      "ofType": "zohlobo lwe {{type}}",
+      "bookmarkedOnly": "(iibhukmaki kuphela)",
+      "clearAllFilters": "Cima Zonke Izicoci",
+      "noResults": "Azikho izibonelelo ezihambelana nezicoci zakho zangoku."
+    },
+    "resource": {
+      "provider": "Umnikezeli:",
+      "duration": "Ubude Bexesha:",
+      "cost": "Iindleko:",
+      "skillsCovered": "Izakhono Ezifundisiweyo:",
+      "visitWebsite": "Tyelela Iwebhusayithi Yomnikezeli →"
+    },
+    "empty": "Khetha udidi lwezakhono uze ucofe \"Fumana Izibonelelo\" ukubona amathuba okufunda."
+  },
+  "chatbot": {
+    "title": "Umncedi Weshishini we-AI",
+    "description": "Fumana iimpendulo ngokukhawuleza kwimibuzo yakho yeshishini kumncedi wethu oqhutshwa yi-AI.",
+    "placeholder": "Bhala umbuzo wakho weshishini apha...",
+    "send": "Thumela",
+    "clear": "Cima Incoko",
+    "messageCount": "{{count}} imiyalezo",
+    "sampleQuestions": {
+      "title": "Imibuzo Yomzekelo",
+      "questions": [
+        "Ndingalibhalisa njani ishishini lam eMzantsi Afrika?",
+        "Zintoni iimfuno zeerhafu zamashishini amancinci?", 
+        "Ndingazifumana njani iimali zenkxaso ye-startup yam?",
+        "Zeziphi iilayisensi endizifunayo kwishishini lokuthengisa?"
+      ]
+    },
+    "widget": {
+      "toggle": "Tshintsha Incoko",
+      "minimize": "Nciphisa Incoko",
+      "status": "Kwi-intanethi"
+    },
+    "messages": {
+      "you": "Wena",
+      "assistant": "Umncedi",
+      "error": "Impazamo",
+      "thinking": "Kuyacingisisa...",
+      "hint": "Cofa u-Enter ukuthumela, u-Shift+Enter womgca omtsha"
+    }
+  },
+  "common": {
+    "loading": "Kuyaloda...",
+    "error": "Impazamo:",
+    "success": "Impumelelo!",
+    "cancel": "Rhoxisa",
+    "save": "Gcina",
+    "delete": "Cima",
+    "edit": "Hlela",
+    "close": "Vala",
+    "back": "Emva",
+    "next": "Okulandelayo",
+    "previous": "Okwangaphambili",
+    "search": "Khangela",
+    "filter": "Coba",
+    "clear": "Cima",
+    "export": "Khupha",
+    "download": "Khuphela",
+    "upload": "Layisha",
+    "refresh": "Hlaziya",
+    "settings": "Iisetingi"
+  },
+  "errors": {
+    "networkError": "Ayikwazi ukunxibelelana neseva. Qiniseka ukuba i-Flask backend iyasebenza.",
+    "fetchError": "Ayiphumelelanga ukufumana idata. Nceda uzame kwakhona.",
+    "invalidInput": "Nceda unikeze igalelo elisemthethweni.",
+    "serverError": "Kwenzeke impazamo yeseva. Nceda uzame kwakhona kamva.",
+    "notFound": "Isibonelelo esicelweyo asifumaneki."
+  },
+  "footer": {
+    "copyright": "© 2025 RegulaEase. Ukutyebisa ii-SMME zaseMzantsi Afrika ngokutsha kwedijitali."
+  }
+} 

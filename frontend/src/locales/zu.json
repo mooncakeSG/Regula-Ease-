@@ -1,0 +1,189 @@
+{
+  "header": {
+    "title": "RegulaEase",
+    "subtitle": "Umsizi Wezinkampani Ezincane",
+    "description": "Zulazulela ukulandela imithetho, thuthukisa amakhono, futhi uzuze ukuhola kwebhizinisi okuqhutshwa yi-AI - konke kwenzelwe osomabhizinisi baseNingizimu Afrika."
+  },
+  "navigation": {
+    "checklist": "Uhlu Lokulandelwa Kwemithetho",
+    "skills": "Ukuthuthukiswa Kwamakhono", 
+    "chatbot": "Umsizi we-AI",
+    "theme": "Shintsha Itimu"
+  },
+  "cta": {
+    "title": "Usukulungele Ukuqala?",
+    "description": "Thola ukuhola kwebhizinisi okwenzelwe wena kumsizi wethu we-AI",
+    "features": {
+      "guidance": "Ukuhola kwebhizinisi okwenzelwe wena",
+      "support": "Ukusekela kwe-AI 24/7 kuyatholakala",
+      "compliance": "Ubuchwepheshe bokulandela imithetho yaseNingizimu Afrika",
+      "growth": "Amasu okukhula angakalwa"
+    },
+    "action": "Chofoza isithonjana sengxoxo ngezansi ukuze uqale!",
+    "arrow": "Umsizi wakho we-AI ulinde ngezansi"
+  },
+  "checklist": {
+    "title": "Uhlu Lokulandelwa Kwemithetho Yebhizinisi",
+    "description": "Thola izidingo zakho zokulandela imithetho ezilungiselelwe uhlobo lwebhizinisi lakho.",
+    "businessType": "Khetha Uhlobo Lwebhizinisi:",
+    "getChecklist": "Thola Uhlu",
+    "loading": "Iyaloda...",
+    "search": "Sesha Imisebenzi:",
+    "searchPlaceholder": "Sesha ngesihloko noma incazelo...",
+    "filterPriority": "Hlungisa Ngokubaluleka:",
+    "priorities": {
+      "all": "Konke Okubalulekile",
+      "high": "Okubaluleke Kakhulu", 
+      "medium": "Okubaluleke Kancane",
+      "low": "Okungabaluleki Kangako"
+    },
+    "exportCSV": "Khipha i-CSV",
+    "clearProgress": "Sula Ukuqhubeka", 
+    "businessTypes": {
+      "retail": "Ibhizinisi Lokuthengisa",
+      "services": "Ibhizinisi Lezinsizakalo", 
+      "manufacturing": "Ukukhiqiza",
+      "technology": "Iteknoloji/Isofthiwe"
+    },
+    "progress": {
+      "completed": "kuqediwe",
+      "of": "ku",
+      "percentage": "{{completed}} ku {{total}} kuqediwe ({{percentage}}%)",
+      "done": "Kuqediwe",
+      "left": "Kusele"
+    },
+    "results": {
+      "title": "Izinyathelo Zokulandela Imithetho ze {{businessType}}",
+      "showing": "Kubonisa {{count}} ku {{total}} imisebenzi",
+      "showingAll": "Kubonisa yonke imisebenzi e {{total}}",
+      "matching": "ehambisana ne \"{{searchTerm}}\"",
+      "withPriority": "ene {{priority}} priority",
+      "clearFilters": "Sula Izihlungi",
+      "noResults": "Ayikho imisebenzi ehambisana nezihlungi zakho zamanje."
+    },
+    "item": {
+      "timeRequired": "Isikhathi Esidingekayo:",
+      "costEstimate": "Isilinganiso Sezindleko:", 
+      "requiredDocuments": "Amadokhumenti Adingekayo:",
+      "priority": "okubalulekile"
+    },
+    "empty": "Khetha uhlobo lwebhizinisi bese uchofoza \"Thola Uhlu\" ukuze ubone izidingo zokulandela imithetho."
+  },
+  "skills": {
+    "title": "Izinsiza Zokuthuthukisa Amakhono",
+    "description": "Finyelela ezinsizeni zokufunda ukuthuthukisa amakhono abalulekile ebhizinisini.",
+    "category": "Khetha Isigaba Samakhono:",
+    "getResources": "Thola Izinsiza",
+    "search": "Sesha Izinsiza:",
+    "searchPlaceholder": "Sesha ngesihloko, incazelo, noma umhlinzeki...",
+    "filterLevel": "Izinga:",
+    "filterType": "Uhlobo:",
+    "levels": {
+      "all": "Wonke Amazinga",
+      "beginner": "Isiqalo", 
+      "intermediate": "Phakathi",
+      "advanced": "Okomkhulu"
+    },
+    "types": {
+      "all": "Zonke Izinhlobo",
+      "online_course": "Isifundo Se-intanethi",
+      "workshop": "Iworkshop",
+      "certification": "Isitifiketi", 
+      "webinar": "I-webinar"
+    },
+    "bookmarks": {
+      "show": "Bonisa Amabhukmaki",
+      "showing": "Kubonisa Amabhukmaki",
+      "add": "Engeza kumabhukmaki",
+      "remove": "Susa kumabhukmaki",
+      "bookmarked": "Kubhukimakiwe",
+      "clear": "Sula Amabhukmaki"
+    },
+    "exportCSV": "Khipha i-CSV",
+    "categories": {
+      "finance": "Izezimali & Ukubala",
+      "digital": "Idijithali & Ukumaketha", 
+      "management": "Ukuphatha & Ubuholi",
+      "legal": "Ezomthetho & Ukulandela Imithetho"
+    },
+    "results": {
+      "title": "Izinsiza Zokufunda ze {{category}}",
+      "showing": "Kubonisa {{count}} ku {{total}} izinsiza",
+      "showingAll": "Kubonisa zonke izinsiza ezingu {{total}}", 
+      "matching": "ezihambisana ne \"{{searchTerm}}\"",
+      "atLevel": "ezingeni le {{level}}",
+      "ofType": "zohlobo lwe {{type}}",
+      "bookmarkedOnly": "(amabhukmaki kuphela)",
+      "clearAllFilters": "Sula Zonke Izihlungi",
+      "noResults": "Azikho izinsiza ezihambisana nezihlungi zakho zamanje."
+    },
+    "resource": {
+      "provider": "Umhlinzeki:",
+      "duration": "Ubude Besikhathi:",
+      "cost": "Izindleko:",
+      "skillsCovered": "Amakhono Afundiswa:",
+      "visitWebsite": "Vakashela Iwebhusayithi Yomhlinzeki →"
+    },
+    "empty": "Khetha isigaba samakhono bese uchofoza \"Thola Izinsiza\" ukuze ubone amathuba okufunda."
+  },
+  "chatbot": {
+    "title": "Umsizi Webhizinisi we-AI",
+    "description": "Thola izimpendulo ngokushesha kumibuzo yakho yebhizinisi kumsizi wethu oqhutshwa yi-AI.",
+    "placeholder": "Bhala umbuzo wakho webhizinisi lapha...",
+    "send": "Thumela",
+    "clear": "Sula Ingxoxo",
+    "messageCount": "{{count}} imilayezo",
+    "sampleQuestions": {
+      "title": "Imibuzo Yesibonelo",
+      "questions": [
+        "Ngingalibhalisa kanjani ibhizinisi lami eNingizimu Afrika?",
+        "Yini izidingo zentela zamabhizinisi amancane?", 
+        "Ngingathola kanjani uxhaso lwezimali lwe-startup yami?",
+        "Yimaphi amalayisense engiwadinga ebhizinisini lokuthengisa?"
+      ]
+    },
+    "widget": {
+      "toggle": "Shintsha Ingxoxo",
+      "minimize": "Nciphisa Ingxoxo",
+      "status": "Ku-intanethi"
+    },
+    "messages": {
+      "you": "Wena",
+      "assistant": "Umsizi",
+      "error": "Iphutha",
+      "thinking": "Kuyacabanga...",
+      "hint": "Cindezela u-Enter ukuthumela, u-Shift+Enter wemugqa omusha"
+    }
+  },
+  "common": {
+    "loading": "Iyaloda...",
+    "error": "Iphutha:",
+    "success": "Impumelelo!",
+    "cancel": "Khansela",
+    "save": "Gcina",
+    "delete": "Susa",
+    "edit": "Hlela",
+    "close": "Vala",
+    "back": "Emuva",
+    "next": "Okulandelayo",
+    "previous": "Okwangaphambili",
+    "search": "Sesha",
+    "filter": "Hlungi",
+    "clear": "Sula",
+    "export": "Khipha",
+    "download": "Dawuniloda",
+    "upload": "Layisha",
+    "refresh": "Vusela",
+    "settings": "Izilungiselelo"
+  },
+  "errors": {
+    "networkError": "Ayikwazi ukuxhuma kuseva. Qiniseka ukuthi i-Flask backend iyasebenza.",
+    "fetchError": "Yehlulekile ukuthola idatha. Ngicela uzame futhi.",
+    "invalidInput": "Ngicela unikeze okufakwayo okuvumelekile.",
+    "serverError": "Kwenzeke iphutha leseva. Ngicela uzame futhi kamuva.",
+    "notFound": "Insiza ecelwe ayitholakali."
+  },
+  "footer": {
+    "copyright": "© 2025 RegulaEase. Ukuqinisa ama-SMME aseNingizimu Afrika ngokusungula kwedijithali."
+  }
+} 

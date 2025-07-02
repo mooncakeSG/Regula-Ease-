@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Checklist = () => {
@@ -6,6 +6,9 @@ const Checklist = () => {
   const [checklist, setChecklist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [completedItems, setCompletedItems] = useState(new Set());
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priorityFilter, setPriorityFilter] = useState('all');
 
   const businessTypes = [
     { value: 'retail', label: 'Retail Business' },
@@ -13,6 +16,88 @@ const Checklist = () => {
     { value: 'manufacturing', label: 'Manufacturing' },
     { value: 'technology', label: 'Technology/Software' }
   ];
+
+  // Load completed items from localStorage on component mount
+  useEffect(() => {
+    const saved = localStorage.getItem(`regulaease-checklist-${businessType}`);
+    if (saved) {
+      try {
+        setCompletedItems(new Set(JSON.parse(saved)));
+      } catch (error) {
+        console.error('Failed to load completed items:', error);
+      }
+    }
+  }, [businessType]);
+
+  // Save completed items to localStorage when they change
+  useEffect(() => {
+    if (completedItems.size > 0) {
+      localStorage.setItem(
+        `regulaease-checklist-${businessType}`, 
+        JSON.stringify([...completedItems])
+      );
+    }
+  }, [completedItems, businessType]);
+
+  // Toggle item completion
+  const toggleItemCompletion = (itemId) => {
+    setCompletedItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(itemId)) {
+        newSet.delete(itemId);
+      } else {
+        newSet.add(itemId);
+      }
+      return newSet;
+    });
+  };
+
+  // Calculate progress statistics
+  const getProgressStats = () => {
+    const total = filteredChecklist.length;
+    const completed = filteredChecklist.filter(item => completedItems.has(item.id)).length;
+    const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return { total, completed, percentage };
+  };
+
+  // Filter checklist based on search and priority
+  const filteredChecklist = checklist.filter(item => {
+    const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesPriority = priorityFilter === 'all' || item.priority === priorityFilter;
+    return matchesSearch && matchesPriority;
+  });
+
+  // Export checklist as CSV
+  const exportToCSV = () => {
+    const headers = ['Task', 'Priority', 'Status', 'Time Required', 'Cost Estimate', 'Required Documents'];
+    const csvData = filteredChecklist.map(item => [
+      item.title,
+      item.priority,
+      completedItems.has(item.id) ? 'Completed' : 'Pending',
+      item.estimated_time,
+      item.cost_estimate,
+      item.required_documents ? item.required_documents.join('; ') : ''
+    ]);
+
+    const csvContent = [headers, ...csvData]
+      .map(row => row.map(field => `"${field}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${businessType}-compliance-checklist.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Clear all completed items
+  const clearProgress = () => {
+    setCompletedItems(new Set());
+    localStorage.removeItem(`regulaease-checklist-${businessType}`);
+  };
 
   const fetchChecklist = async () => {
     setLoading(true);
@@ -42,6 +127,8 @@ const Checklist = () => {
     }
   };
 
+  const progressStats = getProgressStats();
+
   return (
     <div className="checklist-container">
       <div className="controls">
@@ -70,6 +157,60 @@ const Checklist = () => {
         </button>
       </div>
 
+      {/* Advanced Filters and Search */}
+      {checklist.length > 0 && (
+        <div className="advanced-controls">
+          <div className="search-filter-row">
+            <div className="input-group">
+              <label htmlFor="searchTerm">🔍 Search Tasks:</label>
+              <input
+                id="searchTerm"
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by title or description..."
+                className="search-input"
+              />
+            </div>
+            
+            <div className="input-group">
+              <label htmlFor="priorityFilter">📊 Filter by Priority:</label>
+              <select
+                id="priorityFilter"
+                value={priorityFilter}
+                onChange={(e) => setPriorityFilter(e.target.value)}
+                className="select-input"
+              >
+                <option value="all">All Priorities</option>
+                <option value="high">High Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="low">Low Priority</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="action-buttons">
+            <button 
+              onClick={exportToCSV}
+              disabled={filteredChecklist.length === 0}
+              className="export-button"
+              title="Export checklist to CSV"
+            >
+              📥 Export CSV
+            </button>
+            
+            <button 
+              onClick={clearProgress}
+              disabled={completedItems.size === 0}
+              className="clear-button"
+              title="Clear all progress"
+            >
+              🗑️ Clear Progress
+            </button>
+          </div>
+        </div>
+      )}
+
       {error && (
         <div className="error-message">
           <strong>Error:</strong> {error}
@@ -78,12 +219,78 @@ const Checklist = () => {
 
       {checklist.length > 0 && (
         <div className="checklist-results">
-          <h3>Compliance Steps for {businessTypes.find(t => t.value === businessType)?.label}</h3>
+          <div className="results-header">
+            <h3>Compliance Steps for {businessTypes.find(t => t.value === businessType)?.label}</h3>
+            
+            {/* Progress Statistics */}
+            <div className="progress-stats">
+              <div className="progress-bar-container">
+                <div className="progress-info">
+                  <span className="progress-text">
+                    {progressStats.completed} of {progressStats.total} completed ({progressStats.percentage}%)
+                  </span>
+                  <span className="progress-percentage">{progressStats.percentage}%</span>
+                </div>
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ width: `${progressStats.percentage}%` }}
+                  ></div>
+                </div>
+              </div>
+              
+              <div className="stats-badges">
+                <span className="stat-badge completed">
+                  ✅ {progressStats.completed} Done
+                </span>
+                <span className="stat-badge remaining">
+                  ⏳ {progressStats.total - progressStats.completed} Left
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Filter Results Info */}
+          {(searchTerm || priorityFilter !== 'all') && (
+            <div className="filter-info">
+              <span>
+                {filteredChecklist.length === checklist.length 
+                  ? `Showing all ${checklist.length} tasks`
+                  : `Showing ${filteredChecklist.length} of ${checklist.length} tasks`
+                }
+                {searchTerm && ` matching "${searchTerm}"`}
+                {priorityFilter !== 'all' && ` with ${priorityFilter} priority`}
+              </span>
+              {(searchTerm || priorityFilter !== 'all') && (
+                <button 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setPriorityFilter('all');
+                  }}
+                  className="clear-filters-btn"
+                >
+                  Clear Filters
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="checklist-items">
-            {checklist.map((item) => (
-              <div key={item.id} className="checklist-item">
+            {filteredChecklist.map((item) => (
+              <div key={item.id} className={`checklist-item ${completedItems.has(item.id) ? 'completed' : ''}`}>
                 <div className="item-header">
-                  <h4>{item.title}</h4>
+                  <div className="item-title-section">
+                    <label className="checkbox-container">
+                      <input
+                        type="checkbox"
+                        checked={completedItems.has(item.id)}
+                        onChange={() => toggleItemCompletion(item.id)}
+                        className="item-checkbox"
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <h4 className={completedItems.has(item.id) ? 'completed-title' : ''}>{item.title}</h4>
+                  </div>
                   <span 
                     className="priority-badge"
                     style={{ backgroundColor: getPriorityColor(item.priority) }}
@@ -116,6 +323,21 @@ const Checklist = () => {
               </div>
             ))}
           </div>
+
+          {filteredChecklist.length === 0 && (
+            <div className="no-results">
+              <p>No tasks match your current filters.</p>
+              <button 
+                onClick={() => {
+                  setSearchTerm('');
+                  setPriorityFilter('all');
+                }}
+                className="clear-filters-btn"
+              >
+                Clear Filters
+              </button>
+            </div>
+          )}
         </div>
       )}
 
