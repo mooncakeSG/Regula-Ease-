@@ -5,6 +5,8 @@ import Skills from './components/Skills';
 import ChatbotWidget from './components/ChatbotWidget';
 import ThemeToggle from './components/ThemeToggle';
 import LanguageSwitcher from './components/LanguageSwitcher';
+import Login from './components/Login';
+import Register from './components/Register';
 import './App.css';
 
 function App() {
@@ -20,6 +22,10 @@ function App() {
               <p>{t('header.description')}</p>
             </div>
             <div className="header-controls">
+              <div className="auth-controls">
+                <Register />
+                <Login />
+              </div>
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
@@ -89,11 +95,11 @@ function App() {
           <p>{t('footer.copyright')}</p>
         </footer>
       </div>
-      
+
       {/* Floating Chat Widget */}
       <ChatbotWidget />
     </>
   );
 }
 
-export default App; 
+export default App;
