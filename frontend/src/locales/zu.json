@@ -2,13 +2,104 @@
   "header": {
     "title": "RegulaEase",
     "subtitle": "Umsizi Wezinkampani Ezincane",
-    "description": "Zulazulela ukulandela imithetho, thuthukisa amakhono, futhi uzuze ukuhola kwebhizinisi okuqhutshwa yi-AI - konke kwenzelwe osomabhizinisi baseNingizimu Afrika."
+    "description": "Zulazulela ukulandela imithetho, thuthukisa amakhono, futhi uzuze ukuhola kwebhizinisi okuqhutshwa yi-AI - konke kwenzelwe osomabhizinisi baseNingizimu Afrika.",
+    "tagline": "Umlingane Wakho Wempumelelo Yebhizinisi"
+  },
+  "nav": {
+    "home": "Ikhaya",
+    "about": "Ngathi",
+    "projects": "Izici",
+    "contact": "Oxhumana Nathi"
   },
   "navigation": {
     "checklist": "Uhlu Lokulandelwa Kwemithetho",
     "skills": "Ukuthuthukiswa Kwamakhono", 
     "chatbot": "Umsizi we-AI",
     "theme": "Shintsha Itimu"
+  },
+  "hero": {
+    "badge": "Kwabasomabhizinisi BaseNingizimu Afrika",
+    "title": {
+      "line1": "Nikeza Amandla",
+      "line2": "Uhambo Lwakho Lwebhizinisi",
+      "line3": "Ngokulandela Imithetho Okuhlakaniphile"
+    },
+    "description": "Zulazulela imithetho yebhizinisi yaseNingizimu Afrika ngokuzethemba. Thola uhlu lokulandela imithetho olwenzelwe wena, izinsiza zokuthuthukisa amakhono, nokuhola okuqhutshwa yi-AI - konke ngolimi lwakho.",
+    "features": {
+      "compliance": "Ukulandela Imithetho Yebhizinisi",
+      "skills": "Ukuthuthukisa Amakhono",
+      "ai": "Umsizi we-AI",
+      "multilingual": "Izilimi ezi-4"
+    },
+    "cta": {
+      "primary": "Qala Manje",
+      "secondary": "Funda Kabanzi"
+    },
+    "stats": {
+      "entrepreneurs": "Osomabhizinisi Abasizekile",
+      "languages": "Izilimi Ezisekelwayo",
+      "support": "Ukusekela kwe-AI"
+    },
+    "floating": {
+      "growth": "Ukukhula Kwebhizinisi",
+      "compliant": "Kulandela Imithetho Ngokuphelele"
+    }
+  },
+  "about": {
+    "badge": "Umgomo Wethu",
+    "title": "Ukuphakamisa Osomabhizinisi BaseNingizimu Afrika",
+    "subtitle": "Sikholelwa ukuthi yonke inkampani ifanele ukuchuma. Ipulatifomu yethu inikeza amathuluzi, ulwazi, nosekelo oludingekayo ukuze kuzulazuleke imithetho eyinkimbinkimbi futhi kwakhiwe amabhizinisi aphumelelayo.",
+    "mission": {
+      "title": "Umgomo Wethu",
+      "description": "Ukwenza impumelelo yebhizinisi ifinyeleke kuwo wonke umuntu ngokwenza ukulandela imithetho kufinyeleke, kuqondakale, futhi kwenziwe kuwo wonke umuntu osebenza ebhizinisini laseNingizimu Afrika.",
+      "points": {
+        "empowerment": "Nikeza amandla osomabhizinisi ngolwazi namathuluzi",
+        "compliance": "Yenza lula izidingo eziyinkimbinkimbi zokugcina imithetho",
+        "growth": "Sekela ukukhula kwebhizinisi okusimeme",
+        "accessibility": "Nikeza ukufinyeleka ngezilimi eziningi"
+      }
+    },
+    "vision": {
+      "title": "Ukwakha Umnotho Wakusasa",
+      "description": "Ukudala indawo echuma lapho yonke inkampani ingaphumelela khona."
+    },
+    "features": {
+      "mission": {
+        "title": "Umgomo Ocacile",
+        "description": "Uzinikele empumelelweni yosomabhizinisi"
+      },
+      "impact": {
+        "title": "Umthelela Wangempela",
+        "description": "Imiphumela yebhizinisi elinganiseka"
+      },
+      "innovation": {
+        "title": "Ukusungula",
+        "description": "Iteknoloji ye-AI esesilingweni"
+      },
+      "community": {
+        "title": "Umphakathi",
+        "description": "Ukusekela amabhizinisi asendaweni"
+      }
+    },
+    "visual": {
+      "title": "Ngokuziqhenya OkwaseNingizimu Afrika",
+      "subtitle": "Ukusekela Ibhizinisi Lasendaweni"
+    },
+    "impact": {
+      "title": "Umthelela Wethu Kuwo Wonke UNingizimu Afrika"
+    },
+    "stats": {
+      "businesses": "Amabhizinisi Asekelwe",
+      "compliance": "Izinga Lokulandela Imithetho",
+      "provinces": "Izifundazwe Ezimbiwe",
+      "availability": "Kuyatholakala"
+    }
+  },
+  "projects": {
+    "badge": "Osikuhlinzekayo",
+    "title": "Izixazululo Zybhizinisi Eziphelele",
+    "subtitle": "Konke okudingayo ukuqala, ukukhulisa, futhi ugcine ibhizinisi elalandela imithetho eNingizimu Afrika.",
+    "explore": "Hlola Isici"
   },
   "cta": {
     "title": "Usukulungele Ukuqala?",
@@ -135,8 +226,9 @@
     "you": "Wena",
     "assistant": "Umsizi we-AI",
     "error": "Iphutha",
-    "clearChat": "Sula Ingxoxo",
-    "cleared": "Kususiwe!",
+    "clearChat": "Buyisela Ingxoxo",
+    "cleared": "Ingxoxo Ibuyiselwe!",
+    "confirmClear": "Uqinisekile ukuthi ufuna ukubuyisela ingxoxo? Lokhu kuzosula lonke umlando wengxoxo.",
     "settings": "Izilungiselelo",
     "tryAsking": "Zama ukubuza:",
     "messageCount": "{{count}} umlayezo",
@@ -215,6 +307,33 @@
     "notFound": "Insiza ecelwe ayitholakali."
   },
   "footer": {
-    "copyright": "© 2025 RegulaEase. Ukuqinisa ama-SMME aseNingizimu Afrika ngokusungula kwedijithali."
+    "copyright": "© 2025 RegulaEase. Ukuqinisa ama-SMME aseNingizimu Afrika ngokusungula kwedijithali.",
+    "tagline": "Umlingane Wakho Wempumelelo Yebhizinisi",
+    "description": "Ukuqinisa osomabhizinisi baseNingizimu Afrika ngamathuluzi, ulwazi, nosekelo oludingekayo ukwakha amabhizinisi aphumelelayo alandela imithetho. Impumelelo yakho yumgomo wethu.",
+    "quickLinks": "Izixhumanisi Ezisheshayo",
+    "contact": {
+      "email": "Thola Usekelo",
+      "phone": "Sishayele",
+      "website": "Vakashela Isayithi"
+    },
+    "resources": {
+      "title": "Izinsiza",
+      "compliance": "Umhlahlandlela Wokulandela Imithetho",
+      "skills": "Ukuqeqeshwa Kwamakhono",
+      "support": "Usekelo Lwebhizinisi",
+      "community": "Umphakathi"
+    },
+    "features": {
+      "compliance": "Amathuluzi Okulandela Imithetho",
+      "complianceDesc": "Izidingo eziyinkimbinkimbi zokugcina imithetho zenziwe lula",
+      "skills": "Ukuthuthukisa Amakhono",
+      "skillsDesc": "Izinsiza zokukhula kochwepheshe",
+      "ai": "Umsizi we-AI",
+      "aiDesc": "Usekelo lwebhizinisi oluthutha 24/7",
+      "multilingual": "Ezilimi Eziningi",
+      "multilingualDesc": "Usekelo ngezilimi ezine zaseNingizimu Afrika"
+    },
+    "madeIn": "Kwenziwa eNingizimu Afrika",
+    "backToTop": "Buyela Phezulu"
   }
 } 

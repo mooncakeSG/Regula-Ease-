@@ -92,7 +92,7 @@ Empowering South African entrepreneurs with intelligent business support, making
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/mooncakesg/regula-ease.git
+   git clone https://github.com/yourusername/regula-ease.git
    cd regula-ease
    ```
 
@@ -344,6 +344,11 @@ We welcome contributions from the South African developer community! Here's how 
 - **Issues**: Report bugs via GitHub Issues
 - **Discussions**: Join community discussions on GitHub
 
+### Connect With Us
+- **Website**: [Coming Soon]
+-
+
+---
 
 ## 📜 License
 
@@ -365,7 +370,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 RegulaEase was created with the vision of democratizing business knowledge and making entrepreneurship more accessible to all South Africans. By combining modern technology with local context, we're building tools that truly serve our community's needs.
 
-**Built with by the Bolders**
+**Built with ❤️ in South Africa 🇿🇦**
 
 ---
 

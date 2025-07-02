@@ -1,12 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Checklist from './components/Checklist';
-import Skills from './components/Skills';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Footer from './components/Footer';
 import ChatbotWidget from './components/ChatbotWidget';
 import ThemeToggle from './components/ThemeToggle';
 import LanguageSwitcher from './components/LanguageSwitcher';
-import Login from './components/Login';
-import Register from './components/Register';
 import './App.css';
 
 function App() {
@@ -22,10 +23,6 @@ function App() {
               <p>{t('header.description')}</p>
             </div>
             <div className="header-controls">
-              <div className="auth-controls">
-                <Register />
-                <Login />
-              </div>
               <LanguageSwitcher />
               <ThemeToggle />
             </div>

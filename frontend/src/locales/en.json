@@ -2,13 +2,104 @@
   "header": {
     "title": "RegulaEase",
     "subtitle": "Small Business Support Assistant",
-    "description": "Navigate compliance, develop skills, and access AI-powered business guidance - all designed for South African entrepreneurs."
+    "description": "Navigate compliance, develop skills, and access AI-powered business guidance - all designed for South African entrepreneurs.",
+    "tagline": "Your Business Success Partner"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Features",
+    "contact": "Contact"
   },
   "navigation": {
     "checklist": "Compliance Checklist",
     "skills": "Skills Development", 
     "chatbot": "AI Assistant",
     "theme": "Toggle Theme"
+  },
+  "hero": {
+    "badge": "For South African Entrepreneurs",
+    "title": {
+      "line1": "Empower Your",
+      "line2": "Business Journey",
+      "line3": "With Smart Compliance"
+    },
+    "description": "Navigate South African business regulations with confidence. Get personalized compliance checklists, skills development resources, and AI-powered guidance - all in your preferred language.",
+    "features": {
+      "compliance": "Business Compliance",
+      "skills": "Skills Development",
+      "ai": "AI Assistant",
+      "multilingual": "4 Languages"
+    },
+    "cta": {
+      "primary": "Get Started",
+      "secondary": "Learn More"
+    },
+    "stats": {
+      "entrepreneurs": "Entrepreneurs Helped",
+      "languages": "Languages Supported",
+      "support": "AI Support"
+    },
+    "floating": {
+      "growth": "Business Growth",
+      "compliant": "Fully Compliant"
+    }
+  },
+  "about": {
+    "badge": "Our Mission",
+    "title": "Empowering South African Entrepreneurs",
+    "subtitle": "We believe every business deserves to thrive. Our platform provides the tools, knowledge, and support needed to navigate complex regulations and build successful enterprises.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize business success by making regulatory compliance accessible, understandable, and actionable for every South African entrepreneur.",
+      "points": {
+        "empowerment": "Empower entrepreneurs with knowledge and tools",
+        "compliance": "Simplify complex regulatory requirements",
+        "growth": "Support sustainable business growth",
+        "accessibility": "Provide multilingual accessibility"
+      }
+    },
+    "vision": {
+      "title": "Building Tomorrow's Economy",
+      "description": "Creating a thriving ecosystem where every business can succeed."
+    },
+    "features": {
+      "mission": {
+        "title": "Clear Mission",
+        "description": "Dedicated to entrepreneur success"
+      },
+      "impact": {
+        "title": "Real Impact",
+        "description": "Measurable business outcomes"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Cutting-edge AI technology"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Supporting local businesses"
+      }
+    },
+    "visual": {
+      "title": "Proudly South African",
+      "subtitle": "Supporting Local Business"
+    },
+    "impact": {
+      "title": "Our Impact Across South Africa"
+    },
+    "stats": {
+      "businesses": "Businesses Supported",
+      "compliance": "Compliance Rate",
+      "provinces": "Provinces Covered",
+      "availability": "Available"
+    }
+  },
+  "projects": {
+    "badge": "What We Offer",
+    "title": "Comprehensive Business Solutions",
+    "subtitle": "Everything you need to start, grow, and maintain a compliant business in South Africa.",
+    "explore": "Explore Feature"
   },
   "cta": {
     "title": "Ready to Get Started?",
@@ -135,8 +226,9 @@
     "you": "You",
     "assistant": "AI Assistant",
     "error": "Error",
-    "clearChat": "Clear Chat",
-    "cleared": "Cleared!",
+    "clearChat": "Reset Chat",
+    "cleared": "Chat Reset!",
+    "confirmClear": "Are you sure you want to reset the chat? This will clear all conversation history.",
     "settings": "Settings",
     "tryAsking": "Try asking:",
     "messageCount": "{{count}} message",
@@ -215,6 +307,33 @@
     "notFound": "The requested resource was not found."
   },
   "footer": {
-    "copyright": "© 2025 RegulaEase. Empowering South African SMMEs through digital innovation."
+    "copyright": "© 2025 RegulaEase. Empowering South African SMMEs through digital innovation.",
+    "tagline": "Your Business Success Partner",
+    "description": "Empowering South African entrepreneurs with the tools, knowledge, and support needed to build successful, compliant businesses. Your success is our mission.",
+    "quickLinks": "Quick Links",
+    "contact": {
+      "email": "Get Support",
+      "phone": "Call Us",
+      "website": "Visit Site"
+    },
+    "resources": {
+      "title": "Resources",
+      "compliance": "Compliance Guide",
+      "skills": "Skills Training",
+      "support": "Business Support",
+      "community": "Community"
+    },
+    "features": {
+      "compliance": "Compliance Tools",
+      "complianceDesc": "Simplified regulatory requirements",
+      "skills": "Skills Development",
+      "skillsDesc": "Professional growth resources",
+      "ai": "AI Assistant",
+      "aiDesc": "24/7 intelligent business support",
+      "multilingual": "Multi-Language",
+      "multilingualDesc": "Support in 4 South African languages"
+    },
+    "madeIn": "Made in South Africa",
+    "backToTop": "Back to Top"
   }
 } 
