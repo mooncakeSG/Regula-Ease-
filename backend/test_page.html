@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Business Support API - Test Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .endpoint-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .endpoint-title {
+            color: #27ae60;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .chatbot-section textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        .response-area {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .success {
+            border-left-color: #27ae60;
+            background-color: #d5f4e6;
+        }
+        .error {
+            border-left-color: #e74c3c;
+            background-color: #fdf2f2;
+        }
+        .status {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .loading {
+            color: #f39c12;
+        }
+        .select-group {
+            margin: 10px 0;
+        }
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+        .api-info {
+            background-color: #e8f4fd;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏢 Small Business Support API Test Page</h1>
+        
+        <div class="api-info">
+            <strong>API Base URL:</strong> <span id="apiUrl">http://localhost:5000</span><br>
+            <strong>Status:</strong> <span id="apiStatus">Checking...</span>
+        </div>
+
+        <!-- API Info Endpoint -->
+        <div class="endpoint-section">
+            <div class="endpoint-title">📋 API Information - GET /</div>
+            <p>Get basic API information and available endpoints</p>
+            <button onclick="testApiInfo()">Test API Info</button>
+            <div id="apiInfoResponse" class="response-area" style="display: none;"></div>
+        </div>
+
+        <!-- Health Check Endpoint -->
+        <div class="endpoint-section">
+            <div class="endpoint-title">💚 Health Check - GET /health</div>
+            <p>Check if the API is running and healthy</p>
+            <button onclick="testHealthCheck()">Test Health Check</button>
+            <div id="healthResponse" class="response-area" style="display: none;"></div>
+        </div>
+
+        <!-- Checklist Endpoint -->
+        <div class="endpoint-section">
+            <div class="endpoint-title">📝 Business Checklist - GET /checklist</div>
+            <p>Get compliance checklist for different business types</p>
+            <div class="select-group">
+                <label>Business Type:</label>
+                <select id="businessType">
+                    <option value="retail">Retail</option>
+                    <option value="services">Services</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="technology">Technology</option>
+                    <option value="invalid">Invalid Type (Test Error)</option>
+                </select>
+            </div>
+            <button onclick="testChecklist()">Get Checklist</button>
+            <button onclick="testChecklistError()">Test Missing Parameter</button>
+            <div id="checklistResponse" class="response-area" style="display: none;"></div>
+        </div>
+
+        <!-- Skills Endpoint -->
+        <div class="endpoint-section">
+            <div class="endpoint-title">🎓 Skills Resources - GET /skills</div>
+            <p>Get learning resources for different skill categories</p>
+            <div class="select-group">
+                <label>Category:</label>
+                <select id="skillsCategory">
+                    <option value="finance">Finance</option>
+                    <option value="digital">Digital</option>
+                    <option value="management">Management</option>
+                    <option value="legal">Legal</option>
+                    <option value="invalid">Invalid Category (Test Error)</option>
+                </select>
+            </div>
+            <button onclick="testSkills()">Get Skills Resources</button>
+            <button onclick="testSkillsError()">Test Missing Parameter</button>
+            <div id="skillsResponse" class="response-area" style="display: none;"></div>
+        </div>
+
+        <!-- Chatbot Endpoint -->
+        <div class="endpoint-section chatbot-section">
+            <div class="endpoint-title">🤖 AI Compliance Assistant - POST /chatbot</div>
+            <p>Ask the AI assistant questions about South African business compliance</p>
+            <textarea id="chatMessage" placeholder="Ask a question like: 'What are the basic requirements to start a retail business in South Africa?'">What are the basic requirements to start a retail business in South Africa?</textarea>
+            <button onclick="testChatbot()">Ask AI Assistant</button>
+            <button onclick="testChatbotError()">Test Empty Message</button>
+            <div id="chatbotResponse" class="response-area" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+
+        // Check API status on page load
+        window.onload = function() {
+            checkApiStatus();
+        };
+
+        async function checkApiStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                if (response.ok) {
+                    document.getElementById('apiStatus').innerHTML = '<span style="color: green;">✅ Online</span>';
+                } else {
+                    document.getElementById('apiStatus').innerHTML = '<span style="color: red;">❌ Error</span>';
+                }
+            } catch (error) {
+                document.getElementById('apiStatus').innerHTML = '<span style="color: red;">❌ Offline</span>';
+            }
+        }
+
+        async function makeRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+                return {
+                    status: response.status,
+                    ok: response.ok,
+                    data: data
+                };
+            } catch (error) {
+                return {
+                    status: 0,
+                    ok: false,
+                    data: { error: 'Network error', message: error.message }
+                };
+            }
+        }
+
+        function displayResponse(elementId, response) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            
+            const statusClass = response.ok ? 'success' : 'error';
+            const statusText = response.ok ? '✅ SUCCESS' : '❌ ERROR';
+            
+            element.className = `response-area ${statusClass}`;
+            element.innerHTML = `
+                <div class="status">Status: ${response.status} - ${statusText}</div>
+                ${JSON.stringify(response.data, null, 2)}
+            `;
+        }
+
+        function showLoading(elementId) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = 'response-area loading';
+            element.innerHTML = '<div class="status">🔄 Loading...</div>';
+        }
+
+        async function testApiInfo() {
+            showLoading('apiInfoResponse');
+            const response = await makeRequest(`${API_BASE}/`);
+            displayResponse('apiInfoResponse', response);
+        }
+
+        async function testHealthCheck() {
+            showLoading('healthResponse');
+            const response = await makeRequest(`${API_BASE}/health`);
+            displayResponse('healthResponse', response);
+        }
+
+        async function testChecklist() {
+            showLoading('checklistResponse');
+            const businessType = document.getElementById('businessType').value;
+            const response = await makeRequest(`${API_BASE}/checklist?type=${businessType}`);
+            displayResponse('checklistResponse', response);
+        }
+
+        async function testChecklistError() {
+            showLoading('checklistResponse');
+            const response = await makeRequest(`${API_BASE}/checklist`);
+            displayResponse('checklistResponse', response);
+        }
+
+        async function testSkills() {
+            showLoading('skillsResponse');
+            const category = document.getElementById('skillsCategory').value;
+            const response = await makeRequest(`${API_BASE}/skills?category=${category}`);
+            displayResponse('skillsResponse', response);
+        }
+
+        async function testSkillsError() {
+            showLoading('skillsResponse');
+            const response = await makeRequest(`${API_BASE}/skills`);
+            displayResponse('skillsResponse', response);
+        }
+
+        async function testChatbot() {
+            showLoading('chatbotResponse');
+            const message = document.getElementById('chatMessage').value;
+            const response = await makeRequest(`${API_BASE}/chatbot`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message })
+            });
+            displayResponse('chatbotResponse', response);
+        }
+
+        async function testChatbotError() {
+            showLoading('chatbotResponse');
+            const response = await makeRequest(`${API_BASE}/chatbot`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({})
+            });
+            displayResponse('chatbotResponse', response);
+        }
+    </script>
+</body>
+</html> 

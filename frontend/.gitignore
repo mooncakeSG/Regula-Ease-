@@ -1,0 +1,23 @@
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment and credentials
+.env
+*.env
+
+# OS/System files
+.DS_Store
+Thumbs.db
+
+# Virtual environment folders (if used)
+venv/
+env/
+
+# Logs and misc
+*.log
+
+# VSCode or IDE settings
+.vscode/
+.idea/

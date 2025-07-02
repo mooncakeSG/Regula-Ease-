@@ -1,0 +1,190 @@
+{
+  "retail": [
+    {
+      "id": 1,
+      "title": "Register your business",
+      "description": "Register with Companies and Intellectual Property Commission (CIPC)",
+      "priority": "high",
+      "estimated_time": "2-5 business days",
+      "required_documents": ["ID documents", "Address proof", "Business name reservation"],
+      "cost_estimate": "R175 - R500"
+    },
+    {
+      "id": 2,
+      "title": "Get a tax number",
+      "description": "Register for income tax and VAT with SARS",
+      "priority": "high",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["CIPC registration certificate", "Banking details", "ID documents"],
+      "cost_estimate": "Free"
+    },
+    {
+      "id": 3,
+      "title": "Open a business bank account",
+      "description": "Separate your business and personal finances",
+      "priority": "high",
+      "estimated_time": "1-3 days",
+      "required_documents": ["CIPC certificate", "Tax clearance", "ID documents", "Proof of address"],
+      "cost_estimate": "R50 - R200 monthly"
+    },
+    {
+      "id": 4,
+      "title": "Get retail licenses",
+      "description": "Obtain municipal trading license and any industry-specific permits",
+      "priority": "medium",
+      "estimated_time": "2-4 weeks",
+      "required_documents": ["Zoning certificate", "Fire safety certificate", "Health certificate (if applicable)"],
+      "cost_estimate": "R300 - R1000"
+    },
+    {
+      "id": 5,
+      "title": "Register for UIF and SDL",
+      "description": "Register employees for Unemployment Insurance Fund and Skills Development Levy",
+      "priority": "medium",
+      "estimated_time": "1 week",
+      "required_documents": ["Employee contracts", "Business registration"],
+      "cost_estimate": "1% of payroll for UIF, 1% for SDL"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Register your business",
+      "description": "Register with Companies and Intellectual Property Commission (CIPC)",
+      "priority": "high",
+      "estimated_time": "2-5 business days",
+      "required_documents": ["ID documents", "Address proof", "Business name reservation"],
+      "cost_estimate": "R175 - R500"
+    },
+    {
+      "id": 2,
+      "title": "Get a tax number",
+      "description": "Register for income tax and VAT with SARS",
+      "priority": "high",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["CIPC registration certificate", "Banking details", "ID documents"],
+      "cost_estimate": "Free"
+    },
+    {
+      "id": 3,
+      "title": "Open a business bank account",
+      "description": "Separate your business and personal finances",
+      "priority": "high",
+      "estimated_time": "1-3 days",
+      "required_documents": ["CIPC certificate", "Tax clearance", "ID documents", "Proof of address"],
+      "cost_estimate": "R50 - R200 monthly"
+    },
+    {
+      "id": 4,
+      "title": "Professional registration",
+      "description": "Register with relevant professional bodies if required",
+      "priority": "medium",
+      "estimated_time": "2-6 weeks",
+      "required_documents": ["Qualifications", "Professional references", "CPD certificates"],
+      "cost_estimate": "R500 - R2000 annually"
+    },
+    {
+      "id": 5,
+      "title": "Professional indemnity insurance",
+      "description": "Protect your business against professional liability claims",
+      "priority": "medium",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["Business registration", "Professional qualification proof"],
+      "cost_estimate": "R1000 - R5000 annually"
+    }
+  ],
+  "manufacturing": [
+    {
+      "id": 1,
+      "title": "Register your business",
+      "description": "Register with Companies and Intellectual Property Commission (CIPC)",
+      "priority": "high",
+      "estimated_time": "2-5 business days",
+      "required_documents": ["ID documents", "Address proof", "Business name reservation"],
+      "cost_estimate": "R175 - R500"
+    },
+    {
+      "id": 2,
+      "title": "Get a tax number",
+      "description": "Register for income tax and VAT with SARS",
+      "priority": "high",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["CIPC registration certificate", "Banking details", "ID documents"],
+      "cost_estimate": "Free"
+    },
+    {
+      "id": 3,
+      "title": "Environmental permits",
+      "description": "Obtain environmental impact and waste disposal permits",
+      "priority": "high",
+      "estimated_time": "3-8 weeks",
+      "required_documents": ["Environmental impact assessment", "Waste management plan"],
+      "cost_estimate": "R2000 - R10000"
+    },
+    {
+      "id": 4,
+      "title": "Health and safety compliance",
+      "description": "Implement Occupational Health and Safety Act requirements",
+      "priority": "high",
+      "estimated_time": "2-4 weeks",
+      "required_documents": ["Safety procedures manual", "Employee safety training records"],
+      "cost_estimate": "R5000 - R15000"
+    },
+    {
+      "id": 5,
+      "title": "Quality certifications",
+      "description": "Obtain relevant quality standards (ISO, SABS, etc.)",
+      "priority": "medium",
+      "estimated_time": "6-12 months",
+      "required_documents": ["Quality management system", "Product testing certificates"],
+      "cost_estimate": "R20000 - R50000"
+    }
+  ],
+  "technology": [
+    {
+      "id": 1,
+      "title": "Register your business",
+      "description": "Register with Companies and Intellectual Property Commission (CIPC)",
+      "priority": "high",
+      "estimated_time": "2-5 business days",
+      "required_documents": ["ID documents", "Address proof", "Business name reservation"],
+      "cost_estimate": "R175 - R500"
+    },
+    {
+      "id": 2,
+      "title": "Get a tax number",
+      "description": "Register for income tax and VAT with SARS",
+      "priority": "high",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["CIPC registration certificate", "Banking details", "ID documents"],
+      "cost_estimate": "Free"
+    },
+    {
+      "id": 3,
+      "title": "Intellectual property protection",
+      "description": "Register trademarks, copyrights, and patents",
+      "priority": "medium",
+      "estimated_time": "6-18 months",
+      "required_documents": ["IP documentation", "Technical specifications", "Legal representation"],
+      "cost_estimate": "R5000 - R25000"
+    },
+    {
+      "id": 4,
+      "title": "Data protection compliance",
+      "description": "Implement POPIA (Protection of Personal Information Act) requirements",
+      "priority": "high",
+      "estimated_time": "4-8 weeks",
+      "required_documents": ["Privacy policy", "Data processing agreements", "Security measures documentation"],
+      "cost_estimate": "R10000 - R30000"
+    },
+    {
+      "id": 5,
+      "title": "Software licensing",
+      "description": "Ensure all software used is properly licensed",
+      "priority": "medium",
+      "estimated_time": "1-2 weeks",
+      "required_documents": ["Software audit", "License agreements"],
+      "cost_estimate": "Variable based on software needs"
+    }
+  ]
+} 

@@ -1,0 +1,202 @@
+{
+  "finance": [
+    {
+      "id": 1,
+      "title": "Basic Bookkeeping for Small Business",
+      "description": "Learn to track income, expenses, and manage cash flow effectively",
+      "type": "online_course",
+      "provider": "SEDA (Small Enterprise Development Agency)",
+      "duration": "4 weeks",
+      "cost": "Free",
+      "level": "beginner",
+      "url": "https://www.seda.org.za/",
+      "skills_covered": ["Cash flow management", "Basic accounting", "Financial record keeping"]
+    },
+    {
+      "id": 2,
+      "title": "Understanding Tax for Small Business",
+      "description": "Navigate South African tax requirements including VAT, income tax, and PAYE",
+      "type": "workshop",
+      "provider": "SARS eFiling",
+      "duration": "2 days",
+      "cost": "Free",
+      "level": "intermediate",
+      "url": "https://www.sars.gov.za/",
+      "skills_covered": ["Tax compliance", "VAT registration", "Income tax returns"]
+    },
+    {
+      "id": 3,
+      "title": "Financial Planning and Budgeting",
+      "description": "Create budgets, forecast revenue, and plan for business growth",
+      "type": "online_course",
+      "provider": "University of Cape Town (Coursera)",
+      "duration": "6 weeks",
+      "cost": "R500 - R2000",
+      "level": "intermediate",
+      "url": "https://www.coursera.org/",
+      "skills_covered": ["Budget creation", "Financial forecasting", "Business planning"]
+    },
+    {
+      "id": 4,
+      "title": "Access to Finance Workshop",
+      "description": "Learn about funding options, grants, and how to approach investors",
+      "type": "workshop",
+      "provider": "Industrial Development Corporation (IDC)",
+      "duration": "1 day",
+      "cost": "Free",
+      "level": "intermediate",
+      "url": "https://www.idc.co.za/",
+      "skills_covered": ["Funding applications", "Business loans", "Grant writing"]
+    }
+  ],
+  "digital": [
+    {
+      "id": 1,
+      "title": "Digital Marketing Basics",
+      "description": "Learn social media marketing, Google Ads, and online presence management",
+      "type": "online_course",
+      "provider": "Google Digital Skills",
+      "duration": "3 weeks",
+      "cost": "Free",
+      "level": "beginner",
+      "url": "https://learndigital.withgoogle.com/",
+      "skills_covered": ["Social media marketing", "Google Ads", "SEO basics"]
+    },
+    {
+      "id": 2,
+      "title": "E-commerce for Small Business",
+      "description": "Set up online stores and manage digital sales channels",
+      "type": "workshop",
+      "provider": "PayFast Academy",
+      "duration": "2 days",
+      "cost": "R500",
+      "level": "beginner",
+      "url": "https://www.payfast.co.za/",
+      "skills_covered": ["Online store setup", "Payment processing", "Digital sales"]
+    },
+    {
+      "id": 3,
+      "title": "Website Development Basics",
+      "description": "Create and maintain a professional business website",
+      "type": "online_course",
+      "provider": "CodeSpace Academy",
+      "duration": "8 weeks",
+      "cost": "R3000 - R8000",
+      "level": "beginner",
+      "url": "https://www.codespace.co.za/",
+      "skills_covered": ["HTML/CSS", "WordPress", "Website maintenance"]
+    },
+    {
+      "id": 4,
+      "title": "Data Analytics for Business",
+      "description": "Use data to make informed business decisions and track performance",
+      "type": "online_course",
+      "provider": "Coursera (University of Witwatersrand)",
+      "duration": "4 weeks",
+      "cost": "R1500",
+      "level": "intermediate",
+      "url": "https://www.coursera.org/",
+      "skills_covered": ["Google Analytics", "Business intelligence", "Data interpretation"]
+    }
+  ],
+  "management": [
+    {
+      "id": 1,
+      "title": "Small Business Management Fundamentals",
+      "description": "Core principles of running and growing a small business",
+      "type": "workshop",
+      "provider": "SEDA Business Development",
+      "duration": "3 days",
+      "cost": "Free",
+      "level": "beginner",
+      "url": "https://www.seda.org.za/",
+      "skills_covered": ["Business planning", "Operations management", "Team leadership"]
+    },
+    {
+      "id": 2,
+      "title": "Customer Service Excellence",
+      "description": "Build customer relationships and improve service delivery",
+      "type": "online_course",
+      "provider": "SAB Foundation",
+      "duration": "2 weeks",
+      "cost": "Free",
+      "level": "beginner",
+      "url": "https://www.sabfoundation.co.za/",
+      "skills_covered": ["Customer relations", "Service delivery", "Complaint handling"]
+    },
+    {
+      "id": 3,
+      "title": "Project Management for Small Business",
+      "description": "Manage projects efficiently and deliver on time and budget",
+      "type": "online_course",
+      "provider": "Project Management South Africa",
+      "duration": "6 weeks",
+      "cost": "R2500",
+      "level": "intermediate",
+      "url": "https://www.pmisa.org.za/",
+      "skills_covered": ["Project planning", "Resource management", "Risk assessment"]
+    },
+    {
+      "id": 4,
+      "title": "Human Resources for Small Business",
+      "description": "Hire, manage, and retain employees effectively",
+      "type": "workshop",
+      "provider": "Labour Relations Institute",
+      "duration": "2 days",
+      "cost": "R1200",
+      "level": "intermediate",
+      "url": "https://www.lri.co.za/",
+      "skills_covered": ["Recruitment", "Employment law", "Performance management"]
+    }
+  ],
+  "legal": [
+    {
+      "id": 1,
+      "title": "Business Law Basics",
+      "description": "Understanding contracts, business structures, and legal compliance",
+      "type": "workshop",
+      "provider": "Legal Aid South Africa",
+      "duration": "1 day",
+      "cost": "Free",
+      "level": "beginner",
+      "url": "https://www.legal-aid.co.za/",
+      "skills_covered": ["Contract law", "Business registration", "Legal compliance"]
+    },
+    {
+      "id": 2,
+      "title": "Employment Law for Small Business",
+      "description": "Navigate labour laws, contracts, and employee rights",
+      "type": "online_course",
+      "provider": "CCMA Training",
+      "duration": "3 weeks",
+      "cost": "R800",
+      "level": "intermediate",
+      "url": "https://www.ccma.org.za/",
+      "skills_covered": ["Labour law", "Employment contracts", "Disciplinary procedures"]
+    },
+    {
+      "id": 3,
+      "title": "Intellectual Property Protection",
+      "description": "Protect your business ideas, trademarks, and innovations",
+      "type": "workshop",
+      "provider": "CIPC IP Training",
+      "duration": "2 days",
+      "cost": "R500",
+      "level": "intermediate",
+      "url": "https://www.cipc.co.za/",
+      "skills_covered": ["Trademark registration", "Copyright protection", "Patent applications"]
+    },
+    {
+      "id": 4,
+      "title": "POPIA Compliance Workshop",
+      "description": "Implement data protection requirements under South African law",
+      "type": "workshop",
+      "provider": "Information Regulator SA",
+      "duration": "1 day",
+      "cost": "Free",
+      "level": "intermediate",
+      "url": "https://www.justice.gov.za/inforeg/",
+      "skills_covered": ["Data protection", "Privacy policies", "POPIA compliance"]
+    }
+  ]
+} 
