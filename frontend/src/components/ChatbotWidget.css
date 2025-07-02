@@ -112,8 +112,11 @@
   border: 1px solid var(--border-primary, #e1e8ed);
   overflow: hidden;
   transform-origin: bottom right;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  /* Optimize for smooth animations */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .chatbot-window.closed {

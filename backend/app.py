@@ -100,7 +100,16 @@ def get_skills():
 def chatbot():
     """
     POST /chatbot route
-    Accepts a JSON body with a 'message' field and returns the chatbot's response.
+    Enhanced chatbot with conversation context, tone adjustment, and industry customization.
+    
+    Expected JSON body:
+    {
+        "message": "Your question here",
+        "conversation_history": [...],  // Optional: Previous conversation messages
+        "tone": "professional|casual|friendly",  // Optional: Conversation tone
+        "business_type": "retail|services|...",  // Optional: Business type for context
+        "user_preferences": {...}  // Optional: User preferences for personalization
+    }
     """
     if not request.is_json:
         return jsonify({
@@ -123,14 +132,42 @@ def chatbot():
             'message': 'Message must be a non-empty string'
         }), 400
     
-    # Call the compliance bot
+    # Extract optional parameters
+    conversation_history = data.get('conversation_history', [])
+    tone = data.get('tone', 'professional')
+    business_type = data.get('business_type')
+    user_preferences = data.get('user_preferences', {})
+    
+    # Validate tone parameter
+    valid_tones = ['professional', 'casual', 'friendly']
+    if tone not in valid_tones:
+        tone = 'professional'
+    
+    # Validate conversation history format
+    if conversation_history and not isinstance(conversation_history, list):
+        conversation_history = []
+    
+    # Call the enhanced compliance bot
     try:
-        response = ask_compliance_bot(message.strip())
+        response = ask_compliance_bot(
+            message.strip(),
+            conversation_history=conversation_history,
+            tone=tone,
+            business_type=business_type,
+            user_preferences=user_preferences
+        )
+        
         return jsonify({
             'user_message': message.strip(),
-            'bot_response': response
+            'bot_response': response,
+            'context': {
+                'tone': tone,
+                'business_type': business_type,
+                'conversation_length': len(conversation_history)
+            }
         })
     except Exception as e:
+        print(f"Chatbot error: {e}")
         return jsonify({
             'error': 'Chatbot error',
             'message': 'Sorry, I couldn\'t process your request right now.'

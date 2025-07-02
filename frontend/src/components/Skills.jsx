@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Skills = () => {
   const [category, setCategory] = useState('finance');
@@ -145,7 +146,12 @@ const Skills = () => {
   };
 
   return (
-    <div className="skills-container">
+    <motion.div 
+      className="skills-container"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="controls">
         <div className="input-group">
           <label htmlFor="category">Select Skills Category:</label>
@@ -396,7 +402,7 @@ const Skills = () => {
           <p>Select a skills category and click "Get Resources" to see learning opportunities.</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

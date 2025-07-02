@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Checklist = () => {
   const [businessType, setBusinessType] = useState('retail');
@@ -130,7 +131,12 @@ const Checklist = () => {
   const progressStats = getProgressStats();
 
   return (
-    <div className="checklist-container">
+    <motion.div 
+      className="checklist-container"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="controls">
         <div className="input-group">
           <label htmlFor="businessType">Select Business Type:</label>
@@ -346,7 +352,7 @@ const Checklist = () => {
           <p>Select a business type and click "Get Checklist" to see compliance requirements.</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

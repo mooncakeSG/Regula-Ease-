@@ -127,32 +127,63 @@
     "empty": "Khetha isigaba samakhono bese uchofoza \"Thola Izinsiza\" ukuze ubone amathuba okufunda."
   },
   "chatbot": {
-    "title": "Umsizi Webhizinisi we-AI",
-    "description": "Thola izimpendulo ngokushesha kumibuzo yakho yebhizinisi kumsizi wethu oqhutshwa yi-AI.",
-    "placeholder": "Bhala umbuzo wakho webhizinisi lapha...",
+    "title": "Umsizi Webhizinisi We-AI",
+    "description": "Thola izimpendulo ngokushesha kumibuzo yakho yebhizinisi kusukela kumsizi wethu oqhutshwa yi-AI.",
+    "placeholder": "Buza ngobhaliso lwebhizinisi, ukulandela imithetho, intela, amalayisense...",
     "send": "Thumela",
-    "clear": "Sula Ingxoxo",
-    "messageCount": "{{count}} imilayezo",
-    "sampleQuestions": {
-      "title": "Imibuzo Yesibonelo",
-      "questions": [
-        "Ngingalibhalisa kanjani ibhizinisi lami eNingizimu Afrika?",
-        "Yini izidingo zentela zamabhizinisi amancane?", 
-        "Ngingathola kanjani uxhaso lwezimali lwe-startup yami?",
-        "Yimaphi amalayisense engiwadinga ebhizinisini lokuthengisa?"
-      ]
+    "thinking": "Ngiyacabanga...",
+    "you": "Wena",
+    "assistant": "Umsizi we-AI",
+    "error": "Iphutha",
+    "clearChat": "Sula Ingxoxo",
+    "cleared": "Kususiwe!",
+    "settings": "Izilungiselelo",
+    "tryAsking": "Zama ukubuza:",
+    "messageCount": "{{count}} umlayezo",
+    "messageCount_plural": "{{count}} imiyalezo",
+    "contextInfo": "Umongo we-AI Usetiwe",
+    "inputHint": "Cindezela Enter ukuthumela, Shift+Enter ukuvula umugqa omusha",
+    "samples": {
+      "registration": "Yini izidingo eziyisisekelo zokuqala ibhizinisi lokuthengisa eNingizimu Afrika?",
+      "cipc": "Ngibhalise kanjani ibhizinisi lami ku-CIPC?",
+      "tax": "Yiziphi izibopho zentela zamabhizinisi amancane?",
+      "bank": "Ngidinga iakhawunti yebhange yebhizinisi?",
+      "licenses": "Yimaphi amalayisense engiwadinga erestorentini?"
+    },
+    "errors": {
+      "emptyMessage": "Sicela ufake umlayezo",
+      "aiError": "Kwehlulekile ukuthola impendulo kumsizi we-AI",
+      "connectionError": "Ayikwazi ukuxhuma kuseva. Qiniseka ukuthi i-Flask backend iyasebenza."
+    },
+    "tones": {
+      "professional": "Obuchwepheshe",
+      "casual": "Okulula",
+      "friendly": "Obubele"
+    },
+    "businessTypes": {
+      "retail": "Ukuthengisa",
+      "services": "Amasevisi",
+      "manufacturing": "Ukukhiqiza",
+      "technology": "Iteknoloji",
+      "food": "Ukudla & Ukuphuza",
+      "hospitality": "Ukwamukela Izihambi"
+    },
+    "experienceLevels": {
+      "beginner": "Osaqalayo",
+      "intermediate": "Phakathi",
+      "advanced": "Ophakeme"
+    },
+    "settings": {
+      "toneTitle": "Uhlobo Lengxoxo",
+      "businessTypeTitle": "Uhlobo Lwebhizinisi",
+      "experienceTitle": "Izinga Lokwazi",
+      "selectBusinessType": "Khetha uhlobo lwebhizinisi lakho",
+      "helpText": "Lezi zilungiselelo zisiza ukwenza izimpendulo ze-AI zifanele izidingo zakho nezindlela zakho zokuxhumana."
     },
     "widget": {
       "toggle": "Shintsha Ingxoxo",
       "minimize": "Nciphisa Ingxoxo",
-      "status": "Ku-intanethi"
-    },
-    "messages": {
-      "you": "Wena",
-      "assistant": "Umsizi",
-      "error": "Iphutha",
-      "thinking": "Kuyacabanga...",
-      "hint": "Cindezela u-Enter ukuthumela, u-Shift+Enter wemugqa omusha"
+      "status": "Ku-inthanethi"
     }
   },
   "common": {

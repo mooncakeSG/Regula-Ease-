@@ -127,32 +127,63 @@
     "empty": "Kies 'n vaardighede kategorie en klik \"Kry Hulpbronne\" om leer geleenthede te sien."
   },
   "chatbot": {
-    "title": "KI Besigheid Assistent",
-    "description": "Kry onmiddellike antwoorde op jou besigheidsvrae van ons KI-aangedrewe assistent.",
-    "placeholder": "Tik jou besigheidsvraag hier...",
+    "title": "KI Besigheidsassistent",
+    "description": "Kry kitskitsantwoorde op jou besigheidsvrae van ons KI-aangedrewe assistent.",
+    "placeholder": "Vra oor besigheidsregistrasie, nakoming, belasting, lisensies...",
     "send": "Stuur",
-    "clear": "Maak Klets Skoon",
-    "messageCount": "{{count}} boodskappe",
-    "sampleQuestions": {
-      "title": "Voorbeeld Vrae",
-      "questions": [
-        "Hoe registreer ek my besigheid in Suid-Afrika?",
-        "Wat is die belasting vereistes vir klein besighede?", 
-        "Hoe kan ek befondsing kry vir my opstart?",
-        "Watter lisensies benodig ek vir 'n kleinhandel besigheid?"
-      ]
+    "thinking": "Dink...",
+    "you": "Jy",
+    "assistant": "KI Assistent",
+    "error": "Fout",
+    "clearChat": "Maak Klets Skoon",
+    "cleared": "Skoongemaak!",
+    "settings": "Instellings",
+    "tryAsking": "Probeer vra:",
+    "messageCount": "{{count}} boodskap",
+    "messageCount_plural": "{{count}} boodskappe",
+    "contextInfo": "KI Konteks Toegepas",
+    "inputHint": "Druk Enter om te stuur, Shift+Enter vir nuwe lyn",
+    "samples": {
+      "registration": "Wat is die basiese vereistes om 'n kleinhandelsbesigheid in Suid-Afrika te begin?",
+      "cipc": "Hoe registreer ek my besigheid by die CIPC?",
+      "tax": "Watter belastingverpligtinge het klein besighede?",
+      "bank": "Het ek 'n besigheidsbank rekening nodig?",
+      "licenses": "Watter lisensies benodig ek vir 'n restaurant?"
+    },
+    "errors": {
+      "emptyMessage": "Tik asseblief 'n boodskap in",
+      "aiError": "Kon nie 'n respons van die KI assistent kry nie",
+      "connectionError": "Kan nie aan die bediener koppel nie. Maak seker die Flask backend loop."
+    },
+    "tones": {
+      "professional": "Professioneel",
+      "casual": "Informeel",
+      "friendly": "Vriendelik"
+    },
+    "businessTypes": {
+      "retail": "Kleinhandel",
+      "services": "Dienste",
+      "manufacturing": "Vervaardiging",
+      "technology": "Tegnologie",
+      "food": "Kos & Drank",
+      "hospitality": "Gasvryheid"
+    },
+    "experienceLevels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediêr",
+      "advanced": "Gevorderd"
+    },
+    "settings": {
+      "toneTitle": "Gesprekstoon",
+      "businessTypeTitle": "Besigheidstipe",
+      "experienceTitle": "Ervaringsvlak",
+      "selectBusinessType": "Kies jou besigheidstipe",
+      "helpText": "Hierdie instellings help om KI response aan te pas vir jou spesifieke behoeftes en kommunikasiestyl."
     },
     "widget": {
       "toggle": "Wissel Klets",
-      "minimize": "Minimeer Klets",
+      "minimize": "Minimaliseer Klets",
       "status": "Aanlyn"
-    },
-    "messages": {
-      "you": "Jy",
-      "assistant": "Assistent",
-      "error": "Fout",
-      "thinking": "Dink...",
-      "hint": "Druk Enter om te stuur, Shift+Enter vir nuwe lyn"
     }
   },
   "common": {

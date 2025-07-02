@@ -129,30 +129,61 @@
   "chatbot": {
     "title": "AI Business Assistant",
     "description": "Get instant answers to your business questions from our AI-powered assistant.",
-    "placeholder": "Type your business question here...",
+    "placeholder": "Ask about business registration, compliance, taxes, licenses...",
     "send": "Send",
-    "clear": "Clear Chat",
-    "messageCount": "{{count}} messages",
-    "sampleQuestions": {
-      "title": "Sample Questions",
-      "questions": [
-        "How do I register my business in South Africa?",
-        "What are the tax requirements for small businesses?", 
-        "How can I get funding for my startup?",
-        "What licenses do I need for a retail business?"
-      ]
+    "thinking": "Thinking...",
+    "you": "You",
+    "assistant": "AI Assistant",
+    "error": "Error",
+    "clearChat": "Clear Chat",
+    "cleared": "Cleared!",
+    "settings": "Settings",
+    "tryAsking": "Try asking:",
+    "messageCount": "{{count}} message",
+    "messageCount_plural": "{{count}} messages",
+    "contextInfo": "AI Context Applied",
+    "inputHint": "Press Enter to send, Shift+Enter for new line",
+    "samples": {
+      "registration": "What are the basic requirements to start a retail business in South Africa?",
+      "cipc": "How do I register my business with CIPC?",
+      "tax": "What tax obligations do small businesses have?",
+      "bank": "Do I need a business bank account?",
+      "licenses": "What licenses do I need for a restaurant?"
+    },
+    "errors": {
+      "emptyMessage": "Please enter a message",
+      "aiError": "Failed to get response from AI assistant",
+      "connectionError": "Unable to connect to the server. Make sure the Flask backend is running."
+    },
+    "tones": {
+      "professional": "Professional",
+      "casual": "Casual",
+      "friendly": "Friendly"
+    },
+    "businessTypes": {
+      "retail": "Retail",
+      "services": "Services",
+      "manufacturing": "Manufacturing",
+      "technology": "Technology",
+      "food": "Food & Beverage",
+      "hospitality": "Hospitality"
+    },
+    "experienceLevels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "settings": {
+      "toneTitle": "Conversation Tone",
+      "businessTypeTitle": "Business Type",
+      "experienceTitle": "Experience Level",
+      "selectBusinessType": "Select your business type",
+      "helpText": "These settings help customize AI responses to your specific needs and communication style."
     },
     "widget": {
       "toggle": "Toggle Chat",
       "minimize": "Minimize Chat",
       "status": "Online"
-    },
-    "messages": {
-      "you": "You",
-      "assistant": "Assistant",
-      "error": "Error",
-      "thinking": "Thinking...",
-      "hint": "Press Enter to send, Shift+Enter for new line"
     }
   },
   "common": {

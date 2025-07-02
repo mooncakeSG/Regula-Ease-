@@ -127,32 +127,63 @@
     "empty": "Khetha udidi lwezakhono uze ucofe \"Fumana Izibonelelo\" ukubona amathuba okufunda."
   },
   "chatbot": {
-    "title": "Umncedi Weshishini we-AI",
+    "title": "Umncedi Weshishini We-AI",
     "description": "Fumana iimpendulo ngokukhawuleza kwimibuzo yakho yeshishini kumncedi wethu oqhutshwa yi-AI.",
-    "placeholder": "Bhala umbuzo wakho weshishini apha...",
+    "placeholder": "Buza ngobhaliso lweshishini, ukuthobela imigaqo, iirhafu, iilayisensi...",
     "send": "Thumela",
-    "clear": "Cima Incoko",
-    "messageCount": "{{count}} imiyalezo",
-    "sampleQuestions": {
-      "title": "Imibuzo Yomzekelo",
-      "questions": [
-        "Ndingalibhalisa njani ishishini lam eMzantsi Afrika?",
-        "Zintoni iimfuno zeerhafu zamashishini amancinci?", 
-        "Ndingazifumana njani iimali zenkxaso ye-startup yam?",
-        "Zeziphi iilayisensi endizifunayo kwishishini lokuthengisa?"
-      ]
+    "thinking": "Kuyacingisisa...",
+    "you": "Wena",
+    "assistant": "Umncedi we-AI",
+    "error": "Impazamo",
+    "clearChat": "Cima Incoko",
+    "cleared": "Kucinyiwe!",
+    "settings": "Iisetingi",
+    "tryAsking": "Zama ukubuza:",
+    "messageCount": "{{count}} umyalezo",
+    "messageCount_plural": "{{count}} imiyalezo",
+    "contextInfo": "Umxholo we-AI Usetyiwe",
+    "inputHint": "Cofa Enter ukuthumela, Shift+Enter womgca omtsha",
+    "samples": {
+      "registration": "Zintoni iimfuno ezisisiseko zokuqala ishishini lokuthengisa eMzantsi Afrika?",
+      "cipc": "Ndingalibhalisa njani ishishini lam kwi-CIPC?",
+      "tax": "Zeziphi izibophelelo zeerhafu zamashishini amancinci?",
+      "bank": "Ndidinga iakhawunti yebhanki yeshishini?",
+      "licenses": "Zeziphi iilayisensi endizifunayo kwirestyu?"
+    },
+    "errors": {
+      "emptyMessage": "Nceda ungenise umyalezo",
+      "aiError": "Ayiphumelelanga ukufumana impendulo kumncedi we-AI",
+      "connectionError": "Ayikwazi ukunxibelelana neseva. Qiniseka ukuba i-Flask backend iyasebenza."
+    },
+    "tones": {
+      "professional": "Zobuchule",
+      "casual": "Zasesidlangalaleni",
+      "friendly": "Zobubele"
+    },
+    "businessTypes": {
+      "retail": "Ukuthengisa",
+      "services": "Iinkonzo",
+      "manufacturing": "Ukuvelisa",
+      "technology": "Iteknoloji",
+      "food": "Ukutya & Ukusela",
+      "hospitality": "Ukwamkela Iindwendwe"
+    },
+    "experienceLevels": {
+      "beginner": "Isiqaleli",
+      "intermediate": "Phakathi",
+      "advanced": "Ekwinqanabeni Eliphezulu"
+    },
+    "settings": {
+      "toneTitle": "Uhlobo Lwencoko",
+      "businessTypeTitle": "Uhlobo Lweshishini",
+      "experienceTitle": "Inqanaba Lamava",
+      "selectBusinessType": "Khetha uhlobo lweshishini lakho",
+      "helpText": "Ezi setingi zinceda ukwenza iimpendulo ze-AI zifanele iimfuno zakho nezindlela zakho zonxibelelwano."
     },
     "widget": {
       "toggle": "Tshintsha Incoko",
       "minimize": "Nciphisa Incoko",
       "status": "Kwi-intanethi"
-    },
-    "messages": {
-      "you": "Wena",
-      "assistant": "Umncedi",
-      "error": "Impazamo",
-      "thinking": "Kuyacingisisa...",
-      "hint": "Cofa u-Enter ukuthumela, u-Shift+Enter womgca omtsha"
     }
   },
   "common": {

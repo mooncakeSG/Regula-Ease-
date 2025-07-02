@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Chatbot from './Chatbot';
 import './ChatbotWidget.css';
 
@@ -50,11 +51,14 @@ const ChatbotWidget = () => {
       {/* Main Chatbot Widget Container */}
       <div className="chatbot-widget">
         {/* Toggle Button */}
-        <button
+        <motion.button
           className={`chatbot-toggle ${isOpen ? 'active' : ''} ${hasNewMessage ? 'pulse' : ''}`}
           onClick={toggleChatbot}
           aria-label={isOpen ? 'Close AI Assistant' : 'Open AI Assistant'}
           aria-expanded={isOpen}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
           <div className="toggle-icon">
             {isOpen ? (
@@ -76,35 +80,50 @@ const ChatbotWidget = () => {
               <span className="status-dot"></span>
             </div>
           )}
-        </button>
+        </motion.button>
 
         {/* Chat Window */}
-        <div className={`chatbot-window ${isOpen ? 'open' : 'closed'}`}>
-          {/* Chat Header */}
-          <div className="chatbot-header">
-            <div className="header-info">
-              <div className="bot-avatar">🤖</div>
-              <div className="header-text">
-                <h3>AI Business Assistant</h3>
-                <span className="status">Online • Ready to help</span>
-              </div>
-            </div>
-            <button
-              className="close-button"
-              onClick={closeChatbot}
-              aria-label="Close chat"
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              className="chatbot-window"
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 25,
+                duration: 0.3
+              }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
+              {/* Chat Header */}
+              <div className="chatbot-header">
+                <div className="header-info">
+                  <div className="bot-avatar">🤖</div>
+                  <div className="header-text">
+                    <h3>AI Business Assistant</h3>
+                    <span className="status">Online • Ready to help</span>
+                  </div>
+                </div>
+                <button
+                  className="close-button"
+                  onClick={closeChatbot}
+                  aria-label="Close chat"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
 
-          {/* Chat Content */}
-          <div className="chatbot-content">
-            <Chatbot />
-          </div>
-        </div>
+              {/* Chat Content */}
+              <div className="chatbot-content">
+                <Chatbot />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

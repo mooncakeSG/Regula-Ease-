@@ -45,7 +45,11 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -357,6 +361,7 @@ body {
 
 .fetch-button:hover:not(:disabled) {
   background: #2980b9;
+  transform: scale(1.05);
 }
 
 .fetch-button:disabled {
@@ -1093,6 +1098,7 @@ body {
   background: #3498db;
   color: white;
   border-color: #3498db;
+  transform: scale(1.02);
 }
 
 .chat-messages {
@@ -1254,6 +1260,7 @@ body {
 
 .send-button:hover:not(:disabled) {
   background: #229954;
+  transform: scale(1.05);
 }
 
 .send-button:disabled {
@@ -1447,5 +1454,240 @@ body {
   
   .cta-arrow {
     transform: rotate(-90deg);
+  }
+}
+
+/* AI Settings Panel */
+.ai-settings-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  animation: settingsSlideDown 0.3s ease-out;
+}
+
+@keyframes settingsSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-section {
+  margin-bottom: 20px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tone Selector */
+.tone-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tone-option {
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tone-option:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color-light);
+}
+
+.tone-option.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Business Type Selector */
+.business-type-selector {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.business-type-selector:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Experience Selector */
+.experience-selector {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.experience-option {
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.experience-option:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color-light);
+}
+
+.experience-option.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Settings Info */
+.settings-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--primary-color-light);
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.settings-info p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Header Controls Update */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-button {
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-button:hover {
+  border-color: var(--primary-color);
+  background: var(--primary-color-light);
+}
+
+.settings-button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: rotate(90deg);
+}
+
+/* AI Status Indicator */
+.ai-status {
+  margin: 8px 0;
+}
+
+.ai-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--primary-color-light);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.business-context {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid var(--border-color);
+}
+
+/* Message Context Indicator */
+.message-context {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+/* Mobile Responsiveness for Settings */
+@media (max-width: 768px) {
+  .ai-settings-panel {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .tone-selector,
+  .experience-selector {
+    justify-content: center;
+  }
+  
+  .tone-option,
+  .experience-option {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .business-type-selector {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .header-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .ai-indicator {
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+  
+  .business-context {
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 2px;
   }
 } 
