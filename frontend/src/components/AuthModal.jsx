@@ -20,6 +20,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({})
 
   // Reset form when modal opens/closes or mode changes
   useEffect(() => {
@@ -35,6 +36,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
       })
       setError('')
       setSuccess('')
+      setFieldErrors({})
     }
   }, [isOpen, mode])
 
@@ -45,33 +47,60 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
       [name]: value
     }))
     setError('')
+    // Clear field-specific error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }))
+    }
   }
 
   const validateForm = () => {
-    if (!formData.email || !formData.email.includes('@')) {
-      setError('Please enter a valid email address')
-      return false
+    const errors = {}
+    let isValid = true
+
+    // Email validation
+    if (!formData.email) {
+      errors.email = 'Email is required'
+      isValid = false
+    } else if (!formData.email.includes('@') || !formData.email.includes('.')) {
+      errors.email = 'Please enter a valid email address'
+      isValid = false
     }
 
+    // Password validation for login and signup
     if (mode === 'login' || mode === 'signup') {
-      if (!formData.password || formData.password.length < 6) {
-        setError('Password must be at least 6 characters long')
-        return false
+      if (!formData.password) {
+        errors.password = 'Password is required'
+        isValid = false
+      } else if (formData.password.length < 6) {
+        errors.password = 'Password must be at least 6 characters long'
+        isValid = false
       }
     }
 
+    // Additional validation for signup
     if (mode === 'signup') {
-      if (formData.password !== formData.confirmPassword) {
-        setError('Passwords do not match')
-        return false
+      if (!formData.firstName) {
+        errors.firstName = 'First name is required'
+        isValid = false
       }
-      if (!formData.firstName || !formData.lastName) {
-        setError('Please enter your first and last name')
-        return false
+      if (!formData.lastName) {
+        errors.lastName = 'Last name is required'
+        isValid = false
+      }
+      if (!formData.confirmPassword) {
+        errors.confirmPassword = 'Please confirm your password'
+        isValid = false
+      } else if (formData.password !== formData.confirmPassword) {
+        errors.confirmPassword = 'Passwords do not match'
+        isValid = false
       }
     }
 
-    return true
+    setFieldErrors(errors)
+    return isValid
   }
 
   const handleSubmit = async (e) => {
@@ -185,8 +214,16 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
           {/* Body */}
           <div className="px-6 py-4">
             {error && (
-              <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg">
-                <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+              <div className="mb-4 p-3 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-md border border-red-200 dark:border-red-700 flex justify-between items-start">
+                <p className="text-sm flex-1">{error}</p>
+                <button 
+                  onClick={() => setError('')}
+                  className="ml-2 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
             )}
 
@@ -207,10 +244,17 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                  className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors ${
+                    fieldErrors.email 
+                      ? 'border-red-500 dark:border-red-400' 
+                      : 'border-gray-300 dark:border-gray-600'
+                  }`}
                   placeholder="your.email@example.com"
                   required
                 />
+                {fieldErrors.email && (
+                  <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.email}</p>
+                )}
               </div>
 
               {/* Password Field */}
@@ -224,10 +268,17 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors ${
+                      fieldErrors.password 
+                        ? 'border-red-500 dark:border-red-400' 
+                        : 'border-gray-300 dark:border-gray-600'
+                    }`}
                     placeholder="Enter your password"
                     required
                   />
+                  {fieldErrors.password && (
+                    <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.password}</p>
+                  )}
                 </div>
               )}
 
@@ -242,10 +293,17 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                    className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors ${
+                      fieldErrors.confirmPassword 
+                        ? 'border-red-500 dark:border-red-400' 
+                        : 'border-gray-300 dark:border-gray-600'
+                    }`}
                     placeholder="Confirm your password"
                     required
                   />
+                  {fieldErrors.confirmPassword && (
+                    <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.confirmPassword}</p>
+                  )}
                 </div>
               )}
 
@@ -262,10 +320,17 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                        className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors ${
+                          fieldErrors.firstName 
+                            ? 'border-red-500 dark:border-red-400' 
+                            : 'border-gray-300 dark:border-gray-600'
+                        }`}
                         placeholder="John"
                         required
                       />
+                      {fieldErrors.firstName && (
+                        <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.firstName}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-neutral-black dark:text-neutral-white mb-2">
@@ -276,10 +341,17 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors"
+                        className={`w-full px-3 py-2 border rounded-lg bg-white dark:bg-neutral-gray-medium text-neutral-black dark:text-neutral-white focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-colors ${
+                          fieldErrors.lastName 
+                            ? 'border-red-500 dark:border-red-400' 
+                            : 'border-gray-300 dark:border-gray-600'
+                        }`}
                         placeholder="Doe"
                         required
                       />
+                      {fieldErrors.lastName && (
+                        <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.lastName}</p>
+                      )}
                     </div>
                   </div>
 

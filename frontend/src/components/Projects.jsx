@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Checklist from './Checklist';
 import Skills from './Skills';
 import Chatbot from './Chatbot';
-import AuthLanding from './AuthLanding';
+import Quiz from './Quiz';
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -39,13 +39,13 @@ const Projects = () => {
       component: 'chatbot'
     },
     {
-      id: 'auth-landing',
-      icon: '🔐',
-      title: 'Authentication Landing',
-      description: 'Beautiful sign-up landing page with testimonials, benefits, and social proof.',
-      features: ['Conversion focused', 'Social proof', 'Mobile responsive', 'Dark mode support'],
-      color: 'bg-indigo-600',
-      component: 'auth-landing'
+      id: 'quiz',
+      icon: '🧠',
+      title: 'Business Knowledge Quiz',
+      description: 'Test your understanding of South African business compliance with our interactive quiz.',
+      features: ['5 SA-focused questions', 'Instant feedback', 'Detailed explanations', 'Progress tracking'],
+      color: 'bg-purple-600',
+      component: 'quiz'
     }
   ];
 
@@ -75,8 +75,8 @@ const Projects = () => {
         return <Skills />;
       case 'chatbot':
         return <Chatbot />;
-      case 'auth-landing':
-        return <AuthLanding />;
+      case 'quiz':
+        return <Quiz />;
       default:
         return null;
     }

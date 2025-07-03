@@ -51,7 +51,22 @@ export const AuthProvider = ({ children }) => {
         }
       })
       
-      if (error) throw error
+      if (error) {
+        // Handle specific error cases
+        if (error.message.includes('User already registered')) {
+          throw new Error('An account with this email already exists. Please sign in instead.')
+        }
+        if (error.message.includes('Password should be at least')) {
+          throw new Error('Password must be at least 6 characters long.')
+        }
+        if (error.message.includes('Invalid email')) {
+          throw new Error('Please enter a valid email address.')
+        }
+        if (error.message.includes('Signup is disabled')) {
+          throw new Error('Account registration is currently disabled. Please contact support.')
+        }
+        throw new Error(error.message || 'Failed to create account. Please try again.')
+      }
       return { data, error: null }
     } catch (error) {
       return { data: null, error: error.message }
@@ -69,7 +84,22 @@ export const AuthProvider = ({ children }) => {
         password
       })
       
-      if (error) throw error
+      if (error) {
+        // Handle specific error cases
+        if (error.message.includes('Invalid login credentials')) {
+          throw new Error('Incorrect email or password. Please check your credentials and try again.')
+        }
+        if (error.message.includes('Email not confirmed')) {
+          throw new Error('Please check your email and click the confirmation link before signing in.')
+        }
+        if (error.message.includes('Too many requests')) {
+          throw new Error('Too many login attempts. Please wait a few minutes before trying again.')
+        }
+        if (error.message.includes('Network error') || error.message.includes('fetch')) {
+          throw new Error('Network error – please check your connection and try again.')
+        }
+        throw new Error(error.message || 'Failed to sign in. Please try again.')
+      }
       return { data, error: null }
     } catch (error) {
       return { data: null, error: error.message }
@@ -98,7 +128,15 @@ export const AuthProvider = ({ children }) => {
         redirectTo: `${window.location.origin}/reset-password`
       })
       
-      if (error) throw error
+      if (error) {
+        if (error.message.includes('Invalid email')) {
+          throw new Error('Please enter a valid email address.')
+        }
+        if (error.message.includes('Network error')) {
+          throw new Error('Network error – please check your connection and try again.')
+        }
+        throw new Error(error.message || 'Failed to send reset email. Please try again.')
+      }
       return { error: null }
     } catch (error) {
       return { error: error.message }

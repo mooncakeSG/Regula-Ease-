@@ -42,6 +42,13 @@ COPY --from=frontend-builder /app/frontend/build ./static
 # Create data directory for persistent storage
 RUN mkdir -p /app/data
 
+# Copy data files to a backup location so they can be restored after volume mount
+RUN if [ -d "data" ]; then cp -r data/* /tmp/; fi
+
+# Copy startup script
+COPY backend/startup.sh /app/startup.sh
+RUN chmod +x /app/startup.sh
+
 # Expose port
 EXPOSE 8080
 
@@ -50,4 +57,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/health || exit 1
 
 # Start the application
-CMD ["python", "app.py"] 
+CMD ["/app/startup.sh"] 

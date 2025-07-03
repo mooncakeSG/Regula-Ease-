@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const Chatbot = () => {
   const { t } = useTranslation();
@@ -96,7 +97,7 @@ const Chatbot = () => {
 
     try {
       // Send enhanced request with conversation context and settings
-      const response = await axios.post('http://localhost:5000/chatbot', {
+      const response = await axios.post(API_ENDPOINTS.chatbot, {
         message: currentMessage,
         conversation_history: conversation,
         tone: aiSettings.tone,
@@ -123,7 +124,7 @@ const Chatbot = () => {
       if (err.response && err.response.data) {
         errorMessage = err.response.data.message || errorMessage;
       } else if (err.message) {
-        errorMessage = t('chatbot.errors.connectionError');
+        errorMessage = 'Network error – please check your connection and try again.';
       }
 
       // Add error message to conversation

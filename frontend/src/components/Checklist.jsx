@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { API_ENDPOINTS } from '../config/api';
 
 const Checklist = () => {
   const { t } = useTranslation();
@@ -113,13 +114,13 @@ const Checklist = () => {
     setError('');
     
     try {
-      const response = await axios.get(`http://localhost:5000/checklist?type=${businessType}`);
+      const response = await axios.get(`${API_ENDPOINTS.checklist}?type=${businessType}`);
       setChecklist(response.data.checklist);
     } catch (err) {
       if (err.response && err.response.data) {
         setError(err.response.data.message || 'Failed to fetch checklist');
       } else {
-        setError('Unable to connect to the server. Make sure the Flask backend is running.');
+        setError('Unable to load checklist. Please refresh or try again later.');
       }
       setChecklist([]);
     } finally {
@@ -232,8 +233,16 @@ const Checklist = () => {
       )}
 
       {error && (
-        <div className="error-message">
-          <strong>Error:</strong> {error}
+        <div className="mb-4 p-2 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-md flex justify-between items-start">
+          <p className="text-sm flex-1">{error}</p>
+          <button 
+            onClick={() => setError('')}
+            className="ml-2 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
