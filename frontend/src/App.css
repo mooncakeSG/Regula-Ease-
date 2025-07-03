@@ -472,6 +472,34 @@ body {
   transform: none;
 }
 
+/* PDF Export Button Styling */
+.pdf-button {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7) !important;
+  color: white !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7C3AED, #9333EA) !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.pdf-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.pdf-button:hover:before {
+  left: 100%;
+}
+
 /* Checklist Results */
 .results-header {
   margin-bottom: 1.5rem;

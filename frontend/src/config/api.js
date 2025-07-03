@@ -16,5 +16,6 @@ export const API_ENDPOINTS = {
   checklist: `${API_BASE_URL}/checklist`,
   skills: `${API_BASE_URL}/skills`,
   chatbot: `${API_BASE_URL}/chatbot`,
-  health: `${API_BASE_URL}/health`
+  health: `${API_BASE_URL}/health`,
+  exportPdf: `${API_BASE_URL}/export-pdf`
 }; 

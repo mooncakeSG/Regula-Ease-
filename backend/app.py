@@ -1,9 +1,10 @@
-from flask import Flask, request, jsonify, send_from_directory, send_file
+from flask import Flask, request, jsonify, send_from_directory, send_file, make_response
 from flask_cors import CORS
 import json
 import os
 from dotenv import load_dotenv
 from bot import ask_compliance_bot
+from pdf_generator import generate_pdf_report
 
 # Load environment variables
 load_dotenv()
@@ -239,6 +240,33 @@ def catch_all(path):
         return send_from_directory('static', 'index.html')
     
     return jsonify({'error': 'Frontend not available'}), 404
+
+@app.route('/export-pdf', methods=['POST'])
+def export_pdf():
+    """
+    Generate PDF report with progress charts and analytics
+    """
+    try:
+        data = request.json
+        report_type = data.get('type', 'comprehensive')  # comprehensive, checklist, skills, quiz
+        progress_data = data.get('progressData', {})
+        business_type = data.get('businessType', 'general')
+        
+        # Generate PDF report
+        pdf_buffer = generate_pdf_report(report_type, progress_data, business_type)
+        
+        if pdf_buffer:
+            # Create response with PDF
+            response = make_response(pdf_buffer.getvalue())
+            response.headers['Content-Type'] = 'application/pdf'
+            response.headers['Content-Disposition'] = f'attachment; filename=regula-ease-report-{report_type}.pdf'
+            return response
+        else:
+            return jsonify({'error': 'Failed to generate PDF report'}), 500
+            
+    except Exception as e:
+        print(f"Error generating PDF: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
 
 if __name__ == '__main__':
     # Get port from environment variable or use default

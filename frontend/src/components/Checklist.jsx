@@ -103,6 +103,56 @@ const Checklist = () => {
     URL.revokeObjectURL(url);
   };
 
+  // Export progress report as PDF
+  const exportToPDF = async () => {
+    try {
+      setLoading(true);
+      
+      // Prepare progress data for PDF generation
+      const progressStats = getProgressStats();
+      
+      // Calculate priority distribution
+      const priorityDistribution = {
+        high: filteredChecklist.filter(item => item.priority === 'high').length,
+        medium: filteredChecklist.filter(item => item.priority === 'medium').length,
+        low: filteredChecklist.filter(item => item.priority === 'low').length
+      };
+      
+      const progressData = {
+        checklist: {
+          total: progressStats.total,
+          completed: progressStats.completed,
+          percentage: progressStats.percentage,
+          priorityDistribution,
+          businessType: businessType
+        }
+      };
+      
+      const response = await axios.post(API_ENDPOINTS.exportPdf, {
+        type: 'checklist',
+        progressData,
+        businessType
+      }, {
+        responseType: 'blob'
+      });
+      
+      // Create download link
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${businessType}-progress-report.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+      
+    } catch (error) {
+      console.error('Error exporting PDF:', error);
+      setError('Failed to generate PDF report. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Clear all completed items
   const clearProgress = () => {
     setCompletedItems(new Set());
@@ -218,6 +268,15 @@ const Checklist = () => {
               title="Export checklist to CSV"
             >
               📥 Export CSV
+            </button>
+            
+            <button 
+              onClick={exportToPDF}
+              disabled={filteredChecklist.length === 0 || loading}
+              className="export-button pdf-button"
+              title="Export progress report with charts"
+            >
+              📊 Export PDF Report
             </button>
             
             <button 

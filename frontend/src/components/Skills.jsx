@@ -95,6 +95,56 @@ const Skills = () => {
     URL.revokeObjectURL(url);
   };
 
+  // Export skills progress report as PDF
+  const exportToPDF = async () => {
+    try {
+      setLoading(true);
+      
+      // Prepare skills progress data for PDF generation
+      const categories = ['Finance', 'Digital', 'Management', 'Legal'];
+      const categoryBookmarks = categories.map(cat => 
+        resources.filter(resource => 
+          resource.title.toLowerCase().includes(cat.toLowerCase()) && 
+          bookmarkedResources.has(resource.id)
+        ).length
+      );
+      
+      const progressData = {
+        skills: {
+          totalResources: resources.length,
+          bookmarked: bookmarkedResources.size,
+          category: category,
+          categories,
+          categoryBookmarks,
+          filteredCount: filteredResources.length
+        }
+      };
+      
+      const response = await axios.post(API_ENDPOINTS.exportPdf, {
+        type: 'skills',
+        progressData,
+        businessType: category
+      }, {
+        responseType: 'blob'
+      });
+      
+      // Create download link
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${category}-skills-progress-report.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+      
+    } catch (error) {
+      console.error('Error exporting PDF:', error);
+      setError('Failed to generate PDF report. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Clear all bookmarks
   const clearBookmarks = () => {
     setBookmarkedResources(new Set());
@@ -249,6 +299,15 @@ const Skills = () => {
               title="Export resources to CSV"
             >
               📥 Export CSV
+            </button>
+            
+            <button 
+              onClick={exportToPDF}
+              disabled={resources.length === 0 || loading}
+              className="export-button pdf-button"
+              title="Export skills progress report with charts"
+            >
+              📊 Export PDF Report
             </button>
             
             <button 
