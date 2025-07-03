@@ -22,7 +22,7 @@ const AuthLanding = () => {
   // Show loading state while checking authentication
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-neutral-white via-blue-50 to-neutral-white dark:from-neutral-gray-dark dark:via-neutral-gray-medium dark:to-neutral-gray-dark flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#E0F2FF] via-[#F0F8FF] to-[#E8F0FF] dark:from-neutral-gray-dark dark:via-neutral-gray-medium dark:to-neutral-gray-dark bg-[length:400%_400%] animate-gradient-pulse flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue mx-auto mb-4"></div>
           <p className="text-neutral-gray-medium dark:text-neutral-white/70">Loading...</p>
@@ -93,7 +93,7 @@ const AuthLanding = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-white via-blue-50 to-neutral-white dark:from-neutral-gray-dark dark:via-neutral-gray-medium dark:to-neutral-gray-dark">
+    <div className="min-h-screen bg-gradient-to-br from-[#E0F2FF] via-[#F0F8FF] to-[#E8F0FF] dark:from-neutral-gray-dark dark:via-neutral-gray-medium dark:to-neutral-gray-dark bg-[length:400%_400%] animate-gradient-pulse">
       {/* Hero Section */}
       <div className="container-max pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

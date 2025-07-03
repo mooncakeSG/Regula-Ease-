@@ -37,6 +37,8 @@ module.exports = {
         'scale-hover': 'scaleHover 0.2s ease-in-out',
         'spin-slow': 'spin 12s linear infinite',
         'float-slow': 'floatSlow 8s ease-in-out infinite',
+        'gradient-flow': 'gradientFlow 15s ease infinite',
+        'gradient-pulse': 'gradientPulse 10s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -54,6 +56,24 @@ module.exports = {
         floatSlow: {
           '0%, 100%': { transform: 'translateY(0) scale(1)' },
           '50%': { transform: 'translateY(-30px) scale(1.08)' },
+        },
+        gradientFlow: {
+          '0%, 100%': { 
+            backgroundPosition: '0% 50%' 
+          },
+          '50%': { 
+            backgroundPosition: '100% 50%' 
+          },
+        },
+        gradientPulse: {
+          '0%, 100%': { 
+            backgroundSize: '200% 200%',
+            backgroundPosition: 'left center'
+          },
+          '50%': { 
+            backgroundSize: '250% 250%',
+            backgroundPosition: 'right center'
+          },
         }
       },
       dropShadow: {
