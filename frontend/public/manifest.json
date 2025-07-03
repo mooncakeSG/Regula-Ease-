@@ -1,0 +1,9 @@
+{
+  "name": "RegulaEase",
+  "short_name": "RegulaEase",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E0F2FF",
+  "theme_color": "#2563EB",
+  "icons": []
+} 

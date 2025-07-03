@@ -35,6 +35,8 @@ module.exports = {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'scale-hover': 'scaleHover 0.2s ease-in-out',
+        'spin-slow': 'spin 12s linear infinite',
+        'float-slow': 'floatSlow 8s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -48,6 +50,10 @@ module.exports = {
         scaleHover: {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.05)' },
+        },
+        floatSlow: {
+          '0%, 100%': { transform: 'translateY(0) scale(1)' },
+          '50%': { transform: 'translateY(-30px) scale(1.08)' },
         }
       },
       dropShadow: {

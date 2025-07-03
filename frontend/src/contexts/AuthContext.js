@@ -113,7 +113,15 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true)
       const { error } = await supabase.auth.signOut()
-      if (error) throw error
+      if (error) {
+        // If session is missing (403), just clear local state
+        if (error.status === 403 || error.message?.toLowerCase().includes('session')) {
+          setUser(null)
+          setSession(null)
+          return
+        }
+        throw error
+      }
     } catch (error) {
       console.error('Error signing out:', error.message)
     } finally {
