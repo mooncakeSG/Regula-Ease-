@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { useTranslation } from 'react-i18next'
+import { useGlobalError } from '../contexts/GlobalErrorContext'
 
 const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { signIn, signUp, resetPassword, loading } = useAuth()
+  const { showError } = useGlobalError()
   const [mode, setMode] = useState(initialMode) // 'login', 'signup', 'reset'
   const [formData, setFormData] = useState({
     email: '',
@@ -21,6 +23,8 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   // Reset form when modal opens/closes or mode changes
   useEffect(() => {
@@ -115,6 +119,9 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
         const { error } = await signIn(formData.email, formData.password)
         if (error) {
           setError(error)
+          if (error.toLowerCase().includes('network')) {
+            showError('Unable to reach authentication service. Please check your connection and try again.')
+          }
         } else {
           onClose()
           // Redirect to home page after successful login
@@ -130,6 +137,9 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
         const { error } = await signUp(formData.email, formData.password, userData)
         if (error) {
           setError(error)
+          if (error.toLowerCase().includes('network')) {
+            showError('Unable to reach authentication service. Please check your connection and try again.')
+          }
         } else {
           setSuccess('Account created successfully! Please check your email to verify your account.')
           setTimeout(() => {
@@ -141,6 +151,9 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
         const { error } = await resetPassword(formData.email)
         if (error) {
           setError(error)
+          if (error.toLowerCase().includes('network')) {
+            showError('Unable to reach authentication service. Please check your connection and try again.')
+          }
         } else {
           setSuccess('Password reset email sent! Please check your inbox.')
           setTimeout(() => {
@@ -151,6 +164,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.')
+      showError('Unexpected authentication error. Please try again.')
     }
   }
 
@@ -264,7 +278,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     value={formData.password}
                     onChange={handleInputChange}
@@ -279,6 +293,15 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                   {fieldErrors.password && (
                     <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.password}</p>
                   )}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setShowPassword(!showPassword)
+                    }}
+                    className="text-primary-blue hover:text-primary-blue-dark transition-colors"
+                  >
+                    {showPassword ? 'Hide' : 'Show'}
+                  </button>
                 </div>
               )}
 
@@ -289,7 +312,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                     Confirm Password
                   </label>
                   <input
-                    type="password"
+                    type={showConfirmPassword ? 'text' : 'password'}
                     name="confirmPassword"
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
@@ -304,6 +327,15 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                   {fieldErrors.confirmPassword && (
                     <p className="text-red-600 dark:text-red-400 text-sm mt-1">{fieldErrors.confirmPassword}</p>
                   )}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setShowConfirmPassword(!showConfirmPassword)
+                    }}
+                    className="text-primary-blue hover:text-primary-blue-dark transition-colors"
+                  >
+                    {showConfirmPassword ? 'Hide' : 'Show'}
+                  </button>
                 </div>
               )}
 
