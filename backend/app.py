@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 import json
 import os
@@ -8,7 +8,16 @@ from bot import ask_compliance_bot
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
+# Check if we're in production (static files available)
+static_folder = 'static' if os.path.exists('static') else None
+
+# Configure Flask to serve static files from the React build
+if static_folder:
+    # Set up Flask to serve static files from the nested static directory
+    app = Flask(__name__, static_folder=os.path.join(static_folder, 'static'), static_url_path='/static')
+else:
+    app = Flask(__name__)
+    
 CORS(app)  # Enable CORS for frontend integration
 
 # Helper function to load JSON data
@@ -183,7 +192,12 @@ def health_check():
 
 @app.route('/', methods=['GET'])
 def home():
-    """Root endpoint with API information."""
+    """Root endpoint - serves React app in production, API info in development."""
+    # In production, serve the React app
+    if static_folder and os.path.exists(os.path.join('static', 'index.html')):
+        return send_from_directory('static', 'index.html')
+    
+    # In development, return API information
     return jsonify({
         'message': 'Small Business Support API',
         'version': '1.0.0',
@@ -195,6 +209,44 @@ def home():
         }
     })
 
+# Flask will handle static files natively with the configured static_folder
+
+# Serve favicon and other root-level files
+@app.route('/favicon.ico')
+def favicon():
+    """Serve favicon from React build."""
+    if static_folder:
+        return send_from_directory('static', 'favicon.ico')
+    return jsonify({'error': 'Favicon not available'}), 404
+
+@app.route('/manifest.json')
+def manifest():
+    """Serve manifest.json from React build."""
+    if static_folder:
+        return send_from_directory('static', 'manifest.json')
+    return jsonify({'error': 'Manifest not available'}), 404
+
+# Catch-all route for React Router (must be last)
+@app.route('/<path:path>')
+def catch_all(path):
+    """Catch-all route for React Router - serves index.html for any unmatched route."""
+    # Don't interfere with API routes
+    if path.startswith('api/'):
+        return jsonify({'error': 'API endpoint not found'}), 404
+    
+    # Serve React app for all other routes
+    if static_folder and os.path.exists(os.path.join('static', 'index.html')):
+        return send_from_directory('static', 'index.html')
+    
+    return jsonify({'error': 'Frontend not available'}), 404
+
 if __name__ == '__main__':
-    # For development
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    # Get port from environment variable or use default
+    port = int(os.environ.get('PORT', 8080))
+    debug = os.environ.get('NODE_ENV') != 'production'
+    
+    print(f"Starting RegulaEase API on port {port}")
+    print(f"Debug mode: {debug}")
+    print(f"Static folder: {static_folder}")
+    
+    app.run(debug=debug, host='0.0.0.0', port=port)

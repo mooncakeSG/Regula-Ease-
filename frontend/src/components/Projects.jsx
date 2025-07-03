@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Checklist from './Checklist';
 import Skills from './Skills';
 import Chatbot from './Chatbot';
+import AuthLanding from './AuthLanding';
 
 const Projects = () => {
   const { t } = useTranslation();
@@ -36,6 +37,15 @@ const Projects = () => {
       features: ['Context memory', 'Tone adjustment', 'Industry specialization', 'Multi-language'],
       color: 'bg-accent-blue',
       component: 'chatbot'
+    },
+    {
+      id: 'auth-landing',
+      icon: '🔐',
+      title: 'Authentication Landing',
+      description: 'Beautiful sign-up landing page with testimonials, benefits, and social proof.',
+      features: ['Conversion focused', 'Social proof', 'Mobile responsive', 'Dark mode support'],
+      color: 'bg-indigo-600',
+      component: 'auth-landing'
     }
   ];
 
@@ -65,6 +75,8 @@ const Projects = () => {
         return <Skills />;
       case 'chatbot':
         return <Chatbot />;
+      case 'auth-landing':
+        return <AuthLanding />;
       default:
         return null;
     }
@@ -118,7 +130,7 @@ const Projects = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
