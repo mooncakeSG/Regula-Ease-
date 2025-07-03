@@ -2,10 +2,10 @@
 
 **Your AI-Powered Business Compliance & Growth Platform for South African Entrepreneurs**
 
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.3.3-green.svg)](https://flask.palletsprojects.com/)
-[![Python](https://img.shields.io/badge/Python-3.8+-yellow.svg)](https://python.org/)
-[![License](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
+[![React](https://img.shields.io/badge/React-18.2+-blue.svg)](https://reactjs.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.3+-blue.svg)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 

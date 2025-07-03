@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,10 +11,11 @@ import './App.css';
 
 function App() {
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
   return (
     <>
-      <div className="App font-inter">
+      <div className={`App font-inter min-h-screen bg-neutral-white dark:bg-neutral-gray-dark transition-colors duration-300 ${theme}`}>
         {/* Sticky Header */}
         <Header />
 

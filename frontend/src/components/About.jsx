@@ -12,7 +12,7 @@ const About = () => {
       description: t('about.features.mission.description')
     },
     {
-      icon: '🌍',
+      icon: '📊',
       title: t('about.features.impact.title'),
       description: t('about.features.impact.description')
     },
@@ -29,30 +29,52 @@ const About = () => {
   ];
 
   const stats = [
-    { number: '50,000+', label: t('about.stats.businesses') },
+    { number: '500+', label: t('about.stats.businesses') },
     { number: '95%', label: t('about.stats.compliance') },
-    { number: '4', label: t('about.stats.provinces') },
+    { number: '9', label: t('about.stats.provinces') },
     { number: '24/7', label: t('about.stats.availability') }
   ];
 
   return (
-    <section id="about" className="section-padding bg-neutral-white">
+    <section id="about" className="section-padding bg-neutral-gray-light dark:bg-neutral-black transition-colors duration-500">
       <div className="container-max">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="heading-secondary mb-6">{t('about.title')}</h2>
-          <p className="text-body max-w-3xl mx-auto">{t('about.subtitle')}</p>
-        </motion.div>
+        <div className="text-center mb-16">
+          <motion.div
+            className="inline-flex items-center space-x-2 bg-primary-blue/20 dark:bg-primary-blue/10 px-4 py-2 rounded-full mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-sm font-semibold text-primary-blue drop-shadow-glow dark:drop-shadow-glow-dark">
+              {t('about.badge')}
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            className="heading-secondary text-neutral-black dark:text-neutral-white mb-6 drop-shadow-glow dark:drop-shadow-glow-dark transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            {t('about.title')}
+          </motion.h2>
+          
+          <motion.p
+            className="text-body text-neutral-gray-medium dark:text-neutral-white/80 max-w-3xl mx-auto transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {t('about.subtitle')}
+          </motion.p>
+        </div>
 
-        {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Content */}
-          <motion.div 
+          {/* Mission Content */}
+          <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -60,137 +82,114 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div>
-              <h3 className="text-3xl font-bold text-neutral-black mb-4">{t('about.mission.title')}</h3>
-              <p className="text-body mb-6">{t('about.mission.description')}</p>
+              <h3 className="text-2xl font-bold text-neutral-black dark:text-neutral-white mb-4 transition-colors duration-300">
+                {t('about.mission.title')}
+              </h3>
+              <p className="text-neutral-gray-medium dark:text-neutral-white/80 mb-6 transition-colors duration-300">
+                {t('about.mission.description')}
+              </p>
+              <ul className="space-y-3">
+                {[
+                  t('about.mission.points.empowerment'),
+                  t('about.mission.points.compliance'),
+                  t('about.mission.points.growth'),
+                  t('about.mission.points.accessibility')
+                ].map((point, index) => (
+                  <li key={index} className="flex items-start space-x-3">
+                    <span className="text-primary-blue text-lg mt-1">✓</span>
+                    <span className="text-neutral-gray-medium dark:text-neutral-white/80 transition-colors duration-300">{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="space-y-4">
-              {[
-                t('about.mission.points.empowerment'),
-                t('about.mission.points.compliance'),
-                t('about.mission.points.growth'),
-                t('about.mission.points.accessibility')
-              ].map((point, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex items-start space-x-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-6 h-6 bg-primary-yellow rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-neutral-black text-sm font-bold">✓</span>
-                  </div>
-                  <p className="text-neutral-gray-medium">{point}</p>
-                </motion.div>
-              ))}
+            <div>
+              <h3 className="text-2xl font-bold text-neutral-black dark:text-neutral-white mb-4 transition-colors duration-300">
+                {t('about.vision.title')}
+              </h3>
+              <p className="text-neutral-gray-medium dark:text-neutral-white/80 transition-colors duration-300">
+                {t('about.vision.description')}
+              </p>
             </div>
-
-            <motion.div 
-              className="bg-gradient-primary p-6 rounded-xl"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-neutral-black rounded-xl flex items-center justify-center">
-                  <span className="text-2xl">🏆</span>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-neutral-black mb-2">{t('about.vision.title')}</h4>
-                  <p className="text-neutral-gray-medium">{t('about.vision.description')}</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* Visual */}
-          <motion.div 
+          {/* Visual Element */}
+          <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            {/* South Africa Map Visual */}
-            <div className="relative bg-gradient-to-br from-primary-yellow to-accent-orange rounded-3xl p-8 h-96 flex items-center justify-center">
+            <div className="relative bg-neutral-white dark:bg-neutral-gray-medium rounded-2xl p-8 shadow-2xl dark:shadow-accent-blue/20 transition-all duration-300">
               <div className="text-center space-y-4">
-                <div className="text-8xl">🇿🇦</div>
-                <h4 className="text-2xl font-bold text-neutral-black">{t('about.visual.title')}</h4>
-                <p className="text-neutral-gray-medium font-medium">{t('about.visual.subtitle')}</p>
+                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">🇿🇦</span>
+                </div>
+                <h4 className="text-xl font-bold text-neutral-black dark:text-neutral-white transition-colors duration-300">
+                  {t('about.visual.title')}
+                </h4>
+                <p className="text-neutral-gray-medium dark:text-neutral-white/80 transition-colors duration-300">
+                  {t('about.visual.subtitle')}
+                </p>
               </div>
-              
-              {/* Floating Stats */}
-              {stats.slice(0, 2).map((stat, index) => (
-                <motion.div 
-                  key={index}
-                  className="absolute bg-neutral-white rounded-xl shadow-lg p-4"
-                  style={{
-                    top: index === 0 ? '10%' : 'auto',
-                    bottom: index === 1 ? '10%' : 'auto',
-                    right: index === 0 ? '-10%' : 'auto',
-                    left: index === 1 ? '-10%' : 'auto'
-                  }}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: index * 1.5 }}
-                >
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-neutral-black">{stat.number}</div>
-                    <div className="text-sm text-neutral-gray-medium">{stat.label}</div>
-                  </div>
-                </motion.div>
-              ))}
             </div>
+            
+            {/* Background decoration */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-blue/20 dark:bg-primary-blue/10 rounded-2xl -z-10 transition-colors duration-300"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent-orange/20 dark:bg-accent-orange/10 rounded-2xl -z-10 transition-colors duration-300"></div>
           </motion.div>
         </div>
 
         {/* Features Grid */}
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {features.map((feature, index) => (
-            <motion.div 
+            <motion.div
               key={index}
-              className="card text-center"
+              className="card text-center hover:drop-shadow-glow dark:hover:drop-shadow-glow-dark"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
             >
-              <div className="w-16 h-16 bg-primary-yellow rounded-xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">{feature.icon}</span>
-              </div>
-              <h4 className="text-xl font-bold text-neutral-black mb-3">{feature.title}</h4>
-              <p className="text-neutral-gray-medium">{feature.description}</p>
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h4 className="text-lg font-bold text-neutral-black dark:text-neutral-white mb-2 transition-colors duration-300">
+                {feature.title}
+              </h4>
+              <p className="text-neutral-gray-medium dark:text-neutral-white/80 text-sm transition-colors duration-300">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Stats Section */}
-        <motion.div 
-          className="bg-gradient-dark rounded-3xl p-12 text-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-3xl font-bold text-neutral-white mb-8">{t('about.impact.title')}</h3>
+          <h3 className="text-2xl font-bold text-neutral-black dark:text-neutral-white mb-12 transition-colors duration-300">
+            {t('about.impact.title')}
+          </h3>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-primary-yellow mb-2">{stat.number}</div>
-                <div className="text-neutral-white">{stat.label}</div>
+                <div className="text-4xl lg:text-5xl font-bold text-primary-blue mb-2 drop-shadow-glow dark:drop-shadow-glow-dark">
+                  {stat.number}
+                </div>
+                <div className="text-neutral-gray-medium dark:text-neutral-white/80 font-medium transition-colors duration-300">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>

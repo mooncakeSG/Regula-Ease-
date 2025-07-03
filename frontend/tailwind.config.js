@@ -4,13 +4,14 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: {
-          yellow: '#FFD700',
-          'yellow-light': '#FFED4A',
-          'yellow-dark': '#F4D03F',
+          blue: '#2563EB',
+          'blue-light': '#3B82F6',
+          'blue-dark': '#1D4ED8',
         },
         neutral: {
           black: '#000000',
@@ -48,6 +49,12 @@ module.exports = {
           '0%': { transform: 'scale(1)' },
           '100%': { transform: 'scale(1.05)' },
         }
+      },
+      dropShadow: {
+        'glow': '0 0 10px rgba(37, 99, 235, 0.7)',
+        'glow-strong': '0 0 20px rgba(37, 99, 235, 0.9)',
+        'glow-dark': '0 0 10px rgba(59, 130, 246, 0.4)',
+        'glow-dark-strong': '0 0 20px rgba(59, 130, 246, 0.6)',
       }
     },
   },

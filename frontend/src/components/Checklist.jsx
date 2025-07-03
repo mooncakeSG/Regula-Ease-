@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Checklist = () => {
+  const { t } = useTranslation();
   const [businessType, setBusinessType] = useState('retail');
   const [checklist, setChecklist] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,6 +12,12 @@ const Checklist = () => {
   const [completedItems, setCompletedItems] = useState(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [priorityFilter, setPriorityFilter] = useState('all');
+  const [filters, setFilters] = useState({
+    priority: '',
+    category: '',
+    status: '',
+    searchTerm: ''
+  });
 
   const businessTypes = [
     { value: 'retail', label: 'Retail Business' },
@@ -122,13 +130,19 @@ const Checklist = () => {
   const getPriorityColor = (priority) => {
     switch (priority) {
       case 'high': return '#e74c3c';
-      case 'medium': return '#f39c12';
+      case 'medium': return '#3498db';
       case 'low': return '#27ae60';
       default: return '#34495e';
     }
   };
 
   const progressStats = getProgressStats();
+
+  // Get unique values for filters
+  const getUniqueValues = (key) => {
+    const values = checklist.map(item => item[key]).filter(Boolean);
+    return [...new Set(values)].sort();
+  };
 
   return (
     <motion.div 

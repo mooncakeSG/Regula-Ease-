@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
+  const { t } = useTranslation();
   const [category, setCategory] = useState('finance');
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -129,7 +131,7 @@ const Skills = () => {
   const getLevelColor = (level) => {
     switch (level) {
       case 'beginner': return '#27ae60';
-      case 'intermediate': return '#f39c12';
+      case 'intermediate': return '#3498db';
       case 'advanced': return '#e74c3c';
       default: return '#34495e';
     }

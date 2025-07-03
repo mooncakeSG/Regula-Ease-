@@ -11,7 +11,7 @@
   --accent-primary: #3498db;
   --accent-secondary: #2980b9;
   --success: #27ae60;
-  --warning: #f39c12;
+  --warning: #3498db;
   --error: #e74c3c;
   --shadow-light: rgba(0, 0, 0, 0.05);
   --shadow-medium: rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@
   --accent-primary: #5dade2;
   --accent-secondary: #3498db;
   --success: #58d68d;
-  --warning: #f4d03f;
+  --warning: #5dade2;
   --error: #ec7063;
   --shadow-light: rgba(255, 255, 255, 0.05);
   --shadow-medium: rgba(255, 255, 255, 0.1);
@@ -1016,12 +1016,15 @@ body {
   height: 600px;
   border: 1px solid #e1e8ed;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
+  margin-top: 2rem;
+  padding-top: 0.5rem;
 }
 
 .chat-header {
   background: var(--bg-tertiary);
-  padding: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
+  margin-top: 1rem;
   border-bottom: 1px solid var(--border-primary);
   display: flex;
   justify-content: space-between;
@@ -1646,6 +1649,7 @@ body {
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  margin-top: 0.25rem;
 }
 
 .settings-button {
@@ -1749,14 +1753,14 @@ body {
 
 /* Enhanced Chat Message Typography & Dark Theme Support */
 /* Dark Theme Chat Message Styling */
-[data-theme="dark"] .message.ai .message-content {
+.dark .message.ai .message-content {
   background: #2d3748;
   color: #e2e8f0;
   border-color: #4a5568;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .message.user .message-content {
+.dark .message.user .message-content {
   background: linear-gradient(135deg, #4299e1, #3182ce);
   box-shadow: 0 2px 4px rgba(66, 153, 225, 0.3);
 }
@@ -1819,27 +1823,142 @@ body {
 }
 
 /* Dark Theme Support for Enhanced Buttons */
-[data-theme="dark"] .clear-button {
+.dark .clear-button {
   background: linear-gradient(135deg, #e55039, #c44569);
   box-shadow: 0 2px 4px rgba(196, 69, 105, 0.3);
+  color: white;
 }
 
-[data-theme="dark"] .clear-button:hover:not(:disabled) {
+.dark .clear-button:hover:not(:disabled) {
   background: linear-gradient(135deg, #d63447, #b33a46);
   box-shadow: 0 4px 12px rgba(196, 69, 105, 0.4);
+  color: white;
 }
 
-[data-theme="dark"] .settings-button {
+.dark .settings-button {
   background: linear-gradient(135deg, #4834d4, #686de0);
   box-shadow: 0 2px 4px rgba(72, 52, 212, 0.3);
+  color: white;
 }
 
-[data-theme="dark"] .settings-button:hover {
+.dark .settings-button:hover {
   background: linear-gradient(135deg, #3742fa, #5f27cd);
   box-shadow: 0 4px 12px rgba(72, 52, 212, 0.4);
+  color: white;
 }
 
-[data-theme="dark"] .settings-button.active {
+.dark .settings-button.active {
   background: linear-gradient(135deg, #7bed9f, #2ed573);
   box-shadow: 0 4px 12px rgba(46, 213, 115, 0.4);
+  color: white;
+}
+
+/* Dark Theme Support for Chat Header and Settings */
+.dark .chat-header {
+  background: #2d3748;
+  border-bottom: 1px solid #4a5568;
+}
+
+.dark .chat-title h3 {
+  color: #e2e8f0;
+}
+
+.dark .message-count {
+  color: #a0aec0;
+}
+
+.dark .ai-settings-panel {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  color: #e2e8f0;
+}
+
+.dark .settings-section h4 {
+  color: #e2e8f0;
+}
+
+.dark .tone-option {
+  background: #4a5568;
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+
+.dark .tone-option:hover {
+  background: #718096;
+  color: white;
+}
+
+.dark .tone-option.active {
+  background: #2563eb;
+  color: white;
+}
+
+.dark .experience-option {
+  background: #4a5568;
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+
+.dark .experience-option:hover {
+  background: #718096;
+  color: white;
+}
+
+.dark .experience-option.active {
+  background: #2563eb;
+  color: white;
+}
+
+.dark .business-type-selector {
+  background: #4a5568;
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+
+.dark .business-type-selector:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dark .settings-info p {
+  color: #a0aec0;
+}
+
+.dark .sample-questions h4 {
+  color: #e2e8f0;
+}
+
+.dark .sample-question {
+  background: #4a5568;
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+
+.dark .sample-question:hover {
+  background: #718096;
+  color: white;
+}
+
+.dark .message-input {
+  background: #4a5568;
+  color: #e2e8f0;
+  border: 1px solid #718096;
+}
+
+.dark .message-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dark .send-button {
+  background: #2563eb;
+  color: white;
+}
+
+.dark .send-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.dark .input-hint {
+  color: #a0aec0;
 } 

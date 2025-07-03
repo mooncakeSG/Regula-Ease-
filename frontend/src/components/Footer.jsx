@@ -6,92 +6,94 @@ const Footer = () => {
   const { t } = useTranslation();
 
   const quickLinks = [
-    { href: '#home', label: t('nav.home') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#projects', label: t('nav.projects') },
-    { href: '#contact', label: t('nav.contact') }
+    { name: t('nav.home'), href: '#home' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' }
   ];
 
   const resources = [
-    { label: t('footer.resources.compliance'), href: '#' },
-    { label: t('footer.resources.skills'), href: '#' },
-    { label: t('footer.resources.support'), href: '#' },
-    { label: t('footer.resources.community'), href: '#' }
+    { name: 'Business Compliance', href: '#projects' },
+    { name: 'Skills Development', href: '#projects' },
+    { name: 'AI Assistant', href: '#projects' }
+  ];
+
+  const support = [
+    { name: 'SEDA', href: 'https://www.seda.org.za', external: true },
+    { name: 'IDC', href: 'https://www.idc.co.za', external: true },
+    { name: 'CIPC', href: 'https://www.cipc.co.za', external: true },
+    { name: 'SARS', href: 'https://www.sars.gov.za', external: true }
   ];
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.open(href, '_blank');
     }
   };
 
   return (
-    <footer id="contact" className="bg-gradient-dark text-neutral-white">
-      {/* Main Footer Content */}
-      <div className="section-padding">
-        <div className="container-max">
-          <div className="grid lg:grid-cols-4 gap-12">
+    <footer id="contact" className="bg-neutral-gray-dark dark:bg-neutral-black border-t-4 border-primary-blue transition-colors duration-500">
+      <div className="container-max">
+        {/* Main Footer Content */}
+        <div className="section-padding">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-12">
             {/* Brand Section */}
-            <motion.div 
-              className="lg:col-span-2"
+            <motion.div
+              className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center space-x-3 mb-6">
+              <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
-                  <span className="text-2xl font-bold text-neutral-black">R</span>
+                  <span className="text-2xl font-bold text-neutral-white">R</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-neutral-white">RegulaEase</h3>
-                  <p className="text-neutral-white opacity-75">🇿🇦 {t('footer.tagline')}</p>
+                  <h3 className="text-xl font-bold text-neutral-white drop-shadow-glow dark:drop-shadow-glow-dark">
+                    RegulaEase
+                  </h3>
+                  <p className="text-sm text-neutral-white/70">🇿🇦 {t('header.tagline')}</p>
                 </div>
               </div>
-              
-              <p className="text-neutral-white opacity-90 mb-6 max-w-md leading-relaxed">
-                {t('footer.description')}
+              <p className="text-neutral-white/80 transition-colors duration-300">
+                {t('header.description')}
               </p>
-              
-              {/* Social/Contact Links */}
               <div className="flex space-x-4">
-                {[
-                  { icon: '📧', label: t('footer.contact.email') },
-                  { icon: '📱', label: t('footer.contact.phone') },
-                  { icon: '🌐', label: t('footer.contact.website') }
-                ].map((contact, index) => (
-                  <motion.div 
-                    key={index}
-                    className="flex items-center space-x-2 bg-neutral-white bg-opacity-10 rounded-lg p-3"
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 215, 0, 0.1)' }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <span className="text-lg">{contact.icon}</span>
-                    <span className="text-sm font-medium">{contact.label}</span>
-                  </motion.div>
-                ))}
+                <div className="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center">
+                  <span className="text-sm">🇿🇦</span>
+                </div>
+                <div className="w-8 h-8 bg-accent-green rounded-lg flex items-center justify-center">
+                  <span className="text-sm">🚀</span>
+                </div>
+                <div className="w-8 h-8 bg-accent-blue rounded-lg flex items-center justify-center">
+                  <span className="text-sm">🤖</span>
+                </div>
               </div>
             </motion.div>
 
             {/* Quick Links */}
             <motion.div
+              className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold text-neutral-white mb-6">{t('footer.quickLinks')}</h4>
-              <ul className="space-y-3">
+              <h4 className="text-lg font-bold text-neutral-white">Quick Links</h4>
+              <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
-                    <motion.button
+                    <button
                       onClick={() => scrollToSection(link.href)}
-                      className="text-neutral-white opacity-75 hover:opacity-100 hover:text-primary-yellow transition-all duration-200"
-                      whileHover={{ x: 5 }}
+                      className="text-neutral-white/80 hover:text-primary-blue transition-colors duration-200 text-left"
                     >
-                      {link.label}
-                    </motion.button>
+                      {link.name}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -99,94 +101,139 @@ const Footer = () => {
 
             {/* Resources */}
             <motion.div
+              className="space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-xl font-bold text-neutral-white mb-6">{t('footer.resources.title')}</h4>
-              <ul className="space-y-3">
+              <h4 className="text-lg font-bold text-neutral-white">Resources</h4>
+              <ul className="space-y-2">
                 {resources.map((resource, index) => (
                   <li key={index}>
-                    <motion.a
-                      href={resource.href}
-                      className="text-neutral-white opacity-75 hover:opacity-100 hover:text-primary-yellow transition-all duration-200"
-                      whileHover={{ x: 5 }}
+                    <button
+                      onClick={() => scrollToSection(resource.href)}
+                      className="text-neutral-white/80 hover:text-primary-blue transition-colors duration-200 text-left"
                     >
-                      {resource.label}
-                    </motion.a>
+                      {resource.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Support Partners */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-bold text-neutral-white">SA Business Support</h4>
+              <ul className="space-y-2">
+                {support.map((partner, index) => (
+                  <li key={index}>
+                    <button
+                      onClick={() => scrollToSection(partner.href)}
+                      className="text-neutral-white/80 hover:text-primary-blue transition-colors duration-200 text-left flex items-center space-x-1"
+                    >
+                      <span>{partner.name}</span>
+                      {partner.external && <span className="text-xs">↗</span>}
+                    </button>
                   </li>
                 ))}
               </ul>
             </motion.div>
           </div>
 
-          {/* Stats/Features Section */}
-          <motion.div 
-            className="border-t border-neutral-white border-opacity-20 mt-12 pt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+          {/* Newsletter Section */}
+          <motion.div
+            className="bg-neutral-white/5 dark:bg-neutral-white/10 rounded-2xl p-8 mb-12 transition-colors duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {[
-                { icon: '📋', title: t('footer.features.compliance'), desc: t('footer.features.complianceDesc') },
-                { icon: '📚', title: t('footer.features.skills'), desc: t('footer.features.skillsDesc') },
-                { icon: '🤖', title: t('footer.features.ai'), desc: t('footer.features.aiDesc') },
-                { icon: '🌍', title: t('footer.features.multilingual'), desc: t('footer.features.multilingualDesc') }
-              ].map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className="p-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="text-3xl mb-3">{feature.icon}</div>
-                  <h5 className="font-bold text-neutral-white mb-2">{feature.title}</h5>
-                  <p className="text-sm text-neutral-white opacity-75">{feature.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <motion.div 
-        className="border-t border-neutral-white border-opacity-20 py-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true }}
-      >
-        <div className="container-max">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-4">
-              <p className="text-neutral-white opacity-75">
-                {t('footer.copyright')}
+            <div className="text-center space-y-4">
+              <h4 className="text-2xl font-bold text-neutral-white">Stay Updated</h4>
+              <p className="text-neutral-white/80 max-w-2xl mx-auto">
+                Get the latest updates on South African business regulations and growth opportunities.
               </p>
-              <div className="flex items-center space-x-2">
-                <span className="text-primary-yellow">🇿🇦</span>
-                <span className="text-sm text-neutral-white opacity-75">{t('footer.madeIn')}</span>
+              <div className="flex max-w-md mx-auto space-x-2">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-lg bg-neutral-white/10 border border-neutral-white/20 text-neutral-white placeholder-neutral-white/60 focus:outline-none focus:border-primary-blue transition-colors duration-200"
+                />
+                <button className="px-6 py-3 bg-primary-blue text-neutral-white font-semibold rounded-lg hover:bg-primary-blue-light transition-colors duration-200">
+                  Subscribe
+                </button>
               </div>
             </div>
+          </motion.div>
+
+          {/* Stats Row */}
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { number: '1000+', label: 'Entrepreneurs Helped' },
+              { number: '4', label: 'Languages Supported' },
+              { number: '9', label: 'Provinces Covered' },
+              { number: '24/7', label: 'AI Support Available' }
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl font-bold text-primary-blue mb-2 drop-shadow-glow dark:drop-shadow-glow-dark">
+                  {stat.number}
+                </div>
+                <div className="text-neutral-white/80 text-sm">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-neutral-white/20 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <motion.p
+              className="text-neutral-white/60 text-sm"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              © 2025 RegulaEase. Empowering South African entrepreneurs with smart business solutions.
+            </motion.p>
             
-            <div className="flex items-center space-x-6">
-              <motion.button
-                onClick={() => scrollToSection('#home')}
-                className="flex items-center space-x-2 text-neutral-white opacity-75 hover:opacity-100 hover:text-primary-yellow transition-all duration-200"
-                whileHover={{ y: -2 }}
-              >
-                <span>{t('footer.backToTop')}</span>
-                <span>↑</span>
-              </motion.button>
-            </div>
+            <motion.div
+              className="flex items-center space-x-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <button className="text-neutral-white/60 hover:text-primary-blue text-sm transition-colors duration-200">
+                Privacy Policy
+              </button>
+              <button className="text-neutral-white/60 hover:text-primary-blue text-sm transition-colors duration-200">
+                Terms of Service
+              </button>
+              <div className="flex items-center space-x-2">
+                <span className="text-neutral-white/60 text-sm">Made with</span>
+                <span className="text-primary-blue">💙</span>
+                <span className="text-neutral-white/60 text-sm">in South Africa</span>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </footer>
   );
 };

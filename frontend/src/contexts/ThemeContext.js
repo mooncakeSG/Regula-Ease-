@@ -27,7 +27,17 @@ export const ThemeProvider = ({ children }) => {
 
   // Apply theme to document and save to localStorage
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    const root = document.documentElement;
+    
+    // Remove existing theme classes
+    root.classList.remove('light', 'dark');
+    
+    // Add the current theme class
+    root.classList.add(theme);
+    
+    // Keep the data-theme attribute for CSS variables compatibility
+    root.setAttribute('data-theme', theme);
+    
     localStorage.setItem('regulaease-theme', theme);
   }, [theme]);
 
