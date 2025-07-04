@@ -21,10 +21,21 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies for matplotlib and other packages
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
+    pkg-config \
+    libfreetype6-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libffi-dev \
+    fontconfig \
+    fonts-dejavu-core \
+    fonts-liberation \
+    libatlas-base-dev \
+    gfortran \
+    libopenblas-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy backend requirements
@@ -48,6 +59,9 @@ RUN if [ -d "data" ]; then cp -r data/* /tmp/; fi
 # Copy startup script
 COPY backend/startup.sh /app/startup.sh
 RUN chmod +x /app/startup.sh
+
+# Set matplotlib backend to non-interactive
+ENV MPLBACKEND=Agg
 
 # Expose port
 EXPOSE 8080

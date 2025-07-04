@@ -5,8 +5,8 @@ const getApiBaseUrl = () => {
     return window.location.origin;
   }
   
-  // In development, use localhost backend
-  return 'http://localhost:5000';
+  // In development, use localhost backend on port 8080
+  return 'http://localhost:8080';
 };
 
 export const API_BASE_URL = getApiBaseUrl();

@@ -1,22 +1,21 @@
-import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+"""
+Simplified PDF generator without matplotlib charts
+This version focuses on text-based reporting to avoid matplotlib issues
+"""
+
 from fpdf import FPDF
 import io
-import base64
 import os
-import tempfile
 from datetime import datetime
 import json
 
-class RegulaEasePDFGenerator:
+class SimpleRegulaEasePDFGenerator:
     def __init__(self):
         self.pdf = FPDF()
         self.pdf.set_auto_page_break(auto=True, margin=15)
         
     def generate_comprehensive_report(self, progress_data, business_type):
-        """Generate a comprehensive business progress report"""
+        """Generate a comprehensive business progress report without charts"""
         self.pdf.add_page()
         
         # Header
@@ -25,10 +24,6 @@ class RegulaEasePDFGenerator:
         # Executive Summary
         self.add_section_title("Executive Summary")
         self.add_executive_summary(progress_data)
-        
-        # Progress Charts
-        self.add_section_title("Progress Overview")
-        self.add_progress_charts(progress_data)
         
         # Compliance Status
         if 'checklist' in progress_data:
@@ -49,29 +44,27 @@ class RegulaEasePDFGenerator:
         self.add_section_title("Recommended Next Steps")
         self.add_action_items(progress_data)
         
-        return self.pdf.output()
+        return self.pdf.output(dest='S').encode('latin-1')
     
     def add_header(self, title, business_type):
-        """Add report header with logo and title"""
-        self.pdf.set_font('Helvetica', 'B', 20)
-        self.pdf.cell(0, 15, title, align='C')
-        self.pdf.ln(15)
+        """Add report header with title"""
+        self.pdf.set_font('Arial', 'B', 20)
+        self.pdf.cell(0, 15, title, ln=True, align='C')
         
-        self.pdf.set_font('Helvetica', '', 12)
-        self.pdf.cell(0, 10, f"Business Type: {business_type.title()}", align='C')
+        self.pdf.set_font('Arial', '', 12)
+        self.pdf.cell(0, 10, f"Business Type: {business_type.title()}", ln=True, align='C')
+        self.pdf.cell(0, 10, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", ln=True, align='C')
         self.pdf.ln(10)
-        self.pdf.cell(0, 10, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", align='C')
-        self.pdf.ln(20)
     
     def add_section_title(self, title):
         """Add section title"""
-        self.pdf.set_font('Helvetica', 'B', 16)
-        self.pdf.cell(0, 10, title)
-        self.pdf.ln(15)
+        self.pdf.set_font('Arial', 'B', 16)
+        self.pdf.cell(0, 10, title, ln=True)
+        self.pdf.ln(5)
     
     def add_executive_summary(self, progress_data):
         """Add executive summary with key metrics"""
-        self.pdf.set_font('Helvetica', '', 11)
+        self.pdf.set_font('Arial', '', 11)
         
         # Calculate overall progress
         total_progress = 0
@@ -99,8 +92,7 @@ class RegulaEasePDFGenerator:
         
         overall_progress = total_progress / progress_count if progress_count > 0 else 0
         
-        summary_text = f"""
-Your business is making excellent progress! Here's a snapshot of your current status:
+        summary_text = f"""Your business is making excellent progress! Here's a snapshot of your current status:
 
 * Overall Progress: {overall_progress:.1f}%
 * Business Compliance: {progress_data.get('checklist', {}).get('percentage', 0)}% complete
@@ -114,116 +106,15 @@ recommendations for continued growth.
         self.pdf.multi_cell(0, 6, summary_text.strip())
         self.pdf.ln(10)
     
-    def add_progress_charts(self, progress_data):
-        """Add progress visualization charts"""
-        # Create progress chart
-        chart_path = self.create_progress_chart(progress_data)
-        if chart_path and os.path.exists(chart_path):
-            self.pdf.image(chart_path, x=10, y=None, w=180)
-            self.pdf.ln(10)
-            # Clean up temp file
-            os.remove(chart_path)
-        else:
-            # Fallback if chart generation fails
-            self.pdf.set_font('Helvetica', '', 11)
-            self.pdf.multi_cell(0, 6, "Progress charts could not be generated. All data is included in the detailed sections below.")
-            self.pdf.ln(10)
-    
-    def create_progress_chart(self, progress_data):
-        """Create a progress overview chart"""
-        try:
-            fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 8))
-            fig.suptitle('Business Progress Overview', fontsize=16, fontweight='bold')
-            
-            # 1. Overall Progress Pie Chart
-            categories = []
-            values = []
-            colors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0']
-            
-            if 'checklist' in progress_data:
-                checklist_data = progress_data['checklist']
-                categories.append('Compliance')
-                values.append(checklist_data.get('percentage', 0))
-            
-            if 'skills' in progress_data:
-                skills_data = progress_data['skills']
-                total_resources = skills_data.get('totalResources', 1)
-                bookmark_rate = (skills_data.get('bookmarked', 0) / total_resources) * 100
-                categories.append('Skills')
-                values.append(bookmark_rate)
-            
-            if 'quiz' in progress_data:
-                quiz_data = progress_data['quiz']
-                total_questions = quiz_data.get('totalQuestions', 1)
-                quiz_score = (quiz_data.get('score', 0) / total_questions) * 100
-                categories.append('Knowledge')
-                values.append(quiz_score)
-            
-            if categories:
-                ax1.pie(values, labels=categories, autopct='%1.1f%%', colors=colors[:len(categories)])
-                ax1.set_title('Progress by Category')
-            
-            # 2. Compliance Status Bar Chart
-            if 'checklist' in progress_data:
-                checklist_data = progress_data['checklist']
-                completed = checklist_data.get('completed', 0)
-                remaining = checklist_data.get('total', 0) - completed
-                
-                ax2.bar(['Completed', 'Remaining'], [completed, remaining], 
-                       color=['#4CAF50', '#FFC107'])
-                ax2.set_title('Compliance Tasks')
-                ax2.set_ylabel('Number of Tasks')
-            
-            # 3. Skills Development Progress
-            if 'skills' in progress_data:
-                skills_data = progress_data['skills']
-                categories = skills_data.get('categories', [])
-                bookmarks = skills_data.get('categoryBookmarks', [])
-                
-                if categories and bookmarks:
-                    ax3.bar(categories, bookmarks, color='#2196F3')
-                    ax3.set_title('Skills by Category')
-                    ax3.set_ylabel('Bookmarked Resources')
-                    plt.setp(ax3.get_xticklabels(), rotation=45, ha='right')
-            
-            # 4. Priority Distribution
-            if 'checklist' in progress_data:
-                checklist_data = progress_data['checklist']
-                priorities = checklist_data.get('priorityDistribution', {})
-                
-                if priorities:
-                    priority_names = list(priorities.keys())
-                    priority_values = list(priorities.values())
-                    colors_priority = ['#F44336', '#FF9800', '#4CAF50']
-                    
-                    ax4.pie(priority_values, labels=priority_names, autopct='%1.1f%%', 
-                           colors=colors_priority[:len(priority_names)])
-                    ax4.set_title('Task Priority Distribution')
-            
-            plt.tight_layout()
-            
-            # Save chart to temporary file (cross-platform)
-            with tempfile.NamedTemporaryFile(delete=False, suffix='.png') as tmp_file:
-                chart_path = tmp_file.name
-            plt.savefig(chart_path, dpi=300, bbox_inches='tight')
-            plt.close()
-            
-            return chart_path
-            
-        except Exception as e:
-            print(f"Error creating progress chart: {e}")
-            return None
-    
     def add_compliance_analysis(self, checklist_data):
         """Add detailed compliance analysis"""
-        self.pdf.set_font('Helvetica', '', 11)
+        self.pdf.set_font('Arial', '', 11)
         
         total = checklist_data.get('total', 0)
         completed = checklist_data.get('completed', 0)
         percentage = checklist_data.get('percentage', 0)
         
-        analysis_text = f"""
-Compliance Status Analysis:
+        analysis_text = f"""Compliance Status Analysis:
 
 * Total Tasks: {total}
 * Completed Tasks: {completed}
@@ -243,14 +134,13 @@ Progress Trend: {'Excellent' if percentage >= 80 else 'Good' if percentage >= 60
     
     def add_skills_analysis(self, skills_data):
         """Add skills development analysis"""
-        self.pdf.set_font('Helvetica', '', 11)
+        self.pdf.set_font('Arial', '', 11)
         
         total_resources = skills_data.get('totalResources', 0)
         bookmarked = skills_data.get('bookmarked', 0)
         engagement_rate = (bookmarked / total_resources * 100) if total_resources > 0 else 0
         
-        analysis_text = f"""
-Skills Development Analysis:
+        analysis_text = f"""Skills Development Analysis:
 
 * Total Resources Available: {total_resources}
 * Bookmarked Resources: {bookmarked}
@@ -275,14 +165,13 @@ Learning Engagement: {'High' if engagement_rate >= 25 else 'Moderate' if engagem
     
     def add_quiz_analysis(self, quiz_data):
         """Add quiz performance analysis"""
-        self.pdf.set_font('Helvetica', '', 11)
+        self.pdf.set_font('Arial', '', 11)
         
         score = quiz_data.get('score', 0)
         total_questions = quiz_data.get('totalQuestions', 0)
         percentage = (score / total_questions * 100) if total_questions > 0 else 0
         
-        analysis_text = f"""
-Knowledge Assessment Results:
+        analysis_text = f"""Knowledge Assessment Results:
 
 * Score: {score}/{total_questions} ({percentage:.1f}%)
 * Category: {quiz_data.get('category', 'Mixed')}
@@ -306,7 +195,7 @@ Areas for Improvement:
     
     def add_action_items(self, progress_data):
         """Add recommended action items"""
-        self.pdf.set_font('Helvetica', '', 11)
+        self.pdf.set_font('Arial', '', 11)
         
         action_items = []
         
@@ -348,10 +237,10 @@ Areas for Improvement:
         
         self.pdf.multi_cell(0, 6, actions_text)
 
-def generate_pdf_report(report_type, progress_data, business_type):
-    """Main function to generate PDF report"""
+def generate_pdf_report_simple(report_type, progress_data, business_type):
+    """Simplified PDF generation function"""
     try:
-        generator = RegulaEasePDFGenerator()
+        generator = SimpleRegulaEasePDFGenerator()
         
         if report_type == 'comprehensive':
             pdf_content = generator.generate_comprehensive_report(progress_data, business_type)
@@ -367,8 +256,5 @@ def generate_pdf_report(report_type, progress_data, business_type):
         return pdf_buffer
         
     except Exception as e:
-        print(f"Error in generate_pdf_report: {e}")
-        import traceback
-    
-        traceback.print_exc()
+        print(f"Error in generate_pdf_report_simple: {e}")
         return None 

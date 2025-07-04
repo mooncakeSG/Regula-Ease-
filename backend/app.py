@@ -4,7 +4,7 @@ import json
 import os
 from dotenv import load_dotenv
 from bot import ask_compliance_bot
-from pdf_generator import generate_pdf_report
+from pdf_generator import generate_pdf_report  # Restored for local testing
 
 # Load environment variables
 load_dotenv()
