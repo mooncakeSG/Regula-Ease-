@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { API_ENDPOINTS } from '../config/api';
@@ -142,7 +143,8 @@ const Projects = () => {
       const response = await axios.post(API_ENDPOINTS.exportPdf, {
         type: 'comprehensive',
         progressData,
-        businessType: 'comprehensive'
+        businessType: 'comprehensive',
+        language: i18n.language || 'en'  // Include current language
       }, {
         responseType: 'blob'
       });

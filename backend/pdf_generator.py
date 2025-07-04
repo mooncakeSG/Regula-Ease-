@@ -9,44 +9,50 @@ import os
 import tempfile
 from datetime import datetime
 import json
+from pdf_translations import get_translation, get_language_name, get_supported_languages
 
 class RegulaEasePDFGenerator:
-    def __init__(self):
+    def __init__(self, language='en'):
         self.pdf = FPDF()
         self.pdf.set_auto_page_break(auto=True, margin=15)
+        self.language = language if language in get_supported_languages() else 'en'
+        
+    def t(self, key, default=None):
+        """Get translation for current language"""
+        return get_translation(self.language, key, default)
         
     def generate_comprehensive_report(self, progress_data, business_type):
         """Generate a comprehensive business progress report"""
         self.pdf.add_page()
         
         # Header
-        self.add_header("RegulaEase Business Progress Report", business_type)
+        self.add_header(self.t('report_title'), business_type)
         
         # Executive Summary
-        self.add_section_title("Executive Summary")
+        self.add_section_title(self.t('executive_summary'))
         self.add_executive_summary(progress_data)
         
         # Progress Charts
-        self.add_section_title("Progress Overview")
+        self.add_section_title(self.t('progress_overview'))
         self.add_progress_charts(progress_data)
         
         # Compliance Status
         if 'checklist' in progress_data:
-            self.add_section_title("Compliance Status")
+            self.add_section_title(self.t('compliance_status'))
             self.add_compliance_analysis(progress_data['checklist'])
         
         # Skills Development
         if 'skills' in progress_data:
-            self.add_section_title("Skills Development")
+            self.add_section_title(self.t('skills_development'))
             self.add_skills_analysis(progress_data['skills'])
         
         # Quiz Performance
         if 'quiz' in progress_data:
-            self.add_section_title("Knowledge Assessment")
+            self.add_section_title(self.t('knowledge_assessment'))
             self.add_quiz_analysis(progress_data['quiz'])
         
         # Action Items
-        self.add_section_title("Recommended Next Steps")
+        self.add_section_title(self.t('recommended_next_steps'))
         self.add_action_items(progress_data)
         
         return self.pdf.output()
@@ -58,10 +64,13 @@ class RegulaEasePDFGenerator:
         self.pdf.ln(15)
         
         self.pdf.set_font('Helvetica', '', 12)
-        self.pdf.cell(0, 10, f"Business Type: {business_type.title()}", align='C')
+        self.pdf.cell(0, 10, f"{self.t('business_type')}: {business_type.title()}", align='C')
         self.pdf.ln(10)
-        self.pdf.cell(0, 10, f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", align='C')
-        self.pdf.ln(20)
+        self.pdf.cell(0, 10, f"{self.t('generated')}: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", align='C')
+        self.pdf.ln(10)
+        self.pdf.set_font('Helvetica', 'I', 10)
+        self.pdf.cell(0, 10, f"({get_language_name(self.language)})", align='C')
+        self.pdf.ln(15)
     
     def add_section_title(self, title):
         """Add section title"""
@@ -100,15 +109,14 @@ class RegulaEasePDFGenerator:
         overall_progress = total_progress / progress_count if progress_count > 0 else 0
         
         summary_text = f"""
-Your business is making excellent progress! Here's a snapshot of your current status:
+{self.t('summary_text')}
 
-* Overall Progress: {overall_progress:.1f}%
-* Business Compliance: {progress_data.get('checklist', {}).get('percentage', 0)}% complete
-* Skills Development: {progress_data.get('skills', {}).get('bookmarked', 0)} resources bookmarked
-* Knowledge Assessment: {progress_data.get('quiz', {}).get('score', 0)}/{progress_data.get('quiz', {}).get('totalQuestions', 0)} correct
+* {self.t('overall_progress')}: {overall_progress:.1f}%
+* {self.t('business_compliance')}: {progress_data.get('checklist', {}).get('percentage', 0)}% {self.t('complete')}
+* {self.t('skills_development')}: {progress_data.get('skills', {}).get('bookmarked', 0)} {self.t('resources_bookmarked')}
+* {self.t('knowledge_assessment')}: {progress_data.get('quiz', {}).get('score', 0)}/{progress_data.get('quiz', {}).get('totalQuestions', 0)} {self.t('correct')}
 
-This report provides detailed insights into your business development journey and 
-recommendations for continued growth.
+{self.t('detailed_insights')}
         """
         
         self.pdf.multi_cell(0, 6, summary_text.strip())
@@ -126,14 +134,14 @@ recommendations for continued growth.
         else:
             # Fallback if chart generation fails
             self.pdf.set_font('Helvetica', '', 11)
-            self.pdf.multi_cell(0, 6, "Progress charts could not be generated. All data is included in the detailed sections below.")
+            self.pdf.multi_cell(0, 6, self.t('progress_charts_failed'))
             self.pdf.ln(10)
     
     def create_progress_chart(self, progress_data):
         """Create a progress overview chart"""
         try:
             fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 8))
-            fig.suptitle('Business Progress Overview', fontsize=16, fontweight='bold')
+            fig.suptitle(self.t('progress_overview'), fontsize=16, fontweight='bold')
             
             # 1. Overall Progress Pie Chart
             categories = []
@@ -142,26 +150,26 @@ recommendations for continued growth.
             
             if 'checklist' in progress_data:
                 checklist_data = progress_data['checklist']
-                categories.append('Compliance')
+                categories.append(self.t('chart_labels.compliance'))
                 values.append(checklist_data.get('percentage', 0))
             
             if 'skills' in progress_data:
                 skills_data = progress_data['skills']
                 total_resources = skills_data.get('totalResources', 1)
                 bookmark_rate = (skills_data.get('bookmarked', 0) / total_resources) * 100
-                categories.append('Skills')
+                categories.append(self.t('chart_labels.skills'))
                 values.append(bookmark_rate)
             
             if 'quiz' in progress_data:
                 quiz_data = progress_data['quiz']
                 total_questions = quiz_data.get('totalQuestions', 1)
                 quiz_score = (quiz_data.get('score', 0) / total_questions) * 100
-                categories.append('Knowledge')
+                categories.append(self.t('chart_labels.knowledge'))
                 values.append(quiz_score)
             
             if categories:
                 ax1.pie(values, labels=categories, autopct='%1.1f%%', colors=colors[:len(categories)])
-                ax1.set_title('Progress by Category')
+                ax1.set_title(self.t('chart_titles.progress_by_category'))
             
             # 2. Compliance Status Bar Chart
             if 'checklist' in progress_data:
@@ -169,9 +177,9 @@ recommendations for continued growth.
                 completed = checklist_data.get('completed', 0)
                 remaining = checklist_data.get('total', 0) - completed
                 
-                ax2.bar(['Completed', 'Remaining'], [completed, remaining], 
-                       color=['#4CAF50', '#FFC107'])
-                ax2.set_title('Compliance Tasks')
+                ax2.bar([self.t('chart_labels.completed'), self.t('chart_labels.remaining')], 
+                       [completed, remaining], color=['#4CAF50', '#FFC107'])
+                ax2.set_title(self.t('chart_titles.compliance_tasks'))
                 ax2.set_ylabel('Number of Tasks')
             
             # 3. Skills Development Progress
@@ -182,8 +190,8 @@ recommendations for continued growth.
                 
                 if categories and bookmarks:
                     ax3.bar(categories, bookmarks, color='#2196F3')
-                    ax3.set_title('Skills by Category')
-                    ax3.set_ylabel('Bookmarked Resources')
+                    ax3.set_title(self.t('chart_titles.skills_by_category'))
+                    ax3.set_ylabel(self.t('chart_labels.bookmarked_resources'))
                     plt.setp(ax3.get_xticklabels(), rotation=45, ha='right')
             
             # 4. Priority Distribution
@@ -198,7 +206,7 @@ recommendations for continued growth.
                     
                     ax4.pie(priority_values, labels=priority_names, autopct='%1.1f%%', 
                            colors=colors_priority[:len(priority_names)])
-                    ax4.set_title('Task Priority Distribution')
+                    ax4.set_title(self.t('chart_titles.priority_distribution'))
             
             plt.tight_layout()
             
@@ -348,10 +356,10 @@ Areas for Improvement:
         
         self.pdf.multi_cell(0, 6, actions_text)
 
-def generate_pdf_report(report_type, progress_data, business_type):
+def generate_pdf_report(report_type, progress_data, business_type, language='en'):
     """Main function to generate PDF report"""
     try:
-        generator = RegulaEasePDFGenerator()
+        generator = RegulaEasePDFGenerator(language=language)
         
         if report_type == 'comprehensive':
             pdf_content = generator.generate_comprehensive_report(progress_data, business_type)

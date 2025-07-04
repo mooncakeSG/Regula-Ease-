@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { API_ENDPOINTS } from '../config/api';
 
 const Skills = () => {
@@ -123,7 +124,8 @@ const Skills = () => {
       const response = await axios.post(API_ENDPOINTS.exportPdf, {
         type: 'skills',
         progressData,
-        businessType: category
+        businessType: category,
+        language: i18n.language || 'en'  // Include current language
       }, {
         responseType: 'blob'
       });

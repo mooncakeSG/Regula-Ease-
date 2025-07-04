@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { API_ENDPOINTS } from '../config/api';
 
 const Checklist = () => {
@@ -131,7 +132,8 @@ const Checklist = () => {
       const response = await axios.post(API_ENDPOINTS.exportPdf, {
         type: 'checklist',
         progressData,
-        businessType
+        businessType,
+        language: i18n.language || 'en'  // Include current language
       }, {
         responseType: 'blob'
       });

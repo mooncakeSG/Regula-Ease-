@@ -244,22 +244,23 @@ def catch_all(path):
 @app.route('/export-pdf', methods=['POST'])
 def export_pdf():
     """
-    Generate PDF report with progress charts and analytics
+    Generate PDF report with progress charts and analytics in multiple languages
     """
     try:
         data = request.json
         report_type = data.get('type', 'comprehensive')  # comprehensive, checklist, skills, quiz
         progress_data = data.get('progressData', {})
         business_type = data.get('businessType', 'general')
+        language = data.get('language', 'en')  # Get language from request (en, af, zu, xh)
         
-        # Generate PDF report
-        pdf_buffer = generate_pdf_report(report_type, progress_data, business_type)
+        # Generate PDF report with specified language
+        pdf_buffer = generate_pdf_report(report_type, progress_data, business_type, language)
         
         if pdf_buffer:
             # Create response with PDF
             response = make_response(pdf_buffer.getvalue())
             response.headers['Content-Type'] = 'application/pdf'
-            response.headers['Content-Disposition'] = f'attachment; filename=regula-ease-report-{report_type}.pdf'
+            response.headers['Content-Disposition'] = f'attachment; filename=regula-ease-report-{report_type}-{language}.pdf'
             return response
         else:
             return jsonify({'error': 'Failed to generate PDF report'}), 500
